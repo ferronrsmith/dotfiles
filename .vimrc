@@ -9,6 +9,8 @@ set nu
 
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
+set showmatch					  " set show matching parenthesis
+set gdefault					  " search/replace "globally" (on a line) by default
 
 "set list listchars=tab:»·
 set list
@@ -28,6 +30,11 @@ set linebreak    "Wrap lines at convenient points
 set noswf
 set nobackup
 set nowb
+
+" history + undo count
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
+
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -49,7 +56,9 @@ set is
 
 " Change colorscheme from default to delek
 " emacs pink topfunky-light
-colorscheme vividchalk
+" colorscheme vividchalk
+colorscheme molokai
+
 
 " Set the # of colors
 set t_Co=256
@@ -187,8 +196,7 @@ set expandtab
 
 
 " Indent automatically depending on filetype
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " ================ Folding Configuration ============================
 set foldmethod=indent   "fold based on indent
@@ -214,6 +222,7 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.swp,*.bak,*.pyc,*.class
 
 " ================ Scrolling ========================
 
@@ -221,9 +230,14 @@ set scrolloff=4         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=7
 set sidescroll=1
 
-
 " Remap leader to comma
 let mapleader = ","
+
+" Rspec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " want to enable emmet in all modes, you can use set these options in vimrc
 " let g:user_emmet_mode='n'    "only enable normal mode functions.
@@ -233,5 +247,8 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 set autoread                    "Reload files changed outside vim
 set visualbell                  "No sounds
 
+autocmd BufWritePre {*.rb,*.js,*.coffee,*.scss,*.haml} :%s/\s\+$//e
+
 map // <c-_>b
 map <C-Space> <C-n>
+
