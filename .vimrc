@@ -4,41 +4,45 @@ set nocompatible                  " Must come first because it changes other opt
 set nocp 
 
 
-" Turn on line numbering. Turn it off with "set nonu" 
+" Turn on line numbering. Turn it off with 'set nonu'" 
 set nu 
 
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
-set list listchars=tab:»·
+"set list listchars=tab:»·
+set list
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
 
-
-" Handle multiple buffers better
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
 set hidden
-
-" enable code folding
-set fen
 
 " turn off wrapping
 set nowrap
+set linebreak    "Wrap lines at convenient points
 
 " disable swap (.swp) file creation
 set noswf
+set nobackup
+set nowb
 
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
+
+" ================= Search Related ==================
 " Case insensitive search
 set ic
 
 " Higlhight search
 set hls
-
-" set tab length
-set ts=4
-
-" set auto indent tab value
-set sw=4
-
-" Wrap text instead of being on one line
-set lbr
 
 " Set partial match search
 set is 
@@ -168,15 +172,66 @@ let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_load_gemfile = 1
 
-syntax enable                     " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
+" ===================== Indentation Configuration ============
 
-" Set syntax on
-syntax on
+" set tab length
+set ts=4
+
+" set auto indent tab value
+set sw=4
+
+set autoindent
+set ai
+set smarttab
+set expandtab
 
 
 " Indent automatically depending on filetype
+filetype plugin on
 filetype indent on
-set autoindent
-set ai
 
+" ================ Folding Configuration ============================
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+
+" Wrap text instead of being on one line
+set lbr
+
+" ====================== Completion
+set wildmenu                    " show list instead of just completing
+set wildmode=list:longest,full  " command <Tab> completion, list
+
+" ================= Files to Ignore =============
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
+" ================ Scrolling ========================
+
+set scrolloff=4         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=7
+set sidescroll=1
+
+
+" Remap leader to comma
+let mapleader = ","
+
+" want to enable emmet in all modes, you can use set these options in vimrc
+" let g:user_emmet_mode='n'    "only enable normal mode functions.
+" let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
+
+set autoread                    "Reload files changed outside vim
+set visualbell                  "No sounds
+
+map // <c-_>b
+map <C-Space> <C-n>
