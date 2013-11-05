@@ -251,6 +251,5 @@ autocmd BufWritePre {*.rb,*.js,*.coffee,*.scss,*.haml} :%s/\s\+$//e
 
 map // <c-_>b
 map <C-Space> <C-n>
-imap <C-z> <c-y>,
 
 nnoremap <CR> :noh<CR><CR> " disable highlights after search
