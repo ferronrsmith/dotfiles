@@ -34,7 +34,14 @@ set nowb
 " history + undo count
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
+set viminfo='200
 
+
+"multiple windows
+set switchbuf=usetab            "swb:   Jumps to first tab or window that contains specified buffer instead of duplicating an open window
+set showtabline=1               "stal:  Display the tabbar if there are multiple tabs. Use :tab ball or invoke Vim with -p
+set splitright                  "spr:   puts new vsplit windows to the right of the current
+set splitbelow                  "sb:    puts new split windows to the bottom of the current
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -76,8 +83,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Always show statusline
 set laststatus=2
-
-let g:EasyMotion_leader_key = '\w'
 
 let g:syntastic_always_populate_loc_list=1
 
@@ -239,6 +244,8 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+let g:EasyMotion_leader_key = '<Leader>'
+
 " want to enable emmet in all modes, you can use set these options in vimrc
 " let g:user_emmet_mode='n'    "only enable normal mode functions.
 " let g:user_emmet_mode='inv'  "enable all functions, which is equal to
@@ -253,3 +260,23 @@ map // <c-_>b
 map <C-Space> <C-n>
 
 nnoremap <CR> :noh<CR><CR> " disable highlights after search
+
+
+" Allow undoing insert-mode ctrl-u and ctrl-w
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+
+"Buffer switching
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+"http://nvie.com/posts/how-i-boosted-my-vim/
+"The following trick is a really small one, but a super-efficient one, since it strips off two full keystrokes from almost every Vim command:
+nnoremap ; :
