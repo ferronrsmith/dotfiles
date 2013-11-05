@@ -164,6 +164,13 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+    \   if &omnifunc == "" |
+    \     setlocal omnifunc=syntaxcomplete#Complete |
+    \   endif
+endif
+
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -277,6 +284,28 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Smart way to move btw. windows {{{2
+" (use cursor keys to not overwrite C-l (redraw))
+map <C-Down> <C-W>j
+map <C-Up> <C-W>k
+map <C-Left> <C-W>h
+map <C-Right> <C-W>l
+
+
 "http://nvie.com/posts/how-i-boosted-my-vim/
 "The following trick is a really small one, but a super-efficient one, since it strips off two full keystrokes from almost every Vim command:
 nnoremap ; :
+
+if has("autocmd") "
+	au BufRead,BufNewFile *.haml         setfiletype haml
+	au BufRead,BufNewFile *.conf         setfiletype apache
+endif
+
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+\ if &ft != 'gitcommit' && fnamemodify(bufname('%'), ':t') != 'svn-commit.tmp' && line("'\"") > 0 && line("'\"") <= line("$") |
+\   exe 'normal! g`"zv' |
+\ endif
