@@ -97,6 +97,8 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+let g:neocomplcache_min_keyword_length = 3
+
 " Enable heavy features.
 " Use camel case completion.
 "let g:neocomplcache_enable_camel_case_completion = 1
@@ -276,7 +278,7 @@ inoremap <C-W> <C-G>u<C-W>
 "Buffer switching
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
-
+:nnoremap <C-s> :w<CR>
 
 " Easy window navigation
 map <C-h> <C-w>h
@@ -309,3 +311,45 @@ autocmd BufReadPost *
 \ if &ft != 'gitcommit' && fnamemodify(bufname('%'), ':t') != 'svn-commit.tmp' && line("'\"") > 0 && line("'\"") <= line("$") |
 \   exe 'normal! g`"zv' |
 \ endif 
+
+
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+
+" Make directory automatically.
+" --------------------------------------
+" http://vim-users.jp/2011/02/hack202/
+
+autocmd MyAutoCmd BufWritePre *
+      \ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
+function! s:mkdir_as_necessary(dir, force)
+  if !isdirectory(a:dir) && &l:buftype == '' &&
+        \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
+        \              a:dir)) =~? '^y\%[es]$')
+    call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+  endif
+endfunction
