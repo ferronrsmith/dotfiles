@@ -276,7 +276,6 @@ inoremap <C-W> <C-G>u<C-W>
 "Buffer switching
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
-:nnoremap <C-w> :bd<CR>
 
 
 " Easy window navigation
