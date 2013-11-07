@@ -276,6 +276,7 @@ inoremap <C-W> <C-G>u<C-W>
 "Buffer switching
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
+:nnoremap <C-w> :bd<CR>
 
 
 " Easy window navigation
@@ -308,4 +309,4 @@ endif
 autocmd BufReadPost *
 \ if &ft != 'gitcommit' && fnamemodify(bufname('%'), ':t') != 'svn-commit.tmp' && line("'\"") > 0 && line("'\"") <= line("$") |
 \   exe 'normal! g`"zv' |
-\ endif
+\ endif 
