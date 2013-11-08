@@ -312,8 +312,6 @@ autocmd BufReadPost *
 \   exe 'normal! g`"zv' |
 \ endif 
 
-
-
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -332,19 +330,17 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
+let g:neosnippet#snippets_directory='~/.vim/snippets'
 
 " Make directory automatically.
 " --------------------------------------
 " http://vim-users.jp/2011/02/hack202/
 
-autocmd MyAutoCmd BufWritePre *
+autocmd BufWritePre *
       \ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
 function! s:mkdir_as_necessary(dir, force)
   if !isdirectory(a:dir) && &l:buftype == '' &&
