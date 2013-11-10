@@ -13,7 +13,7 @@
   co = checkout
   d = diff
   lg = log -p	
-  cp = !git commit -am 'quick update' && git push
+  q = !git commit -am 'quick update' && git push
   undo = reset --hard
   rev = checkout HEAD
   r = checkout HEAD
