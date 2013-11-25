@@ -4,14 +4,24 @@
 	name = ferron
 	email = ferronrsmith@gmail.com
 [alias]
-  st = status
-  ci = commit
+  s = status
+  c = commit
+  uc = reset --soft 
   p = push
   u = pull
-  br = branch
+  b = branch
   co = checkout
-  df = diff
+  d = diff
   lg = log -p	
-  cp = !git commit -am 'quick update' && git push
+  q = !git commit -am 'quick update' && git push
   undo = reset --hard
   rev = checkout HEAD
+  r = checkout HEAD
+  lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  lg = !"git lg1"
+[core]
+  editor = vim
+[merge]
+  tool = meld
+  	
