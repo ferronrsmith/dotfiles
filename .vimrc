@@ -38,6 +38,7 @@ Bundle 'vim-scripts/Gundo'
 Bundle 'Shougo/neocomplcache'
 "Bundle 'Shougo/neosnippet'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'ferronrsmith/Colour-Sampler-Pack'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -115,8 +116,12 @@ set is
 
 " Change colorscheme from default to delek
 " emacs pink topfunky-light
-" colorscheme vividchalk
-colorscheme molokai
+colorscheme railscasts2 
+" colorscheme molokai
+
+"syntax enable
+"set background=light
+"colorscheme solarized
 
 " Set the # of colors
 set t_Co=256
