@@ -19,7 +19,7 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-bundler'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/LustyExplorer'
@@ -40,6 +40,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'ferronrsmith/Colour-Sampler-Pack'
 Bundle 'scrooloose/nerdtree'
+Bundle 'mattn/emmet-vim'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -340,6 +341,11 @@ let g:EasyMotion_leader_key = '<Leader>'
 " let g:user_emmet_mode='n'    "only enable normal mode functions.
 " let g:user_emmet_mode='inv'  "enable all functions, which is equal to
 let g:user_emmet_mode='a'    "enable all function in all mode.
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,css EmmetInstall
+
+let g:user_emmet_expandabbr_key='<C-space>'   "This maps the expansion to Ctrl-space 
+let g:use_emmet_complete_tag=1
 
 set autoread                    "Reload files changed outside vim
 set visualbell                  "No sounds
