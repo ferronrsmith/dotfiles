@@ -39,6 +39,7 @@ Bundle 'Shougo/neocomplcache'
 "Bundle 'Shougo/neosnippet'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'ferronrsmith/Colour-Sampler-Pack'
+Bundle 'scrooloose/nerdtree'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -48,8 +49,11 @@ Bundle 'ferronrsmith/Colour-Sampler-Pack'
 " Set vi compatibility mode
 set nocp 
 
+" automatically change directory to the open file
+set autochdir
 
 nnoremap <F5> :GundoToggle<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
 
 " Remap :W to :w
 command W w
@@ -116,8 +120,9 @@ set is
 
 " Change colorscheme from default to delek
 " emacs pink topfunky-light
-colorscheme railscasts2 
+" colorscheme railscasts2 
 " colorscheme molokai
+colorscheme argokai
 
 "syntax enable
 "set background=light
@@ -300,6 +305,9 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.swp,*.bak,*.pyc,*.class
+set wildignore+=coverage/**
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*.min.js,*.min.css " Ignore minified files
 
 " ================ Scrolling ========================
 
