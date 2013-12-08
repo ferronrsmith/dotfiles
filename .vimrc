@@ -1,8 +1,60 @@
 set nocompatible                  " Must come first because it changes other options.
 
+filetype off                  " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+"
+" original repos on GitHub
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-bundler'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/LustyExplorer'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-misc'
+Bundle 'bling/vim-airline'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-endwise'
+Bundle 'vim-scripts/tComment'
+Bundle 'munen/find_yaml_key'
+Bundle 'ervandew/supertab'
+Bundle 'SirVer/ultisnips'
+Bundle 'vim-scripts/Gundo'
+"Bundle 'honza/vim-snippets'
+Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neosnippet'
+Bundle 'jelera/vim-javascript-syntax'
+
+" vim-scripts repos
+" non-GitHub repos
+"Bundle 'git://git.wincent.com/command-t.git'
+
+
 " Set vi compatibility mode
 set nocp 
 
+
+nnoremap <F5> :GundoToggle<CR>
+
+" Remap :W to :w
+command W w
+
+" Remap :Q to :q
+command Q q
 
 " Turn on line numbering. Turn it off with 'set nonu'" 
 set nu 
@@ -12,9 +64,9 @@ set smartcase                     " But case-sensitive if expression contains a 
 set showmatch					  " set show matching parenthesis
 set gdefault					  " search/replace "globally" (on a line) by default
 
-"set list listchars=tab:»·
+set list listchars=tab:»·
 set list
-set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+"set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 " This makes vim act like all other editors, buffers can
@@ -66,11 +118,10 @@ set is
 " colorscheme vividchalk
 colorscheme molokai
 
-
 " Set the # of colors
 set t_Co=256
 
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
 
 " let g:Powerline_symbols = "fancy"
 
@@ -85,6 +136,11 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 set laststatus=2
 
 let g:syntastic_always_populate_loc_list=1
+
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -194,6 +250,8 @@ let g:used_javascript_libs = 'underscore,backbone,angularjs,sugar,jquery'
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_load_gemfile = 1
+
+
 
 " ===================== Indentation Configuration ============
 
@@ -311,30 +369,6 @@ autocmd BufReadPost *
 \ if &ft != 'gitcommit' && fnamemodify(bufname('%'), ':t') != 'svn-commit.tmp' && line("'\"") > 0 && line("'\"") <= line("$") |
 \   exe 'normal! g`"zv' |
 \ endif 
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets'
 
 " Make directory automatically.
 " --------------------------------------
