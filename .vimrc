@@ -298,16 +298,26 @@ set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
 set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
+set wildignore+=*/vendor/rails/**
+set wildignore+=*/vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.swp,*.bak,*.pyc,*.class
-set wildignore+=coverage/**
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*.min.js,*.min.css " Ignore minified files
+set wildignore+=*/coverage/**						" ignore simplcov/istanbul coverage folder
+set wildignore+=*/test_out/**
+set wildignore+=*/node_modules/**					" Ignore node js module folder
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     		" MacOSX/Linux
+set wildignore+=*.min.js,*.min.css 					" Ignore minified files
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.yardoc/*,*.exe,*.so,*.dat
+
+
+" ====================== Ctrl-P File/Folder Ignore =============
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$'
+  \ }
 
 " ================ Scrolling ========================
 
