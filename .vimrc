@@ -41,6 +41,8 @@ Bundle 'jelera/vim-javascript-syntax'
 Bundle 'ferronrsmith/Colour-Sampler-Pack'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mattn/emmet-vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'ferronrsmith/ultisnips_snippets'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -55,6 +57,18 @@ set autochdir
 
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
+
+=================== UltiSnips Config ==================
+
+let g:UltiSnipsSnippetsDir        = '~/.vim/bundle/ultisnips_snippets'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'snippets']
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+   
+   
+=================== UltiSnips Config END ==================
 
 " Remap :W to :w
 command W w
