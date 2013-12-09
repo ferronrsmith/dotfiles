@@ -58,7 +58,7 @@ set autochdir
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 
-=================== UltiSnips Config ==================
+"=================== UltiSnips Config ==================
 
 let g:UltiSnipsSnippetsDir        = '~/.vim/bundle/ultisnips_snippets'
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'snippets']
@@ -68,7 +68,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
    
    
-=================== UltiSnips Config END ==================
+"=================== UltiSnips Config END ==================
 
 " Remap :W to :w
 command W w
@@ -319,6 +319,7 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.lock,*.gitkeep
 set wildignore+=*.swp,*.bak,*.pyc,*.class
 set wildignore+=*/coverage/**						" ignore simplcov/istanbul coverage folder
 set wildignore+=*/test_out/**
