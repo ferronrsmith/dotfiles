@@ -137,8 +137,7 @@ set is
 " emacs pink topfunky-light
 " colorscheme railscasts2 
 " colorscheme molokai
-" colorscheme argokai
-colorscheme Tomorrow
+colorscheme argokai
 
 "syntax enable
 "set background=light
@@ -292,6 +291,7 @@ set ai
 set smarttab
 set expandtab
 
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
 
 " Indent automatically depending on filetype
 filetype plugin indent on
@@ -366,8 +366,7 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 "let g:user_emmet_install_global = 0
 "autocmd FileType html,css EmmetInstall
 
-"let g:user_emmet_expandabbr_key='<C-space>'   "This maps the expansion to Ctrl-space 
-let g:user_emmet_expandabbr_key='<tab>'   "This maps the expansion to Ctrl-space 
+let g:user_emmet_expandabbr_key='<C-space>'   "This maps the expansion to Ctrl-space 
 let g:use_emmet_complete_tag=1
 
 set autoread                    "Reload files changed outside vim
