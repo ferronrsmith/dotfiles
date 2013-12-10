@@ -359,7 +359,8 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 "let g:user_emmet_install_global = 0
 "autocmd FileType html,css EmmetInstall
 
-let g:user_emmet_expandabbr_key='<C-space>'   "This maps the expansion to Ctrl-space 
+"let g:user_emmet_expandabbr_key='<C-space>'   "This maps the expansion to Ctrl-space 
+let g:user_emmet_expandabbr_key='<tab>'   "This maps the expansion to Ctrl-space 
 let g:use_emmet_complete_tag=1
 
 set autoread                    "Reload files changed outside vim
