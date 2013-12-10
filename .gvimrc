@@ -137,8 +137,7 @@ set is
 " emacs pink topfunky-light
 " colorscheme railscasts2 
 " colorscheme molokai
-" colorscheme argokai
-colorscheme Tomorrow
+colorscheme argokai
 
 "syntax enable
 "set background=light
@@ -292,6 +291,7 @@ set ai
 set smarttab
 set expandtab
 
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
 
 " Indent automatically depending on filetype
 filetype plugin indent on
