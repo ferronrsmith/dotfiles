@@ -43,6 +43,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'mattn/emmet-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'ferronrsmith/ultisnips_snippets'
+Bundle 'airblade/vim-gitgutter'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -137,8 +138,8 @@ set is
 " emacs pink topfunky-light
 " colorscheme railscasts2 
 " colorscheme molokai
-" colorscheme argokai
-colorscheme Tomorrow
+colorscheme argokai
+" colorscheme Tomorrow
 
 "syntax enable
 "set background=light
