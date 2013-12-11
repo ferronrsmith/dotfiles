@@ -2,6 +2,8 @@ set nocompatible                  " Must come first because it changes other opt
 
 filetype off                  " required!
 
+" use symlink ln -s /path/to/spf13-vim/vimrc .vimrc
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -44,6 +46,10 @@ Bundle 'mattn/emmet-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'ferronrsmith/ultisnips_snippets'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/HTML-AutoCloseTag'
+Bundle 'vim-scripts/SearchComplete'
+Bundle 'vim-scripts/matchit.zip'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -70,6 +76,16 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
    
    
 "=================== UltiSnips Config END ==================
+
+
+"===================== Reload .vimrc when changes are detected =====================
+
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,.gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+"======================= End ======================================================
 
 " Remap :W to :w
 command W w
@@ -328,13 +344,18 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.lock,*.gitkeep
-set wildignore+=*.swp,*.bak,*.pyc,*.class
+set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.class,*.dll,*.a,*.lib,*.dylib,*.ncb,*.sdf,*.suo,*.pdb,*.psd,*.idb,*.db
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.ttf,*.tga,*.dds,*.ico,*.eot,*.pdf,*.ppt,*.pptx,*.doc,*.docx,*.dash
+set wildignore+=*.swf,*.jar,*.zip,*.rar,*.tar,*.gz,*.dmg,*.jnlp 		" binary files
+set wildignore+=*.mp3,*.avi,*.pkg,*.torrent,*.otf,*.ttf,*.iso,*.img,*.mkv
+set wildignore+=*/Wine\ Files/**,*/Downloads/**
 set wildignore+=*/coverage/**						" ignore simplcov/istanbul coverage folder
 set wildignore+=*/test_out/**
+set wildignore+=*/.idea/**
 set wildignore+=*/node_modules/**					" Ignore node js module folder
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     		" MacOSX/Linux
 set wildignore+=*.min.js,*.min.css 					" Ignore minified files
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.yardoc/*,*.exe,*.so,*.dat
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.yardoc/*,*.exe,*.so,*.dat'
 
 
 " ====================== Ctrl-P File/Folder Ignore =============
@@ -367,8 +388,7 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 "let g:user_emmet_install_global = 0
 "autocmd FileType html,css EmmetInstall
 
-"let g:user_emmet_expandabbr_key='<C-space>'   "This maps the expansion to Ctrl-space 
-let g:user_emmet_expandabbr_key='<tab>'   "This maps the expansion to Ctrl-space 
+let g:user_emmet_expandabbr_key='<C-space>'   "This maps the expansion to Ctrl-space 
 let g:use_emmet_complete_tag=1
 
 set autoread                    "Reload files changed outside vim
@@ -386,11 +406,6 @@ nnoremap <CR> :noh<CR><CR> " disable highlights after search
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 
-"Buffer switching
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprevious<CR>
-:nnoremap <C-s> :w<CR>
-
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -403,6 +418,38 @@ map <C-Down> <C-W>j
 map <C-Up> <C-W>k
 map <C-Left> <C-W>h
 map <C-Right> <C-W>l
+
+
+"===================== Buffer Management ===========================
+
+"Buffer switching
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+:nnoremap <C-s> :w<CR>
+
+" Close the current buffer
+map <leader>bd :bd<cr>
+
+" Close all the buffers
+map <leader>ba :1,1000 bd!<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+
+"========================= End Buffer Management =======================
+
+
 
 
 "http://nvie.com/posts/how-i-boosted-my-vim/
