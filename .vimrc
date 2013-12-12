@@ -50,6 +50,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'vim-scripts/SearchComplete'
 Bundle 'vim-scripts/matchit.zip'
+Bundle 'amix/open_file_under_cursor.vim'
+Bundle 'terryma/vim-expand-region'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'vim-scripts/YankRing.vim'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -64,6 +68,7 @@ set autochdir
 
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <F10> :YRShow<CR> 
 
 "=================== UltiSnips Config ==================
 
@@ -82,7 +87,12 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 augroup myvimrc
     au!
-    au BufWritePost .vimrc,.gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost .vimrc,.gvimrc 
+    if !has('gui_running') && (has("mac") || has("macunix"))
+    	:so $MYVIMRC
+    else
+    	:so $MYGVIMRC
+    endif		
 augroup END
 
 "======================= End ======================================================
@@ -398,9 +408,23 @@ autocmd BufWritePre {*.rb,*.js,*.coffee,*.scss,*.haml} :%s/\s\+$//e
 
 map // <c-_>b
 map <C-Space> <C-n>
+"let g:ctrlp_map = '<c-f>'
+let g:yankring_replace_n_pkey = '<C-Y>'
 
 nnoremap <CR> :noh<CR><CR> " disable highlights after search
 
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 " Allow undoing insert-mode ctrl-u and ctrl-w
 inoremap <C-U> <C-G>u<C-U>
@@ -450,6 +474,47 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 "========================= End Buffer Management =======================
 
 
+"========================= ALT+[jk] or Command+[jk] ====================
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+"============================= Close Tag ================================
+
+" Default mapping
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_prev_key='<C-b>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+"let g:yankring_replace_n_pkey = '<C-Y>'
+
+"========================= VimGrep ====================
+" Do :help cope if you are unsure what cope is. It's super useful!
+"
+" When you search with vimgrep, display your results in cope by doing:
+"   <leader>cc
+"
+" To go to the next search result do:
+"   <leader>n
+"
+" To go to the previous search results do:
+"   <leader>p
+"
+map <leader>cc :botright cope<cr>
+map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
+"============================= Vim Close ================================
 
 
 "http://nvie.com/posts/how-i-boosted-my-vim/
