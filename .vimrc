@@ -54,6 +54,11 @@ Bundle 'amix/open_file_under_cursor.vim'
 Bundle 'terryma/vim-expand-region'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'vim-scripts/YankRing.vim'
+Bundle 'moll/vim-node'
+Bundle 'vim-scripts/JavaScript-Indent'
+Bundle 'majutsushi/tagbar'
+Bundle 'vim-scripts/mru.vim'
+Bundle 'mihaifm/bck'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -69,6 +74,8 @@ set autochdir
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F10> :YRShow<CR> 
+nmap <F8> :TagbarToggle<CR>
+nnoremap <C-c> :bd<CR>
 
 "=================== UltiSnips Config ==================
 
@@ -83,17 +90,19 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "=================== UltiSnips Config END ==================
 
 
+""""""""""""""""""""""""""""""
+" => MRU plugin
+""""""""""""""""""""""""""""""
+let MRU_Max_Entries = 400
+nnoremap <C-f> :MRU<CR>
+
+
 "===================== Reload .vimrc when changes are detected =====================
 
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,.gvimrc 
-    if !has('gui_running') && (has("mac") || has("macunix"))
-    	:so $MYVIMRC
-    else
-    	:so $MYGVIMRC
-    endif		
-augroup END
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 "======================= End ======================================================
 
