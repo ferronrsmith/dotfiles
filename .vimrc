@@ -59,7 +59,11 @@ Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'mihaifm/bck'
-Bundle 'benmills/vimux'
+Bundle 'mihaifm/bck'
+Bundle 'rking/ag.vim'
+
+" remember brew install ack
+" remember brew install the_silver_searcher https://github.com/ggreer/the_silver_searcher
 
 " vim-scripts repos
 " non-GitHub repos
@@ -77,6 +81,30 @@ nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F10> :YRShow<CR> 
 nmap <F8> :TagbarToggle<CR>
 nnoremap <C-c> :bd<CR>
+
+"============== disable GUI in GVIM =====================
+:set go-=m  "remove menu bar
+:set go-=T  "remove toolbar
+:set go-=r  "remove right-hand scroll bar
+:set go-=l  "remove left-hand scroll bar
+"========================================================
+
+"=================== Remap Arrow keys ==================
+
+"map <Up> 10k
+"map <Down> 10j
+"map <Left> 10h
+"map <Right> 10l
+
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+
 "=================== UltiSnips Config ==================
 
 let g:UltiSnipsSnippetsDir        = '~/.vim/bundle/ultisnips_snippets'
