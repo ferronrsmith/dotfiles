@@ -59,6 +59,7 @@ Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'mihaifm/bck'
+Bundle 'benmills/vimux'
 
 " vim-scripts repos
 " non-GitHub repos
@@ -76,7 +77,6 @@ nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F10> :YRShow<CR> 
 nmap <F8> :TagbarToggle<CR>
 nnoremap <C-c> :bd<CR>
-
 "=================== UltiSnips Config ==================
 
 let g:UltiSnipsSnippetsDir        = '~/.vim/bundle/ultisnips_snippets'
@@ -176,7 +176,7 @@ set is
 colorscheme argokai
 " colorscheme Tomorrow
 
-"syntax enable
+syntax enable
 "set background=light
 "colorscheme solarized
 
