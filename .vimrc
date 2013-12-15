@@ -59,6 +59,12 @@ if has("mac") || has("macunix")
 endif
 "============================= Close Tag ================================
 
+" turn off wrapping
+set nowrap
+set linebreak
+set gdefault 		"searh/replace globally by default
+
+
 " ================ Scrolling ========================
 
 set scrolloff=4         "Start scrolling when we're 8 lines away from margins
@@ -72,15 +78,15 @@ set sidescroll=1
 :set go-=l  "remove left-hand scroll bar
 "========================================================
 
-" Remap :W to :w
-"command W w
+"================== Search Functionality =================
+nnoremap <CR> :noh<CR><CR> " disable highlights after search
 
-" Remap :Q to :q
-"command Q q
 
-" ================= Search Related ==================
-" Case insensitive search
-set ic
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+"================== Search Func End ======================
+
 
 set background=dark
 
