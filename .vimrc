@@ -83,8 +83,8 @@ nnoremap <CR> :noh<CR><CR> " disable highlights after search
 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+" map <space> /
+" map <c-space> ?
 "================== Search Func End ======================
 
 
