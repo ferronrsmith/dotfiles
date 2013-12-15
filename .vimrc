@@ -2,6 +2,7 @@ let g:dotvim_settings = {}
 let g:dotvim_settings.colorscheme = 'base16-monokai'
 let g:dotvim_settings.version = 1
 
+" vim book = http://learnvimscriptthehardway.stevelosh.com/
 " by default, language specific plugins are not loaded.  this can be changed with the following:
 let g:dotvim_settings.plugin_groups_exclude = ['scala', 'go']
 
@@ -95,6 +96,17 @@ let g:airline_powerline_fonts = 1
 let g:EasyMotion_leader_key = '<Leader>'
 
 " imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+
+" Visual mode keymappings: "{{{
+" <TAB>: indent.
+xnoremap <TAB>  >
+" <S-TAB>: unindent.
+xnoremap <S-TAB>  <
+"}}}
+
+" Easy escape."{{{
+inoremap jj           <ESC>
 
 "http://nvie.com/posts/how-i-boosted-my-vim/
 "The following trick is a really small one, but a super-efficient one, since it strips off two full keystrokes from almost every Vim command:
