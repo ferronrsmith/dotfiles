@@ -49,7 +49,25 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/Users/ferronhanse/.rvm/gems/ruby-2.0.0-p247/bin:/Users/ferronhanse/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/ferronhanse/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/ferronhanse/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin
 
-# Clear the terminal
+#alias install='sudo apt-get install'
+#alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias cls='clear'
+
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+        colorflag="--color"
+else # OS X `ls`
+        colorflag="-G"
+fi
+
+# List all files colorized in long format
+alias l="ls -lF ${colorflag}"
+
+# List all files colorized in long format, including dot files
+alias la="ls -laF ${colorflag}"
+
+# List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

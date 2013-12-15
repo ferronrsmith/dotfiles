@@ -17,6 +17,7 @@ source ~/.vim/vimrc
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'munen/find_yaml_key'
+NeoBundle 'ferronrsmith/powerline-fonts'
 
 " ================= Files to Ignore =============
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
@@ -83,6 +84,7 @@ set ic
 
 set background=dark
 
+let g:airline_powerline_fonts = 1
 
 let g:EasyMotion_leader_key = '<Leader>'
 
