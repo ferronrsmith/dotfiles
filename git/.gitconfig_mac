@@ -79,7 +79,7 @@
 	default = matching
 [core]
   editor = vim
-	excludesfile = /Users/ferronhanse/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
