@@ -15,7 +15,7 @@ echo "
                     /-'Y'-\\
                    (__/ \__)
 "
-echo "Configuring vim symlinks \n"
+echo "Configuring vim symlinks"
 
 ln -nfs ~/personal_git/dotfiles/vim/.vimrc ~/.vimrc
 ln -nfs ~/personal_git/dotfiles/tmux/.tmux.conf ~/.tmux.conf
@@ -24,12 +24,11 @@ ln -nfs ~/personal_git/vimfiles/ ~/.vim
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/linux/.gitconfig ~/.gitconfig
-	ln -nfs ~/personal_git/dotfiles/bash/linux/.bashrc ~/.bashrc
 	ln -nfs ~/personal_git/dotfiles/zsh/linux/.zshrc ~/.zshrc
+	ln -nfs ~/personal_git/dotfiles/bash/linux/.bashrc ~/.bashrc
 elif [[ "$unamestr" == 'Darwin' ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/mac/.gitconfig ~/.gitconfig
 	ln -nfs ~/personal_git/dotfiles/zsh/mac/.zshrc ~/.zshrc
 fi
 
-echo "Finish Configuring vim symlinks \n"
-
+echo "Finish Configuring vim symlinks"
