@@ -95,6 +95,12 @@ let g:airline_powerline_fonts = 1
 
 let g:EasyMotion_leader_key = '<Leader>'
 
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>1 :e $MYVIMRC<CR>
+nmap <silent> <leader>2 :so $MYVIMRC<CR>
+
+
 " imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 
