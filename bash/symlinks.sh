@@ -15,18 +15,8 @@ echo "
                     /-'Y'-\\
                    (__/ \__)
 "
+echo "Configuring vim symlinks \n"
 
-echo " Starting configuration for vim\n"
-
-# clone vimfiles repo
-git clone https://github.com/ferronrsmith/vimfiles.git ~/personal_git/vimfiles
-cd ~/personal_git/vimfiles/
-git submodule init && git submodule update
-
-
-echo " Creating symlinks \n"
-
-# create a symlink to my personal vimrc and tmux.conf files
 ln -nfs ~/personal_git/dotfiles/vim/.vimrc ~/.vimrc
 ln -nfs ~/personal_git/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ln -nfs ~/personal_git/vimfiles/ ~/.vim
@@ -41,4 +31,5 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 	ln -nfs ~/personal_git/dotfiles/zsh/mac/.zshrc ~/.zshrc
 fi
 
-echo " Finish configuration for vim\n"
+echo "Finish Configuring vim symlinks \n"
+
