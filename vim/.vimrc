@@ -97,6 +97,7 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 
 " Quickly edit/reload the vimrc file
+" http://nvie.com/posts/how-i-boosted-my-vim/
 nmap <silent> <leader>1 :e $MYVIMRC<CR>
 nmap <silent> <leader>2 :so $MYVIMRC<CR>
 
