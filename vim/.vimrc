@@ -1,5 +1,9 @@
 let g:dotvim_settings = {}
-let g:dotvim_settings.colorscheme = 'base16-monokai'
+if has("gui_running")
+	let g:dotvim_settings.colorscheme = 'base16-monokai'
+else
+	let g:dotvim_settings.colorscheme = 'Tomorrow-Night'
+endif
 let g:dotvim_settings.version = 1
 
 " vim book = http://learnvimscriptthehardway.stevelosh.com/
