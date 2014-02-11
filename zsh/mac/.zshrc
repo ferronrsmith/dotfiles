@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 ZSH_THEME="muse"
 
 
@@ -41,8 +41,8 @@ ZSH_THEME="muse"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails bundler gitignore zeus python npm node git-hubflow git-extras bower colored-man  git-prompt last-working-dir rvm)
+# Example format: plugins=(oh-my-zsh-bootstrap rails git textmate ruby lighthouse)
+plugins=(oh-my-zsh-bootstrap git rails bundler gitignore zeus python npm node git-hubflow git-extras bower colored-man  git-prompt last-working-dir rvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -71,3 +71,9 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+findapponport() {
+   lsof -i tcp:$1 
+}
+alias findapp=findapponport
