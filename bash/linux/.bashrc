@@ -109,8 +109,8 @@ fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-export BEES_HOME=/home/ferron/Downloads/cloudbees/cloudbees-sdk-1.5.0
-export PATH=$PATH:$BEES_HOME
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+# export PATH="/usr/local/heroku/bin:$PATH"
+# export BEES_HOME=/home/ferron/Downloads/cloudbees/cloudbees-sdk-1.5.0
+# export PATH=$PATH:$BEES_HOME
+# export PATH="$HOME/.linuxbrew/bin:$PATH"
+# export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
