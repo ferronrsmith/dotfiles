@@ -72,3 +72,5 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
