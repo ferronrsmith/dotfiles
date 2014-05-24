@@ -3,7 +3,7 @@
 echo " Cloning Vimfiles and updating submodules"
 
 # clone vimfiles repo
-git clone https://github.com/ferronrsmith/vimfiles.git ~/personal_git/vimfiles
+git clone git@github.com:ferronrsmith/vimfiles.git ~/personal_git/vimfiles
 cd ~/personal_git/vimfiles/
 git submodule init && git submodule update
 
