@@ -74,3 +74,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
+export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djava.awt.headless=true"
+
+alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
+alias df="df -h"
+alias mygit="cd $HOME/personal_git"
