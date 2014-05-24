@@ -41,3 +41,13 @@ ZSH_THEME="muse"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git rails bundler gitignore zeus python npm node git-hubflow git-extras bower colored-man  git-prompt last-working-dir rvm)
+
+export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
+export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djava.awt.headless=true"
+export M2_HOME=~/dev_tools/apache-maven-3.2.1
+export PATH=${M2_HOME}/bin:${PATH}
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
+alias df="df -h"
+alias mygit="cd $HOME/personal_git"
+
