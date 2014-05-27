@@ -57,6 +57,7 @@
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 	# fetch all remote branches and remove branches that no longer exists
 	fa = fetch --all --prune
+	pr = pull --rebase
 	# YAWD
 	dw = diff --word-diff=color
 	# Spell check your git commits with aspell
