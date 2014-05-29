@@ -79,3 +79,7 @@ export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djav
 alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
 alias df="df -h"
 alias mygit="cd $HOME/personal_git"
+
+function fkill () {
+	pslist | grep "$@" | xargs kill -f  
+}
