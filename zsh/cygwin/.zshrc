@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
+ZSH_THEME="robbyrussell"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -48,7 +48,7 @@ ZSH_THEME="muse"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails bundler gitignore zeus python npm node git-hubflow git-extras bower colored-man  git-prompt last-working-dir rvm)
+plugins=(git rails bundler gitignore python npm node git-hubflow git-extras bower colored-man  git-prompt last-working-dir mvn)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,4 +82,21 @@ alias mygit="cd $HOME/personal_git"
 
 function fkill () {
 	pslist | grep "$@" | xargs kill -f  
+}
+
+function gwcl () {
+	unamestr=`uname`
+	if [[ "$unamestr" == *CYGWIN* ]]; then
+		echo 'cleaning cygwin TMP folder'
+		rm -rf /tmp/.embeddedmongo-*
+		rm -rf /tmp/extract-*
+		rm -rf /tmp/mongo*       
+		rm -rf /tmp/anonymous*   
+		rm -rf /tmp/gsaout*      
+		rm -rf /tmp/temporarytogsa*  
+		rm -rf /tmp/std*         
+		rm -rf /tmp/sayt-*       
+		rm -rf /tmp/sortInBatch* 
+		echo 'finish cleaning tmp folder'
+	fi
 }

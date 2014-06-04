@@ -68,6 +68,8 @@
 	merge2 = merge --squash --no-ff --log
 [core]
   editor = vim
+  autocrlf = false
+  safecrlf = warn
 [merge]
   tool = meld
 
