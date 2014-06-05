@@ -104,9 +104,17 @@ function gwcl () {
 }
 
 function pserv {
-	python -m SimpleHTTPServer 5000
+  PORT=$1
+  if [ -z "$1" ]; then
+    $PORT=5000
+  fi
+  python -m SimpleHTTPServer $PORT
 }
 
 function rserv {
-	ruby -run -e httpd . -p 5000
+  PORT=$1
+  if [ -z "$1" ]; then
+    $PORT=5000
+  fi
+  ruby -run -e httpd . -p $PORT
 }
