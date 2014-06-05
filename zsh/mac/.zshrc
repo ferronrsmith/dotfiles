@@ -77,3 +77,12 @@ findapponport() {
    lsof -i tcp:$1 
 }
 alias findapp=findapponport
+
+
+function pserv {
+	python -m SimpleHTTPServer 5000
+}
+
+function rserv {
+	ruby -run -e httpd . -p 5000
+}

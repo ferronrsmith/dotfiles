@@ -51,3 +51,12 @@ alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
 alias df="df -h"
 alias mygit="cd $HOME/personal_git"
 
+
+function pserv {
+	python -m SimpleHTTPServer 5000
+}
+
+function rserv {
+	ruby -run -e httpd . -p 5000
+}
+

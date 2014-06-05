@@ -102,3 +102,11 @@ function gwcl () {
 		echo 'finish cleaning tmp folder'
 	fi
 }
+
+function pserv {
+	python -m SimpleHTTPServer 5000
+}
+
+function rserv {
+	ruby -run -e httpd . -p 5000
+}
