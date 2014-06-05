@@ -10,6 +10,6 @@ git submodule init && git submodule update
 cd ~/personal_git/dotfiles/bash
 echo 'configuring symlink...'
 # call symlink file to create the necessary links
-exec ./symlinks.sh # exact path for the script file
+sh ./symlinks.sh # exact path for the script file
 
-exec ./copyfonts.sh # copy fonts to .fonts directory
+sh ./copyfonts.sh # copy fonts to .fonts directory
