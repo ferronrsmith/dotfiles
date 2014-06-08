@@ -81,6 +81,7 @@ export LANG=C.UTF-8
 alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
 alias df="df -h"
 alias mygit="cd $HOME/personal_git"
+alias dotfiles="cd $HOME/personal_git/dotfiles"
 
 function fkill () {
 	pslist | grep "$@" | xargs kill -f  
@@ -114,9 +115,17 @@ function pserv {
 function rserv {
   PORT=$1
   if [ -z "$1" ]; then
-    $PORT=5000
+    PORT=5000
   fi
   ruby -run -e httpd . -p $PORT
+}
+
+function smokeTest {
+	TEST=$1
+	if [ -z "$1" ]; then
+		echo 'Error : No test was specified!!!'
+	fi
+	mvn test -Dsmoke -DgenerateSelenium -Dtest=$1 
 }
 
 PERL_MB_OPT="--install_base \"/home/ferron/perl5\""; export PERL_MB_OPT;
