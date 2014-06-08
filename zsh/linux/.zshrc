@@ -47,7 +47,7 @@ export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djav
 export M2_HOME=~/dev_tools/apache-maven-3.2.1
 export PATH=${M2_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
+alias gw="cd $HOME/work/groupByWorkSpace/googlewrap"
 alias df="df -h"
 alias mygit="cd $HOME/personal_git"
 
