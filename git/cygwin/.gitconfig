@@ -70,8 +70,21 @@
   editor = vim
   autocrlf = false
   safecrlf = warn
+
+[diff]
+	tool = araxis
+[difftool "araxis"]
+	cmd = '/cygdrive/c/Program Files/Araxis/Araxis Merge/Compare.exe' /2 /wait `cygpath -w $LOCAL` `cygpath -w $REMOTE`
+
 [merge]
-  tool = meld
+	tool = araxis
+	stat = true
+
+[mergetool]
+keepBackup = false
+	
+[mergetool "araxis"]
+	cmd = '/cygdrive/c/Program Files/Araxis/Araxis Merge/Compare.exe' /3 /a2 /wait `cygpath -w $REMOTE` `cygpath -w $BASE` `cygpath -w $LOCAL` `cygpath -w $MERGED`
 
 [fetch]
     prune = true  

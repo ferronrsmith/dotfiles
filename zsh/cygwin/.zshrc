@@ -80,6 +80,7 @@ export LANG=C.UTF-8
 
 alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
 alias df="df -h"
+alias cls="clear"
 alias mygit="cd $HOME/personal_git"
 alias dotfiles="cd $HOME/personal_git/dotfiles"
 
