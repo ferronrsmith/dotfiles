@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -48,7 +48,8 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails bundler gitignore python npm node git-hubflow git-extras bower colored-man  git-prompt last-working-dir mvn)
+
+source ~/personal_git/dotfiles/zsh/shared.sh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,62 +73,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
-export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djava.awt.headless=true"
-export LANG=C.UTF-8
-#export LANG=en_AU.UTF-8
-
-alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
-alias df="df -h"
-alias cls="clear"
-alias mygit="cd $HOME/personal_git"
-alias dotfiles="cd $HOME/personal_git/dotfiles"
-
-function fkill () {
-	pslist | grep "$@" | xargs kill -f  
-}
-
-function gwcl () {
-	unamestr=`uname`
-	if [[ "$unamestr" == *CYGWIN* ]]; then
-		echo 'cleaning cygwin TMP folder'
-		rm -rf /tmp/.embeddedmongo-*
-		rm -rf /tmp/extract-*
-		rm -rf /tmp/mongo*       
-		rm -rf /tmp/anonymous*   
-		rm -rf /tmp/gsaout*      
-		rm -rf /tmp/temporarytogsa*  
-		rm -rf /tmp/std*         
-		rm -rf /tmp/sayt-*       
-		rm -rf /tmp/sortInBatch* 
-		echo 'finish cleaning tmp folder'
-	fi
-}
-
-function pserv {
-  PORT=$1
-  if [ -z "$1" ]; then
-    $PORT=5000
-  fi
-  python -m SimpleHTTPServer $PORT
-}
-
-function rserv {
-  PORT=$1
-  if [ -z "$1" ]; then
-    PORT=5000
-  fi
-  ruby -run -e httpd . -p $PORT
-}
-
-function smokeTest {
-	TEST=$1
-	if [ -z "$1" ]; then
-		echo 'Error : No test was specified!!!'
-	fi
-	mvn test -Dsmoke -DgenerateSelenium -Dtest=$1 
-}
 
 PERL_MB_OPT="--install_base \"/home/ferron/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/ferron/perl5"; export PERL_MM_OPT;

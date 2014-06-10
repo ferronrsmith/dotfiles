@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
+# ZSH_THEME="muse"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,30 +40,11 @@ ZSH_THEME="muse"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails bundler gitignore zeus python npm node git-hubflow git-extras bower colored-man  git-prompt last-working-dir rvm)
 
-export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
-export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djava.awt.headless=true"
+source ~/personal_git/dotfiles/zsh/shared.sh
+
+source $ZSH/oh-my-zsh.sh
+
 export M2_HOME=~/dev_tools/apache-maven-3.2.1
 export PATH=${M2_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-alias gw="cd $HOME/work/groupByWorkSpace/googlewrap"
-alias df="df -h"
-alias mygit="cd $HOME/personal_git"
-
-
-function pserv {
-  PORT=$1
-  if [ -z "$1" ]; then
-    $PORT=5000
-  fi
-  python -m SimpleHTTPServer $PORT
-}
-
-function rserv {
-  PORT=$1
-  if [ -z "$1" ]; then
-    PORT=5000
-  fi
-  ruby -run -e httpd . -p $PORT
-}
