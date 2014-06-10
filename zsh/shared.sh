@@ -61,6 +61,16 @@ function smokeTest {
 }
 
 # Detect which `ls` flavor is in use
+#echo test > afile.txt
+#..redirects stdout to afile.txt. This is the same as doing..
+#
+#echo test 1> afile.txt
+#To redirect stderr, you do..
+#
+#echo test 2> afile.txt
+#>& is the syntax to redirect a stream to another file descriptor - 0 is stdin. 1 is stdout. 2 is stderr.
+# in short.. 2> redirects stderr to an (unspecified) file, appending &1 redirects stderr to stdout
+# http://stackoverflow.com/questions/818255/in-the-shell-what-is-21
 if ls --color > /dev/null 2>&1; then # GNU `ls`
         colorflag="--color"
 else # OS X `ls`
