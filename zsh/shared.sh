@@ -10,6 +10,8 @@ alias df="df -h"
 alias cls="clear"
 alias mygit="cd $HOME/personal_git"
 alias dotfiles="cd $HOME/personal_git/dotfiles"
+alias vi='vim'			# aliasing vi to vim. who needs vi ?
+alias mvnst='mvn clean install -DskipTests'
 
 function fkill () {
 	pslist | grep "$@" | xargs kill -f  
@@ -91,4 +93,34 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(git gitignore python npm node git-hubflow git-extras bower colored-man git-prompt last-working-dir)
+plugins=(git gitignore python npm node git-hubflow git-extras bower colored-man git-prompt last-working-dir mvn extract)
+
+
+# vim setting :- setting the default editor
+export EDITOR=vim
+export VISUAL=vim
+
+# simple json parse via curl
+parse_json() {
+        tr ',' '\n' \
+                | awk '{ gsub(/[\{\}\[\]]/, "\n&\n"); print }' \
+                | grep -ve '^ *$'
+}
+
+jprop() {
+	read json
+	echo "$$$$ $json"
+	sed -ne 's/^ *"$1"://p'
+}
+
+get_bridge_stats () {
+	# PARAM #1 - status endpoint url
+	# PARAM #2 - json property <K,V>
+	# get_bridge_stats "http://localhost:10060/status" "synonynCount" 
+	#OUTPUT=`curl "$1" | parse_json`
+	# PARSED=`parse_json $OUTPUT`
+	#echo "$OUTPUT" | sed -ne 's/^ *\"'"$2"'"://p'
+	
+	# CURL & PARSE FUNCTIONALITY
+	curl "$1" | parse_json | sed -ne 's/^ *\"'"$2"'"://p'
+}

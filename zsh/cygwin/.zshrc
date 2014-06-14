@@ -49,6 +49,20 @@ export ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
+
+
+function wifi () {
+	if [[ -z "$1" ]]; then
+		echo 'Error : No ssid specified !!!'
+		return;
+	elif [[ -z "$2" ]]; then
+		echo 'Error : No p@ssw0rd specified !!!'
+		return;
+	fi
+	netsh wlan set hostednetwork mode=allow ssid=%1 key=%2
+	netsh wlan start hostednetwork
+}
+
 source ~/personal_git/dotfiles/zsh/shared.sh
 
 source $ZSH/oh-my-zsh.sh
