@@ -107,19 +107,10 @@ parse_json() {
                 | grep -ve '^ *$'
 }
 
-jprop() {
-	read json
-	echo "$$$$ $json"
-	sed -ne 's/^ *"$1"://p'
-}
-
 get_bridge_stats () {
 	# PARAM #1 - status endpoint url
 	# PARAM #2 - json property <K,V>
-	# get_bridge_stats "http://localhost:10060/status" "synonynCount" 
-	#OUTPUT=`curl "$1" | parse_json`
-	# PARSED=`parse_json $OUTPUT`
-	#echo "$OUTPUT" | sed -ne 's/^ *\"'"$2"'"://p'
+	# e.g. :- get_bridge_stats "http://localhost:10060/status" "synonynCount" 
 	
 	# CURL & PARSE FUNCTIONALITY
 	curl "$1" | parse_json | sed -ne 's/^ *\"'"$2"'"://p'
