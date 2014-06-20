@@ -12,6 +12,8 @@ alias mygit="cd $HOME/personal_git"
 alias dotfiles="cd $HOME/personal_git/dotfiles"
 alias vi='vim'			# aliasing vi to vim. who needs vi ?
 alias mvnst='mvn clean install -DskipTests'
+alias cdo="cd $OLDPWD"
+alias reload="source ~/.zshrc"
 
 function fkill () {
 	pslist | grep "$@" | xargs kill -f  
