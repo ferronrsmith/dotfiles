@@ -54,6 +54,16 @@ function rserv {
   ruby -run -e httpd . -p $PORT
 }
 
+# simple php server
+function phpserv {
+  PORT=$1
+  if [ -z "$1" ]; then
+    PORT=5000
+  fi
+  php -S 0.0.0.0 -p $PORT
+}
+
+
 function smokeTest {
 	if [ -z "$1" ]; then
 		echo 'Error : No smoke test was specified!!!'
@@ -110,8 +120,10 @@ parse_json() {
 get_bridge_stats () {
 	# PARAM #1 - status endpoint url
 	# PARAM #2 - json property <K,V>
-	# e.g. :- get_bridge_stats "http://localhost:10060/status" "synonynCount" 
-	
+	# get_bridge_stats "http://localhost:10060/status" "synonynCount" 
+	# OUTPUT=`curl "$1" | parse_json`
+	# PARSED=`parse_json $OUTPUT`
+	# echo "$OUTPUT" | sed -ne 's/^ *\"'"$2"'"://p'
 	# CURL & PARSE FUNCTIONALITY
 	curl "$1" | parse_json | sed -ne 's/^ *\"'"$2"'"://p'
 }
