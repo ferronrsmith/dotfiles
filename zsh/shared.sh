@@ -12,7 +12,7 @@ alias mygit="cd $HOME/personal_git"
 alias dotfiles="cd $HOME/personal_git/dotfiles"
 alias vi='vim'			# aliasing vi to vim. who needs vi ?
 alias mvnst='mvn clean install -DskipTests'
-alias cdo="cd $OLDPWD"
+alias cdo="cd -"
 alias reload="source ~/.zshrc"
 
 function fkill () {
@@ -62,7 +62,7 @@ function phpserv {
   if [ -z "$1" ]; then
     PORT=5000
   fi
-  php -S 0.0.0.0 -p $PORT
+  php -S 0.0.0.0:$PORT
 }
 
 
