@@ -63,6 +63,11 @@ function wifi () {
 	netsh wlan start hostednetwork
 }
 
+# run tomcat server
+function tomcat {
+	~/dev_tools/apache-tomcat/bin/./catalina.sh run
+}
+
 source ~/personal_git/dotfiles/zsh/shared.sh
 
 source $ZSH/oh-my-zsh.sh
