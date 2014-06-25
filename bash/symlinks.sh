@@ -33,6 +33,7 @@ elif [[ "$unamestr" == *CYGWIN* ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/cygwin/.gitconfig ~/.gitconfig
 	ln -nfs ~/personal_git/dotfiles/zsh/cygwin/.zshrc ~/.zshrc
 	ln -nfs ~/personal_git/dotfiles/bash/cygwin/.bashrc ~/.bashrc
+	ln -nfs ~/personal_git/dotfiles/vagrant/Vagrantfile ~/Vagrantfile
 	sh ~/personal_git/dotfiles/zsh/cygwin/shell.sh
 elif [[ "$unamestr" == 'Darwin' ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/mac/.gitconfig ~/.gitconfig

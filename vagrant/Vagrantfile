@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+MACHINES =
+  { 
+    "ubuntu" =>
+      { :box       => "hashicorp/precise64",
+        :provision => "personal_git/dotfiles/vagrant/bootstrap-deb.sh"
+      },
+    "centos" =>
+      { :box       => "chef/centos-6.5",
+        :provision => "personal_git/dotfiles/vagrant/bootstrap-rhel.sh"
+      },
+  }
+
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  MACHINES.each_pair do |name, opts|
+    config.vm.define name do |c|
+      c.vm.box = opts[:box]
+      c.vm.provision :shell, :path => opts[:provision]
+    end
+  end
+end
