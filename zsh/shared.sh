@@ -119,13 +119,47 @@ parse_json() {
                 | grep -ve '^ *$'
 }
 
+
+# Snippet of Bold Colours
+BGre='\e[1;32m';
+BYel='\e[1;33m';
+BBlu='\e[1;34m';
+
 get_bridge_stats () {
 	# PARAM #1 - status endpoint url
 	# PARAM #2 - json property <K,V>
 	# get_bridge_stats "http://localhost:10060/status" "synonynCount" 
-	# OUTPUT=`curl "$1" | parse_json`
-	# PARSED=`parse_json $OUTPUT`
-	# echo "$OUTPUT" | sed -ne 's/^ *\"'"$2"'"://p'
-	# CURL & PARSE FUNCTIONALITY
-	curl "$1" | parse_json | sed -ne 's/^ *\"'"$2"'"://p'
+	OUTPUT=`curl "$1" | parse_json`
+	#if [[ $OUTPUT =~ .*[\{\}\:].* ]] && [[ $OUTPUT =~ .*errorReport\:.* ]]; then
+	if [[ "$OUTPUT" == *gsaError* ]]; then
+		echo "$OUTPUT" | sed -ne 's/^ *\"'"gsaError"'"://p'
+	else
+		echo -e "${BGre}\n******************** Command Center Stats ********************\n"
+		printf "# of Rules : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"ruleCount"'"://p'
+		printf "# of Related Queries : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"relatedQueryCount"'"://p'
+		printf "# of Redirects : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"redirectCount"'"://p'
+		printf "# of Synonyms : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"synonymCount"'"://p'
+		printf "# of Spellings : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"spellingCount"'"://p'
+		printf "Queries per min : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"queriesPerMin"'"://p'
+		echo -e "${BYel}\n\n******************** GSA Stats ********************\n"
+		printf "GSA Machine Heath : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"machineHealth"'"://p'
+		printf "GSA Overall Heath : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"overallHealth"'"://p'
+		printf "GSA Disk Capacity : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"diskCapacity"'"://p'
+		printf "GSA Search Latency : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"searchLatency"'"://p'
+		printf "GSA Queries Per Minute :"; printf "$OUTPUT" | sed -ne 's/^ *\"'"queriesPerMinute"'"://p'
+		printf "GSA CPU Temperature :"; printf "$OUTPUT" | sed -ne 's/^ *\"'"cpuTemperature"'"://p'
+		echo -e "${BBlu}\n\n******************** Bridge Kick Stats ********************\n"
+		printf "Related Queries Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"relatedQueries"'"://p'
+		printf "Redirects Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"redirects"'"://p'
+		printf "Navigations Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"navigations"'"://p'
+		printf "Variant Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"variants"'"://p'
+		printf "Synonyms Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"synonyms"'"://p'
+		printf "AutoNavs Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"autonavs"'"://p'
+		printf "Areas Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"areas"'"://p'
+		printf "Phrases Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"phrases"'"://p'
+		printf "Customers Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"customers"'"://p'
+		printf "Rules Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"rules"'"://p'
+		printf "Spellings Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"spellings"'"://p'
+		printf "All Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"all"'"://p'
+	fi
 }
