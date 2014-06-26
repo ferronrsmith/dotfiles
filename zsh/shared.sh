@@ -15,6 +15,18 @@ alias mvnst='mvn clean install -DskipTests'
 alias cdo="cd -"
 alias reload="source ~/.zshrc"
 
+function pull_req () {
+	branch=$2
+	if [ -z "$1" ]; then
+    echo 'You did not specify a issue # !'
+		return;
+  fi
+	if [ -z "$2" ]; then
+    $branch="develop"
+  fi
+	hub pull-request -i $1 -b $branch
+}
+
 function fkill () {
 	pslist | grep "$@" | xargs kill -f  
 }
