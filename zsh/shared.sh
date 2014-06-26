@@ -131,8 +131,10 @@ get_bridge_stats () {
 	# get_bridge_stats "http://localhost:10060/status" "synonynCount" 
 	OUTPUT=`curl "$1" | parse_json`
 	#if [[ $OUTPUT =~ .*[\{\}\:].* ]] && [[ $OUTPUT =~ .*errorReport\:.* ]]; then
-	if [[ "$OUTPUT" == *gsaError* ]]; then
-		echo "$OUTPUT" | sed -ne 's/^ *\"'"gsaError"'"://p'
+	if [[ "$OUTPUT" == "" ]]; then
+		echo 'Bridge is not contactable'
+	elif [[ "$OUTPUT" == *gsaError* ]]; then
+		echo GSA not contactable
 	else
 		echo -e "${BGre}\n******************** Command Center Stats ********************\n"
 		printf "# of Rules : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"ruleCount"'"://p'
