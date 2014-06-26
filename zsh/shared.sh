@@ -14,7 +14,6 @@ alias vi='vim'			# aliasing vi to vim. who needs vi ?
 alias mvnst='mvn clean install -DskipTests'
 alias cdo="cd -"
 alias reload="source ~/.zshrc"
-alias git=hub
 
 function fkill () {
 	pslist | grep "$@" | xargs kill -f  
