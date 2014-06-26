@@ -15,16 +15,17 @@ alias mvnst='mvn clean install -DskipTests'
 alias cdo="cd -"
 alias reload="source ~/.zshrc"
 
+# the following is a an alias for hub.github.com pull-request function
 function pull_req () {
-	branch=$2
+	BRANCH=$2
 	if [ -z "$1" ]; then
     echo 'You did not specify a issue # !'
 		return;
   fi
 	if [ -z "$2" ]; then
-    $branch="develop"
+    BRANCH="develop"
   fi
-	hub pull-request -i $1 -b $branch
+	hub pull-request -i $1 -b $BRANCH
 }
 
 function fkill () {
