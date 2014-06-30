@@ -17,26 +17,28 @@ function get_bridge_stats () {
 	# get_bridge_stats "http://localhost:10060/status" "synonynCount" 
 	OUTPUT=`curl "$1" | parse_json`
 	#if [[ $OUTPUT =~ .*[\{\}\:].* ]] && [[ $OUTPUT =~ .*errorReport\:.* ]]; then
-	if [[ "$OUTPUT" == "" ]]; then
-		echo 'Bridge is not contactable'
+	bridgeOpen=$?
+	if [ $bridgeOpen -ne 0 ]; then
+		echo -e 'Bridge is not contactable... \n\n*** Tip ***\n\n1. A sync may be in progress and the server timed out \n2. The bridge may need to be restarted'
 	elif [[ "$OUTPUT" == *gsaError* ]]; then
-		echo GSA not contactable
+		echo -e 'GSA not contactable... \n\n*** Tip ***\n\n1. Check that the proper GSA configuration is present in Mongo DB. \n2. Check that the GSA is running.\n3. A sync may be in progress and the server timed out'
 	else
-		echo -e "${BGre}\n******************** Command Center Stats ********************\n"
+		OUTPUT=`echo $OUTPUT | parse_json`
+		echo -e "\n******************** Command Centre Status ********************\n"
 		printf "# of Rules : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"ruleCount"'"://p'
 		printf "# of Related Queries : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"relatedQueryCount"'"://p'
 		printf "# of Redirects : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"redirectCount"'"://p'
 		printf "# of Synonyms : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"synonymCount"'"://p'
 		printf "# of Spellings : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"spellingCount"'"://p'
 		printf "Queries per min : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"queriesPerMin"'"://p'
-		echo -e "${BYel}\n\n******************** GSA Stats ********************\n"
+		echo -e "\n\n******************** GSA Status ********************\n"
 		printf "GSA Machine Heath : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"machineHealth"'"://p'
 		printf "GSA Overall Heath : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"overallHealth"'"://p'
 		printf "GSA Disk Capacity : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"diskCapacity"'"://p'
 		printf "GSA Search Latency : "; printf "$OUTPUT" | sed -ne 's/^ *\"'"searchLatency"'"://p'
 		printf "GSA Queries Per Minute :"; printf "$OUTPUT" | sed -ne 's/^ *\"'"queriesPerMinute"'"://p'
 		printf "GSA CPU Temperature :"; printf "$OUTPUT" | sed -ne 's/^ *\"'"cpuTemperature"'"://p'
-		echo -e "${BBlu}\n\n******************** Bridge Kick Stats ********************\n"
+		echo -e "\n\n******************** Bridge Kick Status ********************\n"
 		printf "Related Queries Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"relatedQueries"'"://p'
 		printf "Redirects Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"redirects"'"://p'
 		printf "Navigations Last Kicked : ";printf "$OUTPUT" | sed -ne 's/^ *\"'"navigations"'"://p'
