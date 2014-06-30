@@ -11,6 +11,10 @@ MACHINES =
       { :box       => "chef/centos-6.5",
         :provision => "personal_git/dotfiles/vagrant/bootstrap-rhel.sh"
       },
+    "docker" =>
+      { :box       => "chef/centos-6.5",
+        :provision => "personal_git/dotfiles/vagrant/bootstrap-docker.sh"
+      },			
   }
 
 VAGRANTFILE_API_VERSION = "2"
