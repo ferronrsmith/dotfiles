@@ -4,7 +4,9 @@ export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djava.awt.headless=true"
 export LANG=C.UTF-8
 #export LANG=en_AU.UTF-8
-
+export JETTY_DEBUG_FLAG="
+    -Xdebug -agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n"
+    
 alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
 alias df="df -h"
 alias cls="clear"

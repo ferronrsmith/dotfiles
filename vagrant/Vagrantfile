@@ -23,9 +23,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define name do |c|
       c.vm.box = opts[:box]
       c.vm.provision :shell, :path => opts[:provision]
-			c.vm.network "forwarded_port", guest: 10060, host: 10077
-			c.vm.network "forwarded_port", guest: 14993, host: 14999
-			c.vm.network "forwarded_port", guest: 27017, host: 27020
+			c.vm.network "forwarded_port", guest: 10060, host: 10077	# bridge admin port
+			c.vm.network "forwarded_port", guest: 14993, host: 14999	# command center
+			c.vm.network "forwarded_port", guest: 27017, host: 27020	# mongo port
     end
   end
 end

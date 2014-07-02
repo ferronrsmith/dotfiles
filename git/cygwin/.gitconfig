@@ -10,6 +10,7 @@
 	p = push
 	u = pull
 	cm = !git commit -m
+    ca = !git commit -am
 	a = !git add --all && git status
 	b = branch
 	co = checkout
