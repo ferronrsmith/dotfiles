@@ -12,26 +12,26 @@ alias df="df -h"
 alias cls="clear"
 alias mygit="cd $HOME/personal_git"
 alias dotfiles="cd $HOME/personal_git/dotfiles"
-alias vi='vim'			# aliasing vi to vim. who needs vi ?
+alias vi='vim'          # aliasing vi to vim. who needs vi ?
 alias mvnst='mvnci -DskipTests'
 alias cdo="cd -"
 alias reload="source ~/.zshrc"
 
 # the following is a an alias for hub.github.com pull-request function
 function pull_req () {
-	BRANCH=$2
-	if [ -z "$1" ]; then
+    BRANCH=$2
+    if [ -z "$1" ]; then
     echo 'You did not specify a issue # !'
-		return;
+        return;
   fi
-	if [ -z "$2" ]; then
+    if [ -z "$2" ]; then
     BRANCH="develop"
   fi
-	hub pull-request -i $1 -b $BRANCH
+    hub pull-request -i $1 -b $BRANCH
 }
 
 function fkill () {
-	pslist | grep "$@" | xargs kill -f  
+    pslist | grep "$@" | xargs kill -f  
 }
 
 # simple python server
