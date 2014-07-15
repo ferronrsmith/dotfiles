@@ -79,3 +79,13 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 PERL_MB_OPT="--install_base \"/home/ferron/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/ferron/perl5"; export PERL_MM_OPT;
+
+function term () {
+    if [ -d /tmp/tmux* ]
+    then
+        rm -rf /tmp/tmux*
+        tmux -2
+    else
+        tmux -2
+    fi   
+}
