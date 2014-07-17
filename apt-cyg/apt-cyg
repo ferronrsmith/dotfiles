@@ -51,8 +51,6 @@ function usage()
   echo "  --version"
 }
 
-
-
 function version()
 {
   echo "apt-cyg version 0.57"

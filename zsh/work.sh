@@ -5,13 +5,13 @@ BBlu='\e[1;34m';
 
 # simple json parse functionality
 
-parse_json() {
+function parse_json() {
         tr ',' '\n' \
                 | awk '{ gsub(/[\{\}\[\]]/, "\n&\n"); print }' \
                 | grep -ve '^ *$'
 }
 
-get_json_val() {
+function get_json_val() {
         printf $1 | sed -ne 's/^ *\"'"$2"'"://p'
 }
 
