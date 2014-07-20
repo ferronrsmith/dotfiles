@@ -90,4 +90,5 @@ function term () {
     fi   
 }
 
+# start keychain evaluating current keys 
 eval `keychain --eval ~/.ssh/id_rsa`
