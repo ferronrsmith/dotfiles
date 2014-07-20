@@ -8,6 +8,7 @@ export JETTY_DEBUG_FLAG="
     -Xdebug -agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n"
     
 alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
+alias future="cd $HOME/work/workspaceGroupby/future/googlewrap"
 alias df="df -h"
 alias cls="clear"
 alias mygit="cd $HOME/personal_git"

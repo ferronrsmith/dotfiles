@@ -89,3 +89,5 @@ function term () {
         tmux -2
     fi   
 }
+
+eval `keychain --eval ~/.ssh/id_rsa`
