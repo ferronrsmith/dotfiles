@@ -71,6 +71,7 @@
   editor = vim
   autocrlf = false
   safecrlf = warn
+  excludesfile = ~/personal_git/dotfiles/git/gitignore.properties
 
 [diff]
 	tool = araxis
