@@ -119,3 +119,5 @@ function wifi () {
     netsh wlan set hostednetwork mode=allow ssid=%1 key=%2
     netsh wlan start hostednetwork
 }
+
+alias bfg="java -jar C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\bfg\\\\bfg.jar"
