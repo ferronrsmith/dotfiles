@@ -39,7 +39,7 @@ function fkill () {
 function pserv {
   PORT=$1
   if [ -z "$1" ]; then
-    $PORT=5000
+    PORT=5000
   fi
   python -m SimpleHTTPServer $PORT
 }
