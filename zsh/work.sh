@@ -120,4 +120,6 @@ function wifi () {
     netsh wlan start hostednetwork
 }
 
+# bfg repo cleaner tool
+# http://rtyley.github.io/bfg-repo-cleaner/
 alias bfg="java -jar C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\bfg\\\\bfg.jar"
