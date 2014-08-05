@@ -120,6 +120,74 @@ function wifi () {
     netsh wlan start hostednetwork
 }
 
+# my lil logo
+function swag () {
+    echo -e "${BRed}                    .-'''-."
+    echo -e "${BRed}                   / .===. \\"
+    echo -e "${BRed}                   \/ 6 6 \/"
+    echo -e "${BRed}                   ( \___/ )"
+    echo -e "${BYel}      _________ooo__\_____/______________"
+    echo -e "${BYel}     /                                   \\"
+    echo -e "${BYel}    |   ferron   ferronrsmith@gmail.com   |"
+    echo -e "${BYel}     \_______________________ooo_________/"
+    echo -e "${BYel}                    |  |  |"
+    echo -e "${BGre}                    |_ | _|"
+    echo -e "${BGre}                    |  |  |"
+    echo -e "${BGre}                    |__|__|"
+    echo -e "${BGre}                    /-'Y'-\\"
+    echo -e "${BGre}                   (__/ \__)"
+    echo -e "${RCol}"
+}
+
+function fkill () {
+    pslist | grep "$@" | xargs kill -f  
+}
+
 # bfg repo cleaner tool
 # http://rtyley.github.io/bfg-repo-cleaner/
-alias bfg="java -jar C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\bfg\\\\bfg.jar"
+if [[ `uname` == *CYGWIN* ]]; then
+    alias bfg="java -jar C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\bfg\\\\bfg.jar"
+fi
+
+# nice wrapper around elastic search to make life easier
+function elastic () {
+
+    # Usage info
+function show_elastic_help() {
+cat << EOF
+Usage: ${0##*/} [-ir PLUGIN_NAME] [-s CLUSTER_NAME] [-q groupby]...
+Installs or remove Elastic Search plugins. Also start a Elastic Search instance with a 
+given CLUSTER_NAMEo
+    
+    -h display this help and exit
+    -i <plugin_name>    install elasticsearch plugin
+    -r <plugin_name>    remove elasticsearch plugin.
+    -s <cluster_name>   start elasticsearch with specified cluster_name.
+    -q quick start elasticsearch with cluster_name <groupby>.
+EOF
+}
+    # Initialize our own variables:
+    elastic_path="$HOME/dev_tools/elasticsearch/bin"
+    elastic_plugin="$elastic_path/plugin.bat"
+    elastic_search="$elastic_path/elasticsearch"
+    verbose=0
+
+    OPTIND=1 # Reset is necessary if getopts was used previously in the script.  It is a good idea to make this local in a function.
+    while getopts "hqirs:" opt; do
+        case "$opt" in
+            h)
+                show_elastic_help >&2
+                ;;
+            i)
+                $elastic_plugin --install $2
+                ;;
+            r)  $elastic_plugin --remove $2
+                ;;
+            s)  $elastic_search --cluster.name $2
+                ;;  
+            q)  $elastic_search --cluster.name groupby
+                ;;                                
+       esac
+    done
+    shift "$((OPTIND-1))" # Shift off the options and optional --.
+}

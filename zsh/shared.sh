@@ -8,6 +8,7 @@ export JETTY_DEBUG_FLAG="
     -Xdebug -agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n"
     
 alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
+alias gw2="cd $HOME/work/workspaceGroupby/future/googlewrap"
 alias future="cd $HOME/work/workspaceGroupby/future/googlewrap"
 alias df="df -h"
 alias cls="clear"
@@ -29,10 +30,6 @@ function pull_req () {
     BRANCH="develop"
   fi
     hub pull-request -i $1 -b $BRANCH
-}
-
-function fkill () {
-    pslist | grep "$@" | xargs kill -f  
 }
 
 # simple python server
