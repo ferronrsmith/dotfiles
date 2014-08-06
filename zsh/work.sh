@@ -147,6 +147,10 @@ function fkill () {
 # http://rtyley.github.io/bfg-repo-cleaner/
 if [[ `uname` == *CYGWIN* ]]; then
     alias bfg="java -jar C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\bfg\\\\bfg.jar"
+    alias composer="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\composer\\\\composer.phar"
+    alias phpunit="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\phpunit\\\\phpunit.phar"
+    alias mux = "term"
+    alias tty = "term"
 fi
 
 # nice wrapper around elastic search to make life easier
@@ -157,7 +161,7 @@ function show_elastic_help() {
 cat << EOF
 Usage: ${0##*/} [-ir PLUGIN_NAME] [-s CLUSTER_NAME] [-q groupby]...
 Installs or remove Elastic Search plugins. Also start a Elastic Search instance with a 
-given CLUSTER_NAMEo
+given CLUSTER_NAME
     
     -h display this help and exit
     -i <plugin_name>    install elasticsearch plugin
@@ -190,4 +194,16 @@ EOF
        esac
     done
     shift "$((OPTIND-1))" # Shift off the options and optional --.
+}
+
+# simple function for cleaning mongo
+function clean_mongo () {
+    port=$1
+    db=$2
+    if [[ -z "$port" ]]; then
+        port=27015
+    elif [[ -z "$db" ]]; then
+        db="test"
+    fi  
+    mongo --eval 'db.getMongo().getDBNames().forEach(function(i){db.getSiblingDB(i).dropDatabase()})' --port=$port $db 
 }
