@@ -149,8 +149,9 @@ if [[ `uname` == *CYGWIN* ]]; then
     alias bfg="java -jar C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\bfg\\\\bfg.jar"
     alias composer="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\composer\\\\composer.phar"
     alias phpunit="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\phpunit\\\\phpunit.phar"
-    alias mux = "term"
-    alias tty = "term"
+    alias mux="term"
+    alias tty="term"
+    alias workspace="cd ~/dev/workspace"
 fi
 
 # nice wrapper around elastic search to make life easier
