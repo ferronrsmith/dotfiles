@@ -54,6 +54,9 @@ source ~/personal_git/dotfiles/zsh/shared.sh
 # work related scripts
 source ~/personal_git/dotfiles/zsh/work.sh
 
+# work related terminal extension scripts
+source ~/personal_git/dotfiles/zsh/term_ext.sh
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
