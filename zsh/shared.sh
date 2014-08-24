@@ -3,6 +3,7 @@
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djava.awt.headless=true"
 export LANG=C.UTF-8
+export DOTFILES="${HOME}/personal_git/dotfiles/"
 #export LANG=en_AU.UTF-8
 export JETTY_DEBUG_FLAG="
     -Xdebug -agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n"
@@ -85,7 +86,11 @@ alias la="ls -laF ${colorflag}"
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
-# zshrc theme
+# nice aliases
+alias t='tail -f'
+alias sgrep=" grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS,target,.idea,.settings,bin,obj} --exclude-from=${DOTFILES}/zsh/exclude.txt"
+
+# zshrc theme/
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="muse"
 

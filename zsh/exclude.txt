@@ -1,0 +1,14 @@
+*.class
+*.dll
+*.log
+*.min.js
+*.min.css
+*.(jpeg|jpg|png|gif)
+*.pdf
+*.(xlsx|xls|doc|docx)
+*.(7z|jar|rar|zip|gz|bzip|bz2|xz|lzma|cab|iso|tar)
+*.idea
+*.iml
+.project
+.classpath
+.surefire*

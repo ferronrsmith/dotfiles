@@ -122,3 +122,6 @@ keepBackup = false
 	
 [pack]
     threads=4
+
+[log]
+  date = relative
