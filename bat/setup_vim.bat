@@ -14,5 +14,5 @@ mklink /H %CYGWIN_PATH%\home\ferron\Vagrantfile %CYGWIN_PATH%\home\ferron\person
 mklink /D %CYGWIN_PATH%\home\ferron\.VirtualBox %HOMEPATH%\.VirtualBox
 mklink /D "%CYGWIN_PATH%\home\ferron\VirtualBox VMs" "%HOMEPATH%\VirtualBox VMs"
 mklink /D "%CYGWIN_PATH%\home\ferron\Music" "%HOMEPATH%\Music"
-
+mklink /D "%CYGWIN_PATH%\home\ferron\.oh-my-zsh\custom\plugins %CYGWIN_PATH%\home\ferron\personal_git\dotfiles\zsh\plugins
 pause

@@ -121,7 +121,7 @@ keepBackup = false
   default = tracking
 	
 [pack]
-    threads=4
+    threads=0
 
 [log]
   date = relative

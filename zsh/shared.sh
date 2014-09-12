@@ -6,11 +6,11 @@ export LANG=C.UTF-8
 export DOTFILES="${HOME}/personal_git/dotfiles/"
 #export LANG=en_AU.UTF-8
 export JETTY_DEBUG_FLAG="
-    -Xdebug -agentlib:jdwp=transport=dt_socket,address=9999,server=y,suspend=n"
+    -Xdebug -agentlib:jdwp=transport=dt_socket,address=9911,server=y,suspend=n"
     
-alias gw="cd $HOME/work/workspaceGroupby/googlewrap"
-alias gw2="cd $HOME/work/workspaceGroupby/future/googlewrap"
-alias future="cd $HOME/work/workspaceGroupby/future/googlewrap"
+alias gw="cd $HOME/work/workspaceGroupby/bindle"
+alias gw2="cd $HOME/work/workspaceGroupby/future/bindle"
+alias future="cd $HOME/work/workspaceGroupby/future/bindle"
 alias df="df -h"
 alias cls="clear"
 alias mygit="cd $HOME/personal_git"
@@ -31,6 +31,10 @@ function pull_req () {
     BRANCH="develop"
   fi
     hub pull-request -i $1 -b $BRANCH
+}
+
+function clone_me () {
+  hub clone ferronrsmith/$1
 }
 
 # simple python server
@@ -89,13 +93,40 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 # nice aliases
 alias t='tail -f'
 alias sgrep=" grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS,target,.idea,.settings,bin,obj} --exclude-from=${DOTFILES}/zsh/exclude.txt"
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# because typing 'cd' is A LOT of work!!
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+
+# directory
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+# Command line head / tail shortcuts
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g L="| less"
+alias -g M="| most"
+alias -g LL="2>&1 | less"
+alias -g CA="2>&1 | cat -A"
+alias -g NE="2> /dev/null"
+alias -g NUL="> /dev/null 2>&1"
+alias -g P="2>&1| pygmentize -l pytb"
 
 # zshrc theme/
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(git gitignore python npm node git-hubflow git-extras bower colored-man git-prompt last-working-dir mvn extract vagrant)
+plugins=(ack jq docker-dev docker-workspace git git-extras colored-man git-prompt last-working-dir mvn extract vagrant colorize)
 
 # vim setting :- setting the default editor
 export EDITOR=vim

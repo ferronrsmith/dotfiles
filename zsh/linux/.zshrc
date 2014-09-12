@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="muse"
+ ZSH_THEME="muse"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -43,8 +43,44 @@ ZSH=$HOME/.oh-my-zsh
 
 source ~/personal_git/dotfiles/zsh/shared.sh
 
+# work related scripts
+source ~/personal_git/dotfiles/zsh/work.sh
+
+# work related terminal extension scripts
+source ~/personal_git/dotfiles/zsh/term_ext.sh
+
 source $ZSH/oh-my-zsh.sh
 
 export M2_HOME=~/dev_tools/apache-maven-3.2.1
 export PATH=${M2_HOME}/bin:${PATH}
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+function term () {
+    if [ -d /tmp/tmux* ]
+    then
+        rm -rf /tmp/tmux*
+        tmux -2
+    else
+        tmux -2
+    fi   
+}
+
+# start keychain evaluating current keys 
+eval `keychain --eval ~/.ssh/id_rsa`

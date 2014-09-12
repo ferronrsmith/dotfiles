@@ -10,7 +10,8 @@
 	p = push
 	u = pull
 	cm = !git commit -m
-	a = !git add . && git status
+    ca = !git commit -am
+	a = !git add --all && git status
 	b = branch
 	co = checkout
 	d = diff
@@ -67,11 +68,20 @@
 	# new merge
 	merge2 = merge --squash --no-ff --log
 [core]
-  editor = vim
-  autocrlf = false
-  safecrlf = warn
+	editor = vim
+	autocrlf = false
+	safecrlf = warn
+	excludesfile = ~/personal_git/dotfiles/git/gitignore.properties
+	fileMode = false
+	filemode = false
+
+[diff]
+	tool = vimdiff
 [merge]
-  tool = meld
+	tool = meld
+
+[mergetool]
+keepBackup = false
 
 [fetch]
     prune = true  
@@ -106,4 +116,7 @@
   default = tracking
 	
 [pack]
-    threads=4
+    threads=0
+
+[log]
+  date = relative

@@ -1,3 +1,12 @@
+export DOCKER_IDE=intellij
+export WORKSTATION_HOME="$HOME/work/workspaceGroupby/workstation"
+export PATH="$WORKSTATION_HOME/bin:$PATH"
+export DOCKER_GITHUB_NAME="ferron"
+export DOCKER_GITHUB_EMAIL="ferronrsmith@gmail.com"
+export DOCKER_GITHUB_USER="ferronrsmith"
+export DOCKER_GITHUB_CODE="009a62b1bad3b67946e2401eaac7b8b10b5b1a0f"
+#. "$WORKSTATION_HOME/scripts/workstation_bash_autocomplete.bash"
+
 # Snippet of Bold Colours
 BGre='\e[1;32m';
 BYel='\e[1;33m';
@@ -77,8 +86,11 @@ function fkill () {
 # http://rtyley.github.io/bfg-repo-cleaner/
 if [[ `uname` == *CYGWIN* ]]; then
     alias bfg="java -jar C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\bfg\\\\bfg.jar"
-    alias composer="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\composer\\\\composer.phar"
-    alias phpunit="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\phpunit\\\\phpunit.phar"
+    #alias composer="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\composer\\\\composer.phar"
+    #alias phpunit="php C:\\\\cygwin64\\\\home\\\\ferron\\\\dev_tools\\\\phpunit\\\\phpunit.phar"
+    alias composer="php ~/dev_tools/composer/composer.phar"
+    alias phpunit="php ~/dev_tools/phpunit/phpunit.phar"  
+    alias phpunit4="php ~/dev_tools/phpunit/phpunit-4.2.phar"    
     alias mux="term"
     alias tty="term"
     alias workspace="cd ~/dev/workspace"
