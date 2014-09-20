@@ -15,7 +15,7 @@
 	b = branch
 	co = checkout
 	d = diff
-	q = !git commit -am 'quick update' && git push
+	q = !git add --all && git status && git commit -am 'quick update' && git push
 	undo = reset --hard
 	rev = checkout HEAD
 	r = checkout HEAD

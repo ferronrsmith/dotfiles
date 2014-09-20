@@ -126,7 +126,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(ack jq docker-dev docker-workspace git git-extras colored-man git-prompt last-working-dir mvn extract vagrant colorize)
+plugins=(ack jq docker-dev docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize)
 
 # vim setting :- setting the default editor
 export EDITOR=vim

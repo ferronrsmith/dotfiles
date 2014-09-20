@@ -72,6 +72,8 @@ export PATH=${M2_HOME}/bin:${PATH}
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+export JAVA_HOME=/usr
+
 function term () {
     if [ -d /tmp/tmux* ]
     then
