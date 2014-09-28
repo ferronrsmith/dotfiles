@@ -8,11 +8,11 @@
 __docker_containers() {
     declare -a cont_cmd
     query="docker ps -aq | xargs docker inspect -f '{{.Name}}' | rev | cut -d '-' -f 1 | rev | awk '{print $1}'"
-    if [ -z "$(which docker 2> /dev/null)" ]; then
-        cont_cmd=($("$query"))
-    else
-        cont_cmd=($(boot2docker ssh "$query"))
-    fi
+	if which boot2docker >/dev/null; then
+		cont_cmd=($(boot2docker ssh "$query"))
+	else
+		cont_cmd=($(eval "$query"))
+	fi   
     _describe 'containers' cont_cmd
 }
 
@@ -40,9 +40,14 @@ __mk() {
     __docker_containers
 }
 
+__update() {
+    __docker_containers
+}
+
 __stop() {
     __docker_containers
 }
+
 
 __version() {
     # no arguments
@@ -60,6 +65,7 @@ _1st_arguments=(
     "rm":"Remove a dev container"
     "start":"Start a stopped dev container"
     "stop":"Stop a running dev container"
+    "update":"Remove and recreate a dev container"
 )
 
 _arguments '*:: :->command'
@@ -83,6 +89,8 @@ case "$words[1]" in
         __start ;;
     stop)
         __stop ;;
+    update)
+        __update ;; 
     info)
         __info ;;        
     version)

@@ -28,19 +28,19 @@ if [[ "$unamestr" == 'Linux' ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/linux/.gitconfig ~/.gitconfig
 	ln -nfs ~/personal_git/dotfiles/zsh/linux/.zshrc ~/.zshrc
 	ln -nfs ~/personal_git/dotfiles/bash/linux/.bashrc ~/.bashrc
-  ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
+	ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
 	sh ~/personal_git/dotfiles/zsh/linux/shell.sh
 elif [[ "$unamestr" == *CYGWIN* ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/cygwin/.gitconfig ~/.gitconfig
 	ln -nfs ~/personal_git/dotfiles/zsh/cygwin/.zshrc ~/.zshrc
 	ln -nfs ~/personal_git/dotfiles/bash/cygwin/.bashrc ~/.bashrc
 	ln -nfs ~/personal_git/dotfiles/vagrant/Vagrantfile ~/Vagrantfile
-  ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
+	ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
 	sh ~/personal_git/dotfiles/zsh/cygwin/shell.sh
 elif [[ "$unamestr" == 'Darwin' ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/mac/.gitconfig ~/.gitconfig
 	ln -nfs ~/personal_git/dotfiles/zsh/mac/.zshrc ~/.zshrc
-  ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
+	ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
 	sh ~/personal_git/dotfiles/zsh/linux/shell.sh
 fi
 

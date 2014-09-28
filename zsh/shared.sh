@@ -7,6 +7,9 @@ export DOTFILES="${HOME}/personal_git/dotfiles/"
 #export LANG=en_AU.UTF-8
 export JETTY_DEBUG_FLAG="
     -Xdebug -agentlib:jdwp=transport=dt_socket,address=9911,server=y,suspend=n"
+
+export JPDA_OPTS="
+	-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n"
     
 alias gw="cd $HOME/work/workspaceGroupby/bindle"
 alias gw2="cd $HOME/work/workspaceGroupby/future/bindle"
@@ -126,7 +129,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(ack jq docker-dev docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
+plugins=(ack jq ag docker httpie ps shutdown virtualbox docker-dev docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
 
 # vim setting :- setting the default editor
 export EDITOR=vim

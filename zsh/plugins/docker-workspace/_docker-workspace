@@ -8,12 +8,11 @@
 __docker_containers() {
     declare -a cont_cmd
     query="docker ps -aq | xargs docker inspect -f '{{.Name}}' | rev | cut -d '-' -f 1 | rev | awk '{print $1}'"
-    
-    if [ -z "$(which docker 2> /dev/null)" ]; then
-        cont_cmd=($("$query"))
-    else
-        cont_cmd=($(boot2docker ssh "$query"))
-    fi
+	if which boot2docker >/dev/null; then
+		cont_cmd=($(boot2docker ssh "$query"))
+	else
+		cont_cmd=($(eval "$query"))
+	fi
     _describe 'containers' cont_cmd
 }
 
@@ -33,6 +32,10 @@ __mk() {
     __docker_containers
 }
 
+__clean() {
+    __docker_containers
+}
+
 __version() {
     # no arguments
 }
@@ -46,6 +49,7 @@ _1st_arguments=(
     "bash":"connect to a workspace container via ssh and invoke a bash shell"
     "mk":"Create a new workspace container"
     "rm":"Remove a workspace container"
+    "clean":"Remove and recreate a workspace"
 )
 
 _arguments '*:: :->command'
@@ -64,7 +68,9 @@ case "$words[1]" in
     rm)
         __rm ;;
     info)
-        __info ;;        
+        __info ;;    
+    clean)
+        __clean ;;            
     version)
         __version ;;
 esac
