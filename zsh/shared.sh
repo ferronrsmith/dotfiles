@@ -13,6 +13,7 @@ export JPDA_OPTS="
     
 alias gw="cd $HOME/work/workspaceGroupby/bindle"
 alias gw2="cd $HOME/work/workspaceGroupby/future/bindle"
+alias cloud="cd $HOME/work/workspaceGroupby/cloud"
 alias future="cd $HOME/work/workspaceGroupby/future/bindle"
 alias df="df -h"
 alias cls="clear"
