@@ -130,7 +130,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(ack jq ag docker httpie ps shutdown virtualbox docker-dev docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
+plugins=(ack jq ag hub docker httpie ps shutdown virtualbox docker-dev docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
 
 # vim setting :- setting the default editor
 export EDITOR=vim
