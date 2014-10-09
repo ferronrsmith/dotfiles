@@ -74,7 +74,7 @@ export PATH=${M2_HOME}/bin:${PATH}
 
 export JAVA_HOME=/usr
 
-function term () {
+function mux () {
     if [ -d /tmp/tmux* ]
     then
         rm -rf /tmp/tmux*
