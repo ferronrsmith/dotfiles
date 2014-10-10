@@ -20,7 +20,53 @@ alias mygit="cd $HOME/personal_git"
 alias dotfiles="cd $HOME/personal_git/dotfiles"
 alias vi='vim'          # aliasing vi to vim. who needs vi ?
 alias cdo="cd -"
+alias c="clear"
 alias reload="source ~/.zshrc"
+alias rr="source ~/.zshrc"
+alias mkdir='mkdir -pv'
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T'
+alias nowtime=now
+alias nowdate='date +"%d-%m-%Y"'
+
+# Stop after sending count ECHO_REQUEST packets #
+alias ping='ping -c 5'
+# Do not wait interval 1 second, go fast #
+alias fastping='ping -c 100 -s.2'
+
+
+# do not delete / or prompt if deleting more than 3 files at a time #
+alias rm='rm -I --preserve-root'
+ 
+# confirmation #
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+ 
+# Parenting changing perms on / #
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+ 
+
+# distro specific  - Debian / Ubuntu and friends #
+# install with apt-get
+alias apt-get="sudo apt-get"
+alias updatey="sudo apt-get --yes"
+ 
+# update on one command 
+alias update='sudo apt-get update && sudo apt-get upgrade'
+
+# become root #
+alias root='sudo -i'
+alias su='sudo -i'
+alias wget='wget -c'
+
+# if user is not root, pass all commands via sudo #
+if [ $UID -ne 0  ]; then
+  alias reboot='sudo reboot'
+fi
+
 
 # the following is a an alias for hub.github.com pull-request function
 function pull_req () {

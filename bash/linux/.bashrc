@@ -106,7 +106,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 # export PATH="/usr/local/heroku/bin:$PATH"
@@ -122,3 +122,7 @@ source '/home/ferron/google-cloud-sdk/path.bash.inc'
 
 # The next line enables bash completion for gcloud.
 source '/home/ferron/google-cloud-sdk/completion.bash.inc'
+
+
+[[ -s "$HOME/.rvm/scripts/rvm"  ]] && source "$HOME/.rvm/scripts/rvm" 
+# Load RVM into a shell session *as a function*
