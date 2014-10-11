@@ -1,0 +1,34 @@
+#compdef docker-env
+
+# Docker autocompletion for groupby custum docker image
+# Author: Ferron Hanse (ferronrsmith@gmail.com)
+
+__update() {
+    # no arguments
+}
+
+
+# end commands ---------
+# ----------------------
+
+local -a _1st_arguments
+_1st_arguments=(
+    "update":"Update environment to the latest version"
+)
+
+_arguments '*:: :->command'
+
+if (( CURRENT == 1 )); then
+    _describe -t commands "docker command" _1st_arguments
+    return
+fi
+
+local -a _command_args
+case "$words[1]" in
+    update)
+        __update ;; 
+    info)
+        __info ;;        
+    version)
+        __version ;;
+esac
