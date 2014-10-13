@@ -17,7 +17,7 @@ root: ~/
 
 # Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
 # tmux_command: byobu
-
+# use the `tmux list-windows` command to retrieve the exact layout you have configured as shown below
 windows:
   - editor:
       layout: main-vertical
