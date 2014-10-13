@@ -1,7 +1,7 @@
 # nice collection of shared functionality
 
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
-export MAVEN_OPTS="-Xms256m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=256m -Djava.awt.headless=true"
+export MAVEN_OPTS="-Xms256m -Xmx512m -Djava.awt.headless=true"
 export LANG=C.UTF-8
 export DOTFILES="${HOME}/personal_git/dotfiles/"
 export JETTY_DEBUG_FLAG="

@@ -1,0 +1,22 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/playground/laravel
+      to: /home/vagrant/code
+
+sites:
+    - map: localhost
+      to: /home/vagrant/code/laravel/public
+      hhvm: true
+
+variables:
+    - key: APP_ENV
+      value: local

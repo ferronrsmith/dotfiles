@@ -2,30 +2,48 @@
 # vi: set ft=ruby :
 
 MACHINES =
-  { 
-    "ubuntu" =>
-      { :box       => "hashicorp/precise64",
-        :provision => "personal_git/dotfiles/vagrant/bootstrap-deb.sh"
-      },
-    "centos" =>
-      { :box       => "chef/centos-6.5",
-        :provision => "personal_git/dotfiles/vagrant/bootstrap-rhel.sh"
-      },
-    "docker" =>
-      { :box       => "chef/centos-6.5",
-        :provision => "personal_git/dotfiles/vagrant/bootstrap-docker.sh"
-      },			
-  }
+    {
+        "ubuntu" =>
+            {:box => "hashicorp/precise64",
+             :provision => "personal_git/dotfiles/vagrant/bootstrap-deb.sh",
+             :type => "groupby"
+            },
+        "centos" =>
+            {:box => "chef/centos-6.5",
+             :provision => "personal_git/dotfiles/vagrant/bootstrap-rhel.sh",
+             :type => "groupby"
+            },
+        "laravel" =>
+            {:box => "laravel/homestead",
+             :provision => "bootstrap-laravel.sh",
+             :type => "homestead"
+            },
+        "docker" =>
+            {:box => "chef/centos-6.5",
+             :provision => "personal_git/dotfiles/vagrant/bootstrap-docker.sh"
+            },
+    }
 
 VAGRANTFILE_API_VERSION = "2"
+path = "#{File.dirname(__FILE__)}"
+
+require 'yaml'
+require path + '/laravel/scripts/homestead.rb'
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   MACHINES.each_pair do |name, opts|
     config.vm.define name do |c|
       c.vm.box = opts[:box]
       c.vm.provision :shell, :path => opts[:provision]
-			c.vm.network "forwarded_port", guest: 10060, host: 10077	# bridge admin port
-			c.vm.network "forwarded_port", guest: 14993, host: 14999	# command center
-			c.vm.network "forwarded_port", guest: 27017, host: 27020	# mongo port
+      if opts[:type] == "groupby"
+        c.vm.network "forwarded_port", guest: 10060, host: 10077 # bridge admin port
+        c.vm.network "forwarded_port", guest: 14993, host: 14999 # command center
+        c.vm.network "forwarded_port", guest: 27017, host: 27020 # mongo port
+      elsif opts[:type] == "personal"
+        c.vm.network "forwarded_port", guest: 8080, host: 9090 # laravel port
+      elsif opts[:type] == "homestead"
+        Homestead.configure(config, YAML::load(File.read(path + '/laravel/Homestead.yaml')))
+      end
     end
   end
 end
