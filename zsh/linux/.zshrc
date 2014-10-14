@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 export M2_HOME=~/dev_tools/apache-maven-3.2.1
 export COMPOSER_HOME=~/.composer/vendor/bin
-export PATH=${M2_HOME}/bin:${COMPOSER_HOME}:${PATH}
+export PATH=${M2_HOME}/bin:${COMPOSER_HOME}:~/personal_git/bangsh/bin:${PATH}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -73,7 +73,7 @@ export PATH=${M2_HOME}/bin:${COMPOSER_HOME}:${PATH}
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export JAVA_HOME=/usr
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 
 function mux () {
     if [ -d "/tmp/tmux*" ]
