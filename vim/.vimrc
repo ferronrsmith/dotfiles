@@ -6,6 +6,7 @@ else
 endif
 let g:dotvim_settings.version = 1
 
+
 " vim book = http://learnvimscriptthehardway.stevelosh.com/
 " by default, language specific plugins are not loaded.  this can be changed with the following:
 let g:dotvim_settings.plugin_groups_exclude = ['scala', 'go']
@@ -146,3 +147,9 @@ function! s:mkdir_as_necessary(dir, force)
     call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
   endif
 endfunction
+
+
+if has("gui_running")
+else
+  highlight Normal ctermbg=none
+endif
