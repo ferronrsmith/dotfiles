@@ -1,8 +1,8 @@
 let g:dotvim_settings = {}
 if has("gui_running")
-	let g:dotvim_settings.colorscheme = 'base16-monokai'
+    let g:dotvim_settings.colorscheme = 'base16-monokai'
 else
-	let g:dotvim_settings.colorscheme = 'Tomorrow-Night'
+    let g:dotvim_settings.colorscheme = 'Tomorrow-Night'
 endif
 let g:dotvim_settings.version = 1
 
@@ -41,15 +41,15 @@ set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.lock,*.gitkeep
 set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.class,*.dll,*.a,*.lib,*.dylib,*.ncb,*.sdf,*.suo,*.pdb,*.psd,*.idb,*.db
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.ttf,*.tga,*.dds,*.ico,*.eot,*.pdf,*.ppt,*.pptx,*.doc,*.docx,*.dash
-set wildignore+=*.swf,*.jar,*.zip,*.rar,*.tar,*.gz,*.dmg,*.jnlp 		" binary files
+set wildignore+=*.swf,*.jar,*.zip,*.rar,*.tar,*.gz,*.dmg,*.jnlp         " binary files
 set wildignore+=*.mp3,*.avi,*.pkg,*.torrent,*.otf,*.ttf,*.iso,*.img,*.mkv
 set wildignore+=*/Wine\ Files/**,*/Downloads/**
-set wildignore+=*/coverage/**						" ignore simplcov/istanbul coverage folder
+set wildignore+=*/coverage/**                       " ignore simplcov/istanbul coverage folder
 set wildignore+=*/test_out/**
 set wildignore+=*/.idea/**,*/*.iml,*.iml
-set wildignore+=*/node_modules/**					" Ignore node js module folder
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     		" MacOSX/Linux
-set wildignore+=*.min.js,*.min.css 					" Ignore minified files
+set wildignore+=*/node_modules/**                   " Ignore node js module folder
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip            " MacOSX/Linux
+set wildignore+=*.min.js,*.min.css                  " Ignore minified files
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.yardoc/*,*.exe,*.so,*.dat'
 
 "========================= ALT+[jk] or Command+[jk] ====================
@@ -70,7 +70,7 @@ endif
 " turn off wrapping
 set nowrap
 set linebreak
-set gdefault 		"searh/replace globally by default
+set gdefault        "searh/replace globally by default
 
 
 " ================ Scrolling ========================
@@ -126,13 +126,18 @@ inoremap jj           <ESC>
 "The following trick is a really small one, but a super-efficient one, since it strips off two full keystrokes from almost every Vim command:
 nnoremap ; :
 
+" This lets you use w!! to do that after you opened the file already:
+cmap w!! w !sudo tee % >/dev/null
+
+nmap <silent> ,/ :nohlsearch<CR>
+
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
 autocmd BufReadPost *
 \ if &ft != 'gitcommit' && fnamemodify(bufname('%'), ':t') != 'svn-commit.tmp' && line("'\"") > 0 && line("'\"") <= line("$") |
 \   exe 'normal! g`"zv' |
-\ endif 
+\ endif
 
 " Make directory automatically.
 " --------------------------------------
