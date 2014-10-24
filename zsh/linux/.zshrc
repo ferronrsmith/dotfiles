@@ -53,8 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 export M2_HOME=~/dev_tools/apache-maven-3.2.1
 export COMPOSER_HOME=~/.composer/vendor/bin
-export PATH=${M2_HOME}/bin:${COMPOSER_HOME}:~/personal_git/bangsh/bin:${PATH}
-
+export PATH=${M2_HOME}/bin:${COMPOSER_HOME}:~/personal_git/bangsh/bin:~/work/workspaceGroupby/cloud/service/grove/grove:${PATH}
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -82,10 +81,10 @@ function mux () {
         tmux -2
     else
         tmux -2
-    fi   
+    fi
 }
 
-# start keychain evaluating current keys 
+# start keychain evaluating current keys
 eval `keychain --eval ~/.ssh/id_rsa`
 
 if [ -d "$HOME/google-cloud-sdk/" ]; then
@@ -95,3 +94,5 @@ if [ -d "$HOME/google-cloud-sdk/" ]; then
 	# The next line enables bash completion for gcloud.
 	source ~/google-cloud-sdk/completion.zsh.inc
 fi
+
+# source ~/work/workspaceGroupby/cloud/service/grove/grove/completion/grove_completion.bash

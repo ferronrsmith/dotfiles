@@ -1,0 +1,138 @@
+#!/bin/sh
+#compdef grove
+
+typeset -A opt_args
+
+
+############ helper function start #################
+_gcloud_list () {
+    gcloud compute $1 list --regexp .\*-.\*-.\*-.\* | tail -n +2 | awk '{ printf "%s ", $1 }'
+}
+
+_zones () {
+    _gcloud_list zones
+}
+
+_instance_names () {
+    _gcloud_list instances
+}
+
+_debug () {
+    echo "\n###############"
+    echo "\n1 ... $words"
+    echo "\n2 ... $CURRENT"
+    echo "\n3 ... $words[CURRENT-1]"
+    echo "\n4 ... ${words[CURRENT-1]}"
+    echo "\n###############"
+}
+
+############ helper function end ###################
+
+
+############ array instances start #################
+
+list_opts=(
+    "--grove-id:restricts listing by grove identifier"
+    "--type:restricts listing by instance type"
+    "--zone:restricts listing by instance zone"
+    "--instance-id:restricts listing by instance identifier"
+    "--sort:sorts listing by field"
+)
+
+# cache zone. _zones seems very slow
+zones_opts=(
+    "us-central1-a:US Region Zone A. Sandy Bridge Processor Type"
+    "us-central1-b:US Region Zone B. Sandy Bridge Processor Type"
+    "us-central1-f:US Region Zone F. Ivy Bridge Processor Type"
+    "europe-west1-a:Europian Region Zone A (deprecated). Sandy Bridge Processor Type"
+    "europe-west1-b:Europian Region Zone B. Sandy Bridge Processor Type"
+    "asia-east1-a:Asian Region Zone A. Ivy Bridge Processor Type"
+    "asia-east1-b:Asian Region Zone B. Ivy Bridge Processor Type"
+    "asia-east1-c:Asian Region Zone C. Ivy Bridge Processor Type"
+)
+
+type_opts=(
+    'command-center:command center node'
+    'data:data node'
+    'elastic-search:elastic search node'
+    'mongo:mongo database node'
+)
+
+
+############ array instances end ###################
+
+_arguments -C \
+  '1:cmd:->cmds' \
+  '2:generators:->generator_lists' \
+  '*:: :->args' \
+&& ret=0
+
+case "$state" in
+    (cmds)
+    local commands; commands=(
+        "add:add a node to an existing grove"
+        "copy:copy a grove to another"
+        "create:Create a new grove"
+        "delete:Delete a grove and all attached instances"
+        "list:List all groves & its instances"
+        "migrate:Move/Migrate a grove to another network"
+        "remove:Remove an instance from a grove"
+    )
+        _describe -t commands 'command' commands && ret=0
+    ;;
+    (generator_lists)
+        case $line[1] in
+            (list)
+                _describe -t list_opts 'list' list_opts && ret=0
+            ;;
+            (remove)
+                local instances; instances=($(_instance_names))
+                _describe -t instances 'remove' instances && ret=0
+            ;;
+            (add)
+                _describe -t zones_opts 'add' zones_opts && ret=0
+            ;;
+        esac
+    ;;
+    (args)
+        case $line[1] in
+            (list)
+                case "${words[CURRENT-1]}" in
+                    (--type)
+#                        _debug
+                        _describe -t type_opts 'type' type_opts && ret=0
+                        return 0
+                    ;;
+                    (--zone)
+                        _describe -t zones_opts 'add' zones_opts && ret=0
+                        return 0
+                    ;;
+                esac
+
+                # if the line command is list then show list options
+                _describe -t list_opts 'list' list_opts && ret=0
+            ;;
+            (add)
+#                _debug
+                case "${CURRENT}" in
+                    3)
+                        _describe -t type_opts 'type' type_opts && ret=0
+                    ;;
+                    4)
+                        ## should handle state 4 in future versions
+                        return 0
+                    ;;
+
+                esac
+#                if [ CURRENT == 3 ]; then
+#                    _describe -t type_opts 'type' type_opts && ret=0
+#                elif [ CURRENT == 4 ]; then
+                    #
+#                    echo ">>>>"
+#                fi
+            ;;
+        esac
+    ;;
+esac
+
+return 1

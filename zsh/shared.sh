@@ -10,7 +10,7 @@ export JETTY_DEBUG_FLAG="
 
 export JPDA_OPTS="
 	-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n"
-    
+
 alias gw="cd $HOME/work/workspaceGroupby/bindle"
 alias gw2="cd $HOME/work/workspaceGroupby/future/bindle"
 alias cloud="cd $HOME/work/workspaceGroupby/cloud"
@@ -38,24 +38,24 @@ alias fastping='ping -c 100 -s.2'
 
 # do not delete / or prompt if deleting more than 3 files at a time #
 alias rm='rm -I --preserve-root'
- 
+
 # confirmation #
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
- 
+
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
- 
+
 
 # distro specific  - Debian / Ubuntu and friends #
 # install with apt-get
 alias apt-get="sudo apt-get"
 alias updatey="sudo apt-get --yes"
- 
-# update on one command 
+
+# update on one command
 alias update='sudo apt-get update && sudo apt-get upgrade'
 
 # become root #
@@ -175,7 +175,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(tmuxinator tmux rvm ack jq ag hub docker httpie ps shutdown virtualbox docker-dev docker-env docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
+plugins=(tmuxinator tmux rvm ack jq ag hub docker httpie ps shutdown virtualbox grove docker-dev docker-env docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
 
 # vim setting :- setting the default editor
 export EDITOR=vim
