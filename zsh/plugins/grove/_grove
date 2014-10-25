@@ -58,6 +58,25 @@ type_opts=(
     'mongo:mongo database node'
 )
 
+network_opts=(
+    'add:add a network'
+    'delete:delete a network'
+    'list:list all networks'
+)
+
+firewall_opts=(
+    'add:add a firewall rule'
+    'delete:delete a firewall rule'
+    'list:list all firewall rules'
+)
+
+instance_opts=(
+    'add:add a instance to a grove'
+    'delete:delete an instance from a grove'
+    'list:list all instances in grove(s)'
+)
+
+
 
 ############ array instances end ###################
 
@@ -76,6 +95,9 @@ case "$state" in
         "delete:Delete a grove and all attached instances"
         "list:List all groves & its instances"
         "migrate:Move/Migrate a grove to another network"
+        "network:Configure a grove networking"
+        "firewall:Configure a grove firewall"
+        "instance:Configure a grove instance"
         "remove:Remove an instance from a grove"
     )
         _describe -t commands 'command' commands && ret=0
@@ -91,6 +113,9 @@ case "$state" in
             ;;
             (add)
                 _describe -t zones_opts 'add' zones_opts && ret=0
+            ;;
+            (network|instance|firewall)
+                _describe -t "${line[1]}_opts" 'add' "${line[1]}_opts" && ret=0
             ;;
         esac
     ;;
