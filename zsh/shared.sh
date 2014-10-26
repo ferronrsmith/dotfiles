@@ -9,7 +9,7 @@ export JETTY_DEBUG_FLAG="
     -Xdebug -agentlib:jdwp=transport=dt_socket,address=9911,server=y,suspend=n"
 
 export JPDA_OPTS="
-	-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n"
+    -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n"
 
 alias gw="cd $HOME/work/workspaceGroupby/bindle"
 alias gw2="cd $HOME/work/workspaceGroupby/future/bindle"
@@ -171,11 +171,11 @@ alias -g NUL="> /dev/null 2>&1"
 alias -g P="2>&1| pygmentize -l pytb"
 
 # zshrc theme/
-ZSH_THEME="robbyrussell"
+ZSH_THEME="fino-time"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(tmuxinator tmux rvm ack jq ag hub docker httpie ps shutdown virtualbox grove docker-dev docker-env docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
+plugins=(tmuxinator tmux rvm ack jq ag hub docker httpie ps go golang shutdown virtualbox grove docker-dev docker-env docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
 
 # vim setting :- setting the default editor
 export EDITOR=vim

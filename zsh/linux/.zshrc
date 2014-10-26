@@ -88,11 +88,11 @@ function mux () {
 eval `keychain --eval ~/.ssh/id_rsa`
 
 if [ -d "$HOME/google-cloud-sdk/" ]; then
-	# The next line updates PATH for the Google Cloud SDK.
-	source ~/google-cloud-sdk/path.zsh.inc
+    # The next line updates PATH for the Google Cloud SDK.
+    source ~/google-cloud-sdk/path.zsh.inc
 
-	# The next line enables bash completion for gcloud.
-	source ~/google-cloud-sdk/completion.zsh.inc
+    # The next line enables bash completion for gcloud.
+    source ~/google-cloud-sdk/completion.zsh.inc
 fi
 
-# source ~/work/workspaceGroupby/cloud/service/grove/grove/completion/grove_completion.bash
+#source ~/work/workspaceGroupby/cloud/service/grove/grove/completion/grove_completion.bash

@@ -1,15 +1,8 @@
-#!/bin/sh
 #compdef grove
 
 typeset -A opt_args
 
-
 ############ helper function start #################
-
-_gcloud () {
-    gcloud compute $1 list
-}
-
 _gcloud_list () {
     gcloud compute $1 list --regexp .\*-.\*-.\*-.\* | awk '{ if (NR > 1) { printf "%s ", $1; } }'
 }
@@ -20,10 +13,6 @@ _zones () {
 
 _instance_names () {
     _gcloud_list instances
-}
-
-_networks () {
-    _gcloud networks | awk '{ if (NR > 1) { printf "%s ", $1; } }'
 }
 
 _debug () {
@@ -75,6 +64,7 @@ network_opts=(
 
 firewall_opts=(
     'add:add a firewall rule'
+    'add-file:add a firewall rules from a configuration file'
     'delete:delete a firewall rule'
     'list:list all firewall rules'
 )
@@ -98,24 +88,20 @@ _arguments -C \
 case "$state" in
     (cmds)
     local commands; commands=(
-        "add:add a node to an existing grove"
         "copy:copy a grove to another"
         "create:Create a new grove"
         "delete:Delete a grove and all attached instances"
+        "firewall:Configure a grove firewall"
+        "instance:Configure a grove instance"
         "list:List all groves & its instances"
         "migrate:Move/Migrate a grove to another network"
         "network:Configure a grove networking"
-        "firewall:Configure a grove firewall"
-        "instance:Configure a grove instance"
         "remove:Remove an instance from a grove"
     )
         _describe -t commands 'command' commands && ret=0
     ;;
     (generator_lists)
         case $line[1] in
-            (list)
-                _describe -t list_opts 'list' list_opts && ret=0
-            ;;
             (remove)
                 local instances; instances=($(_instance_names))
                 _describe -t instances 'remove' instances && ret=0
@@ -123,17 +109,17 @@ case "$state" in
             (add)
                 _describe -t zones_opts 'add' zones_opts && ret=0
             ;;
-            (network|instance|firewall)
+            (list|network|instance|firewall)
                 _describe -t "${line[1]}_opts" 'add' "${line[1]}_opts" && ret=0
             ;;
         esac
     ;;
     (args)
+        _debug
         case $line[1] in
-            (list)
-                case "${words[CURRENT-1]}" in
-                    (--type)
-#                        _debug
+        (list)
+            case "${words[CURRENT-1]}" in
+                (--type)
                         _describe -t type_opts 'type' type_opts && ret=0
                         return 0
                     ;;
@@ -168,9 +154,12 @@ case "$state" in
             (network)
 #                _debug
                 case "${words[CURRENT-1]}" in
-                    delete)
-                        local networks; networks=($(_networks))
-                        _describe -t networks 'delete' networks && ret=0
+                    add)
+                        _describe -t type_opts 'type' type_opts && ret=0
+                    ;;
+                    delete|list)
+                        local instances; instances=($(_instance_names))
+                        _describe -t instances 'remove' instances && ret=0
                     ;;
                 esac
             ;;
