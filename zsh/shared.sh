@@ -4,21 +4,18 @@ export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 export MAVEN_OPTS="-Xms256m -Xmx512m -Djava.awt.headless=true"
 export LANG=C.UTF-8
 export HISTCONTROL="erasedups:ignoreboth"
-export DOTFILES="${HOME}/personal_git/dotfiles/"
+export _MY_GIT="$HOME/personal_git"
+export _DOTFILES="$_MY_GIT/dotfiles/"
 export JETTY_DEBUG_FLAG="
     -Xdebug -agentlib:jdwp=transport=dt_socket,address=9911,server=y,suspend=n"
 
 export JPDA_OPTS="
     -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n"
 
-alias gw="cd $HOME/work/workspaceGroupby/bindle"
-alias gw2="cd $HOME/work/workspaceGroupby/future/bindle"
-alias cloud="cd $HOME/work/workspaceGroupby/cloud"
-alias future="cd $HOME/work/workspaceGroupby/future/bindle"
 alias df="df -h"
 alias cls="clear"
-alias mygit="cd $HOME/personal_git"
-alias dotfiles="cd $HOME/personal_git/dotfiles"
+alias mygit="cd ${_MY_GIT}"
+alias dotfiles="cd ${_DOTFILES}"
 alias vi='vim'          # aliasing vi to vim. who needs vi ?
 alias cdo="cd -"
 alias c="clear"
@@ -175,7 +172,7 @@ ZSH_THEME="fino-time"
 # ZSH_THEME="muse"
 
 # zshrc plugins
-plugins=(tmuxinator tmux rvm ack jq ag hub docker httpie ps go golang shutdown virtualbox grove docker-dev docker-env docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
+plugins=(grove tmuxinator tmux rvm ack jq ag hub docker httpie ps go golang shutdown docker-dev docker-env docker-workspace git git-extras colored-man git-prompt git-hubflow last-working-dir mvn extract vagrant colorize git-ignore)
 
 # vim setting :- setting the default editor
 export EDITOR=vim
