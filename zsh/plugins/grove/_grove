@@ -75,6 +75,7 @@ network_opts=(
 
 firewall_opts=(
     'add:add a firewall rule'
+    'add-file:add a firewall rule using configuration from a file'
     'delete:delete a firewall rule'
     'list:list all firewall rules'
 )
@@ -171,6 +172,17 @@ case "$state" in
                     delete)
                         local networks; networks=($(_networks))
                         _describe -t networks 'delete' networks && ret=0
+                    ;;
+                esac
+            ;;
+            (firewall)
+                case "${words[CURRENT-1]}" in
+                    add-file)
+                        local flags; flags=(
+                            '--default':'[use the default firewall configuration to create rules]'
+                            '-d':'[use the default firewall configuration to create rules]'
+                         )
+                        _describe -t flags 'firewall' flags && ret=0
                     ;;
                 esac
             ;;
