@@ -26,6 +26,11 @@ _networks () {
     _gcloud networks | awk '{ if (NR > 1) { printf "%s ", $1; } }'
 }
 
+_groves () {
+    gcloud compute instances list --regexp .\*-.\*-.\*-.\* | awk '{ if (NR > 1) { print $1; } }' | awk -F- '{ print $(NF-1) }' | uniq |  awk '{ printf "%s ", $1; }'
+}
+
+
 _debug () {
     echo "\n###############"
     echo "\n1 ... $words"
@@ -117,9 +122,9 @@ case "$state" in
             (list)
                 _describe -t list_opts 'list' list_opts && ret=0
             ;;
-            (remove)
-                local instances; instances=($(_instance_names))
-                _describe -t instances 'remove' instances && ret=0
+            (delete)
+                local groves; groves=($(_groves))
+                _describe -t groves 'delete' groves && ret=0
             ;;
             (add)
                 _describe -t zones_opts 'add' zones_opts && ret=0
@@ -130,6 +135,7 @@ case "$state" in
         esac
     ;;
     (args)
+        # sub-level command e.g. grove instance add
         case $line[1] in
             (list)
                 case "${words[CURRENT-1]}" in
@@ -175,11 +181,23 @@ case "$state" in
                     ;;
                 esac
             ;;
+            (instance)
+                case "${words[CURRENT-1]}" in
+                    delete)
+                        local instances; instances=($(_instance_names))
+                        _describe -t instances 'remove' instances && ret=0
+                    ;;
+                esac
+            ;;
             (firewall)
                 case "${words[CURRENT-1]}" in
                     add-file)
                         local flags; flags=(
                             '--default':'[use the default firewall configuration to create rules]'
+                            '--grove':'[grove identifier]'
+                            '--g':'[grove identifier]'
+                            '--file':'[specify the template file to be load firewall-rules from]'
+                            '--f':'[specify the template file to be load firewall-rules from]'
                             '-d':'[use the default firewall configuration to create rules]'
                          )
                         _describe -t flags 'firewall' flags && ret=0
