@@ -1,0 +1,21 @@
+
+upstream appcluster {
+  <% @upstream_servers.each do |ip_address| -%>
+  server <%= ip_address %>;
+  <% end -%>
+}
+
+access_log /var/log/nginx/localhost.laravel-access.log;
+error_log  /var/log/nginx/locahost.laravel-error.log error;
+
+charset utf-8;
+
+server {
+  listen 80;
+  server_name load_balancer_test;
+
+  location / {
+    proxy_pass http://appcluster;
+  }
+}
+

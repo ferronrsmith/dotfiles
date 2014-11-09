@@ -5,12 +5,12 @@ MACHINES =
     {
         "ubuntu" =>
             {:box => "hashicorp/precise64",
-             :provision => "personal_git/dotfiles/vagrant/bootstrap-deb.sh",
+             :provision => "bootstrap-deb.sh",
              :type => "groupby"
             },
         "centos" =>
             {:box => "chef/centos-6.5",
-             :provision => "personal_git/dotfiles/vagrant/bootstrap-rhel.sh",
+             :provision => "bootstrap-rhel.sh",
              :type => "groupby"
             },
         "laravel" =>
@@ -18,9 +18,14 @@ MACHINES =
              :provision => "bootstrap-laravel.sh",
              :type => "homestead"
             },
+        "nginx" =>
+            {:box => "precise32",
+             :provision => "bootstrap-nginx.sh",
+             :type => "nginx"
+            },
         "docker" =>
             {:box => "chef/centos-6.5",
-             :provision => "personal_git/dotfiles/vagrant/bootstrap-docker.sh"
+             :provision => "bootstrap-docker.sh"
             },
     }
 
@@ -29,6 +34,7 @@ path = "#{File.dirname(__FILE__)}"
 
 require 'yaml'
 require path + '/laravel/scripts/homestead.rb'
+require path + '/node-nginx-cluster/scripts/nginx.rb'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   MACHINES.each_pair do |name, opts|
@@ -36,13 +42,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       c.vm.box = opts[:box]
       c.vm.provision :shell, :path => opts[:provision]
       if opts[:type] == "groupby"
-        c.vm.network "forwarded_port", guest: 10060, host: 10077 # bridge admin port
-        c.vm.network "forwarded_port", guest: 14993, host: 14999 # command center
-        c.vm.network "forwarded_port", guest: 27017, host: 27020 # mongo port
+        config.vm.provider "virtualbox" do |v|
+          v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+          v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+        end
+        c.vm.network "forwarded_port", guest: 10060, host: 10077  # bridge admin port
+        c.vm.network "forwarded_port", guest: 14993, host: 14999  # command center
+        c.vm.network "forwarded_port", guest: 27017, host: 27020  # mongo port
+        c.vm.network "forwarded_port", guest: 80, host: 8888      # nginx port
       elsif opts[:type] == "personal"
         c.vm.network "forwarded_port", guest: 8080, host: 9090 # laravel port
       elsif opts[:type] == "homestead"
         Homestead.configure(config, YAML::load(File.read(path + '/laravel/Homestead.yaml')))
+      elsif opts[:type] == "nginx"
+        Nginx.configure(config)
       end
     end
   end
