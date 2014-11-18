@@ -89,6 +89,9 @@ instance_opts=(
     'add:add a instance to a grove'
     'delete:delete an instance from a grove'
     'list:list all instances in grove(s)'
+    'ssh:connect to an instance'
+    'copy-to:copy files to an instance'
+    'copy-from:copy files from an instance to a local machine'
 )
 
 
@@ -105,6 +108,7 @@ case "$state" in
     (cmds)
     local commands; commands=(
         "add:add a node to an existing grove"
+        "build:create a custom image"
         "copy:copy a grove to another"
         "create:Create a new grove"
         "delete:Delete a grove and all attached instances"
@@ -131,6 +135,10 @@ case "$state" in
             ;;
             (network|instance|firewall)
                 _describe -t "${line[1]}_opts" 'add' "${line[1]}_opts" && ret=0
+            ;;
+            (build)
+                local build; build=('image')
+                _describe -t build 'create' build && ret=0
             ;;
         esac
     ;;
@@ -165,12 +173,6 @@ case "$state" in
                     ;;
 
                 esac
-#                if [ CURRENT == 3 ]; then
-#                    _describe -t type_opts 'type' type_opts && ret=0
-#                elif [ CURRENT == 4 ]; then
-                    #
-#                    echo ">>>>"
-#                fi
             ;;
             (network)
 #                _debug
@@ -183,7 +185,7 @@ case "$state" in
             ;;
             (instance)
                 case "${words[CURRENT-1]}" in
-                    delete)
+                    delete|ssh|copy-to|copy-from)
                         local instances; instances=($(_instance_names))
                         _describe -t instances 'remove' instances && ret=0
                     ;;
@@ -193,7 +195,7 @@ case "$state" in
                 case "${words[CURRENT-1]}" in
                     add-file)
                         local flags; flags=(
-                            '--default':'[use the default firewall configuration to create rules]'
+                            '--default':'[use the default firewall configuration to creat-e rules]'
                             '--grove':'[grove identifier]'
                             '--g':'[grove identifier]'
                             '--file':'[specify the template file to be load firewall-rules from]'

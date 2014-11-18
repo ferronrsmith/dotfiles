@@ -25,7 +25,9 @@ upstream bridge_cluster {
 
 upstream stream_cluster {
     ## list of load balancing servers
-    server localhost;
+    server localhost:1337;
+    server localhost:1338;
+    server localhost:1339;
 }
 
 upstream commandcenter_cluster {
@@ -61,7 +63,7 @@ server {
 	}
 
     location ~* .*(?<search>/search) {
-        proxy_pass http://localhost:1337;
+        proxy_pass http://stream_cluster;
 #        proxy_pass https://google.com;
     }
 
@@ -69,15 +71,12 @@ server {
         proxy_set_header X-Forwarded-Host $host;
         proxy_set_header X-Forwarded-Server $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass http://localhost:1337;
+        proxy_pass http://stream_cluster;
         #        proxy_pass https://google.com;
     }
 
     location ~* .*(?<time>/time) {
-        proxy_set_header X-Forwarded-Host $host;
-        proxy_set_header X-Forwarded-Server $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass http://localhost:1337;
+        proxy_pass http://stream_cluster;
 #        proxy_pass https://google.com;
     }
 

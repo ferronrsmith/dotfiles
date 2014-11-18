@@ -24,11 +24,6 @@ windows:
       panes:
         - #empty
         - #empty
-  - editor:
-      layout: 9821,226x54,0,0{113x54,0,0,0,112x54,114,0,10}
-      panes:
-        - vim
-        - #empty
   - server:
       layout: 8bbf,226x54,0,0[226x36,0,0,2,226x17,0,37,6]
       panes:

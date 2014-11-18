@@ -27,6 +27,7 @@ NeoBundle 'ferronrsmith/powerline-fonts'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'markcornick/vim-vagrant'
 NeoBundle 'bash-support.vim'
+NeoBundle 'evanmiller/nginx-vim-syntax'
 
 " ================= Files to Ignore =============
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing

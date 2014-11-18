@@ -10,9 +10,8 @@ server.get("/time", function (request, response) {
     response.simpleJson(200, {
         hostname : hostname,
         date : new Date(),
-        headers : request.headers,
-        rawheaders : request.rawHeaders
-    })
+        headers : request.headers
+    });
 });
 
 server.get("/search", function (request, response) {
@@ -35,4 +34,6 @@ server.get("/v1/sas", function (request, response) {
 });
 
 
-server.listen(1337, "localhost");
+var args = process.argv.slice(2);
+
+server.listen(args[0], args[1] === undefined ? "localhost" : args[1]);
