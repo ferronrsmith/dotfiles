@@ -26,6 +26,8 @@ alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
+alias ps-cpu="ps -e -o pcpu,pid,comm --sort -%cpu  | head -n 5"
+alias ps-mem="ps -e  -o pmem,vsz,rss,pid,comm --sort -%mem  | head -n 5"
 
 # Stop after sending count ECHO_REQUEST packets #
 alias ping='ping -c 5'

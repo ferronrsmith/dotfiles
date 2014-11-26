@@ -52,8 +52,9 @@ source ~/personal_git/dotfiles/zsh/term_ext.sh
 source $ZSH/oh-my-zsh.sh
 
 export M2_HOME=~/dev_tools/apache-maven-3.2.1
+export RVM_HOME=$HOME/.rvm/bin
 export COMPOSER_HOME=~/.composer/vendor/bin
-export PATH=${M2_HOME}/bin:${COMPOSER_HOME}:${PATH}
+export PATH=${M2_HOME}/bin:${COMPOSER_HOME}:${RVM_HOME}:${PATH}
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
