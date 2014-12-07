@@ -32,7 +32,7 @@ fi
 
 # my exports
 
-export M2_HOME=~/dev_tools/apache-maven-3.2.1/bin
+export M2_HOME=~/dev_tools/apache-maven-3.2.1
 export RVM_HOME=$HOME/.rvm/bin
 export COMPOSER_HOME=~/.composer/vendor/bin
 
@@ -51,7 +51,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
-  $M2_HOME
+  $M2_HOME/bin
   $COMPOSER_HOME
   $RVM_HOME
   $path

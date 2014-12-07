@@ -1,6 +1,7 @@
 export DOCKER_IDE=intellij
 export WORK_DIR="$HOME/work/workspaceGroupby"
 export WORKSTATION_HOME="$WORK_DIR/workstation"
+export GROUPBY_CLOUD="$WORK_DIR/cloud/service"
 export _BANG_SH="$_MY_GIT/bangsh/bin"
 export PATH="$WORKSTATION_HOME/bin:$_BANG_SH:$PATH"
 export DOCKER_GITHUB_NAME="ferron"
@@ -11,11 +12,11 @@ export DOCKER_GITHUB_CODE="009a62b1bad3b67946e2401eaac7b8b10b5b1a0f"
 
 
 if [ -n "$BASH_VERSION" ]; then
-    source "$WORK_DIR/cloud/service/grove/grove/completion/grove_completion.bash"
+    source "${GROUPBY_CLOUD}/grove/grove/completion/grove_completion.bash"
 fi
 
 if [ -n "$ZSH_VERSION" ]; then
-    export PATH="$WORK_DIR/cloud/service/grove/grove:$PATH"
+    export PATH="${GROUPBY_CLOUD}/grove/grove:${GROUPBY_CLOUD}/hobo:$PATH"
 fi
 
 ## work aliases

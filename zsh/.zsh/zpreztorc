@@ -29,6 +29,9 @@ zstyle ':prezto:load' pmodule \
   'editor' \
   'ssh' \
   'history' \
+  'helper' \
+  'rsync' \
+  'terminal' \
   'directory' \
   'spectrum' \
   'completion' \
@@ -36,6 +39,7 @@ zstyle ':prezto:load' pmodule \
   'node' \
   'python' \
   'tmux' \
+  'gnu-utility' \
   'utility' \
   'syntax-highlighting' \
   'history-substring-search' \
@@ -97,6 +101,7 @@ zstyle ':prezto:module:history-substring-search' globbing-flags ''
 # Auto set to 'off' on dumb terminals.
 
 zstyle ':prezto:module:prompt' theme 'sorin'
+#zstyle ':prezto:module:prompt' theme 'josh'
 
 
 #
