@@ -31,6 +31,7 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'helper' \
   'rsync' \
+  'last-dir' \
   'terminal' \
   'directory' \
   'spectrum' \
