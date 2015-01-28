@@ -2,7 +2,7 @@ export DOCKER_IDE=intellij
 export WORK_DIR="$HOME/work/workspaceGroupby"
 export WORKSTATION_HOME="$WORK_DIR/workstation"
 export GROUPBY_CLOUD="$WORK_DIR/cloud/service"
-export _BANG_SH="$_MY_GIT/bangsh/bin"
+export _BANG_SH="$_MY_GIT/bangsh"
 export PATH="$WORKSTATION_HOME/bin:$_BANG_SH:$PATH"
 export DOCKER_GITHUB_NAME="ferron"
 export DOCKER_GITHUB_EMAIL="ferronrsmith@gmail.com"
@@ -137,4 +137,13 @@ function clean_mongo () {
         db="test"
     fi
     mongo --eval 'db.getMongo().getDBNames().forEach(function(i){db.getSiblingDB(i).dropDatabase()})' --port=$port $db
+}
+
+# wake up network after a long sleep
+function wake_network {
+    nmcli nm sleep false
+}
+
+function who_lock {
+  sudo netstat -tulpn | grep :${1}
 }

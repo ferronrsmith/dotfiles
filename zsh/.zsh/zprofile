@@ -35,6 +35,7 @@ fi
 export M2_HOME=~/dev_tools/apache-maven-3.2.1
 export RVM_HOME=$HOME/.rvm/bin
 export COMPOSER_HOME=~/.composer/vendor/bin
+export ACTIVATOR_HOME=~/Documents/dev_tools/activator-1.2.12-minimal
 
 #
 # Paths
@@ -54,6 +55,7 @@ path=(
   $M2_HOME/bin
   $COMPOSER_HOME
   $RVM_HOME
+  $ACTIVATOR_HOME
   $path
 )
 
