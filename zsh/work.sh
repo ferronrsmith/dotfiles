@@ -24,6 +24,7 @@ fi
 alias gw="cd $WORK_DIR/bindle"
 alias gw2="cd $WORK_DIR/future/bindle"
 alias future="cd $WORK_DIR/future/bindle"
+alias work="cd $WORK_DIR"
 alias cloud="cd $WORK_DIR/cloud"
 alias grov="cd $WORK_DIR/cloud/service/grove/grove"
 
