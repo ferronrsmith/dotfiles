@@ -4,10 +4,9 @@ export WORKSTATION_HOME="$WORK_DIR/workstation"
 export GROUPBY_CLOUD="$WORK_DIR/cloud/service"
 export _BANG_SH="$_MY_GIT/bangsh"
 export PATH="$WORKSTATION_HOME/bin:$_BANG_SH:$PATH"
-export DOCKER_GITHUB_NAME="ferron"
-export DOCKER_GITHUB_EMAIL="ferronrsmith@gmail.com"
-export DOCKER_GITHUB_USER="ferronrsmith"
-export DOCKER_GITHUB_CODE="009a62b1bad3b67946e2401eaac7b8b10b5b1a0f"
+
+source ~/.config/work/.config
+
 #. "$WORKSTATION_HOME/scripts/workstation_bash_autocomplete.bash"
 
 
