@@ -2,14 +2,21 @@ let g:dotvim_settings = {}
 if has("gui_running")
     let g:dotvim_settings.colorscheme = 'base16-monokai'
 else
-    let g:dotvim_settings.colorscheme = 'Tomorrow-Night'
+    let g:dotvim_settings.colorscheme = 'molokai'
 endif
 let g:dotvim_settings.version = 1
 
 
 " vim book = http://learnvimscriptthehardway.stevelosh.com/
 " by default, language specific plugins are not loaded.  this can be changed with the following:
+
 let g:dotvim_settings.plugin_groups_exclude = ['scala', 'go']
+
+if $COLORTERM != 'gnome-terminal' && !has("gui_running") && $TERM_PROGRAM != 'iTerm.app'
+    let g:dotvim_settings.colorscheme = 'molokai'
+    " disable auto complete when not runing with a proper terminal
+    call add(g:dotvim_settings.plugin_groups_exclude, 'autocomplete')
+endif
 
 " if there are groups you want always loaded, you can use this:
 " let g:dotvim_settings.plugin_groups_include = []

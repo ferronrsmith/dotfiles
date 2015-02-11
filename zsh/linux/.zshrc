@@ -21,4 +21,8 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+if [ "$TERM" = "xterm" ]; then
+    export TERM="xterm-256color"
+fi
+
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
