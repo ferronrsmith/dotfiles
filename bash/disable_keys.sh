@@ -1,18 +1,18 @@
-#!/bin/bash - 
+#!/bin/bash -
 #===============================================================================
 #
 #          FILE: disable_keys.sh
-# 
-#         USAGE: ./disable_keys.sh 
-# 
-#   DESCRIPTION: 
-# 
+#
+#         USAGE: ./disable_keys.sh
+#
+#   DESCRIPTION:
+#
 #       OPTIONS: ---
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: YOUR NAME (), 
-#  ORGANIZATION: 
+#        AUTHOR: YOUR NAME (),
+#  ORGANIZATION:
 #       CREATED: 02/24/2015 02:28
 #      REVISION:  ---
 #===============================================================================
@@ -23,6 +23,10 @@
 # remember you need fex !
 get_k_id () {
   echo $(xinput -list | grep "AT Translated" | awk '{print $7}' | fex ' /id=/=-1')
+}
+
+get_m_id () {
+  echo $(xinput -list | grep "PS/2" | awk '{print $6}' | fex ' /id=/=-1')
 }
 
 status=-1;
@@ -37,3 +41,4 @@ else
 fi
 
 xinput set-prop $(get_k_id) 'Device Enabled' ${status}
+xinput set-prop $(get_m_id) 'Device Enabled' ${status}
