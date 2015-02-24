@@ -1,0 +1,38 @@
+# ~/.tmuxinator/groupby.yml
+
+name: hacker
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+# use the `tmux list-windows` command to retrieve the exact layout you have configured as shown below
+windows:
+  - dev:
+      layout: 2f9b,226x54,0,0{113x54,0,0,1,112x54,114,0,9}
+      panes:
+        - #empty
+        - #empty
+  - editor:
+      layout: 52be,226x54,0,0[226x41,0,0,1,226x12,0,42,9]
+      panes:
+        - vim
+        - #empty
+  - entertainment:
+      layout: 7fe3,226x54,0,0{113x54,0,0,3,112x54,114,0[112x27,114,0,7,112x26,114,28,8]}
+      panes:
+        - #empty
+        - mp3blaster
+        - #empty
+

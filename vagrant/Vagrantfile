@@ -13,6 +13,16 @@ MACHINES =
              :provision => "bootstrap-rhel.sh",
              :type => "groupby"
             },
+        "groupby" =>
+            {:box => "chef/centos-6.5",
+             :provision => "bootstrap-groupby.sh",
+             :type => "groupby"
+            },
+        "mini" =>
+            {:box => "chef/centos-6.6",
+             :provision => "bootstrap-groupby.sh",
+             :type => "groupby"
+            },
         "laravel" =>
             {:box => "laravel/homestead",
              :provision => "bootstrap-laravel.sh",
@@ -46,9 +56,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
           v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
         end
-        c.vm.network "forwarded_port", guest: 10060, host: 10077  # bridge admin port
-        c.vm.network "forwarded_port", guest: 14993, host: 14999  # command center
-        c.vm.network "forwarded_port", guest: 27017, host: 27020  # mongo port
+        c.vm.network "forwarded_port", guest: 20181, host: 20181  # bridge admin port
+        c.vm.network "forwarded_port", guest: 20380, host: 20380  # command center
+        c.vm.network "forwarded_port", guest: 9200, host: 20480  # mongo port
         c.vm.network "forwarded_port", guest: 80, host: 8888      # nginx port
       elsif opts[:type] == "personal"
         c.vm.network "forwarded_port", guest: 8080, host: 9090 # laravel port
@@ -60,4 +70,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 end
-# 10.0.2.2 
+# 10.0.2.2

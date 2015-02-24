@@ -32,10 +32,10 @@ fi
 
 # my exports
 
-export M2_HOME=~/dev_tools/apache-maven-3.2.1
+export M2_HOME=~/dev_tools/apache-maven
 export RVM_HOME=$HOME/.rvm/bin
 export COMPOSER_HOME=~/.composer/vendor/bin
-export ACTIVATOR_HOME=~/Documents/dev_tools/activator-1.2.12-minimal
+export ACTIVATOR_HOME=~/Documents/dev_tools/activator
 
 #
 # Paths
