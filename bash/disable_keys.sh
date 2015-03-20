@@ -40,5 +40,8 @@ else
   exit 1
 fi
 
+echo "kid == $(get_k_id)"
+echo "pid == $(get_m_id)"
+
 xinput set-prop $(get_k_id) 'Device Enabled' ${status}
 xinput set-prop $(get_m_id) 'Device Enabled' ${status}
