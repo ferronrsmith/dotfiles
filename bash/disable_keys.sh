@@ -22,11 +22,11 @@
 # retrieves the id of a laptop internal keyboard
 # remember you need fex !
 get_k_id () {
-  echo $(xinput -list | grep "AT Translated" | awk '{print $7}' | fex ' /id=/=-1')
+  echo $(xinput -list | grep "AT Translated") | fex ' /id=/=-1'
 }
 
 get_m_id () {
-  echo $(xinput -list | grep "PS/2" | awk '{print $6}' | fex ' /id=/=-1')
+  echo $(xinput -list | grep "PS/2") | fex ' /id=/=-1'
 }
 
 status=-1;
