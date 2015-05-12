@@ -7,6 +7,10 @@ export PATH="$WORKSTATION_HOME/bin:$_BANG_SH:$PATH"
 
 source ~/.config/work/.config
 
+if [ -n "$(which pulseaudio)" ]; then
+    source ~/personal_git/dotfiles/zsh/pulseaudio.sh
+fi
+
 #. "$WORKSTATION_HOME/scripts/workstation_bash_autocomplete.bash"
 
 

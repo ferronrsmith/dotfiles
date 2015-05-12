@@ -1,8 +1,9 @@
 -Xms256m
 -Xmx1024m
-
+-XX:MaxPermSize=350m
 -XX:ReservedCodeCacheSize=225m
 -ea
+-XX:+HeapDumpOnOutOfMemoryError
 -Dsun.io.useCanonCaches=false
 -Djava.net.preferIPv4Stack=true
 -Djsse.enableSNIExtension=false
@@ -17,11 +18,9 @@
 -XX:+CMSClassUnloadingEnabled
 -XX:+CMSConcurrentMTEnabled
 -XX:+CMSIncrementalPacing
-# -XX:+DoEscapeAnalysis
 -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses
 -XX:+UseCMSInitiatingOccupancyOnly
 -XX:+UseCompressedOops
--XX:+UseConcMarkSweepGC
 -XX:+UseParNewGC
 -XX:CMSIncrementalDutyCycle=5
 -XX:CMSIncrementalDutyCycleMin=0
