@@ -65,6 +65,7 @@
     spell = !git log --pretty=format:%s%n%n%b -n1 > /tmp/aspell.txt && aspell -c /tmp/aspell.txt && git commit --amend -F /tmp/aspell.txt
     # Commit changes to current head as amended commit
     plus = commit --amend -a -C HEAD
+    sdiff = !git diff && git submodule foreach 'git diff'
     # new merge
     merge2 = merge --squash --no-ff --log
 [core]
@@ -77,11 +78,12 @@
 
 [diff]
     tool = vimdiff
+    submodule = log
 [merge]
     tool = meld
 
 [mergetool]
-keepBackup = false
+    keepBackup = false
 
 [fetch]
     prune = true
@@ -102,10 +104,12 @@ keepBackup = false
     frag = magenta bold
     old = red bold
     new = green bold
+
 [color "status"]
     added = yellow
     changed = green
     untracked = cyan
+
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
@@ -123,6 +127,9 @@ keepBackup = false
 
 [rebase]
     stat = true
+
+[status]
+    submoduleSummary = 1
 
 [log]
   date = relative

@@ -24,15 +24,14 @@ windows:
       panes:
         - #empty
         - #empty
-  - editor:
-      layout: 52be,226x54,0,0[226x41,0,0,1,226x12,0,42,9]
-      panes:
-        - vim
-        - #empty
   - entertainment:
       layout: 7fe3,226x54,0,0{113x54,0,0,3,112x54,114,0[112x27,114,0,7,112x26,114,28,8]}
       panes:
         - #empty
         - mp3blaster
         - #empty
-
+  - editor:
+      layout: 52be,226x54,0,0[226x41,0,0,1,226x12,0,42,9]
+      panes:
+        - vim
+        - #empty
