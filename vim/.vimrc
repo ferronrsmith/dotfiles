@@ -24,6 +24,9 @@ endif
 " alternatively, you can set this variable to load exactly what you want
 " let g:dotvim_settings.plugin_groups = ['web','javascript','ruby','python','go','scala']
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 source ~/.vim/vimrc
 
 " NeoBundle 'ferronrsmith/Colour-Sampler-Pack'
