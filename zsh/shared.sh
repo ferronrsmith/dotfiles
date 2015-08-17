@@ -156,15 +156,22 @@ fi
 
 # the following is a an alias for hub.github.com pull-request function
 function pull_req () {
-    BRANCH=$2
-    if [ -z "$1" ]; then
-    echo 'You did not specify a issue # !'
-        return;
+  local BRANCH=$2
+  local MESSAGE
+  if [ -z "$1" ]; then
+    # echo 'You did not specify a issue # !'
+    MESSAGE="$(git rev-parse --abbrev-ref HEAD)"
   fi
-    if [ -z "$2" ]; then
+
+  if [ -z "$2" ]; then
     BRANCH="develop"
   fi
-    hub pull-request -i $1 -b $BRANCH
+
+  if [ -z "${MESSAGE}" ]; then
+    hub pull-request -i "${1}" -b "${BRANCH}"
+  else
+    hub pull-request -m "${MESSAGE}" -b "${BRANCH}"
+  fi
 }
 
 function clone_me () {
@@ -226,7 +233,7 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # nice aliases
 alias t='tail -f'
-alias sgrep=" grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS,target,.idea,.settings,bin,obj} --exclude-from=${DOTFILES}/zsh/exclude.txt"
+alias sgrep=" grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS,target,.idea,.settings,bin,obj} --exclude-from=${_DOTFILES}/zsh/exclude.txt"
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
