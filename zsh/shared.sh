@@ -4,7 +4,7 @@ export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 export MAVEN_OPTS="-Xms256m -Xmx512m -Djava.awt.headless=true"
 export LANG=C.UTF-8
 export HISTCONTROL="erasedups:ignoreboth"
-export _MY_GIT="$HOME/personal_git"
+export _MY_GIT="${HOME}/personal_git"
 export _DOTFILES="$_MY_GIT/dotfiles/"
 export JETTY_DEBUG_FLAG="
     -Xdebug -agentlib:jdwp=transport=dt_socket,address=9911,server=y,suspend=n"

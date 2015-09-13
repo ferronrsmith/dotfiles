@@ -31,7 +31,7 @@
     # `git di $number` shows the diff between the state `$number` revisions ago and the current state
     di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
     # Pull in remote changes for the current repository and all its submodules
-    p = !"git pull; git submodule foreach git pull origin master"
+    p = !"git pull --rebase; git submodule foreach git pull origin master"
     # Clone a repository including all submodules
     cl = clone --recursive
     # Commit all changes
@@ -73,9 +73,7 @@
     autocrlf = false
     safecrlf = warn
     excludesfile = ~/personal_git/dotfiles/git/gitignore.properties
-    fileMode = false
-    filemode = false
-
+	filemode = false
 [diff]
     tool = vimdiff
     submodule = log
@@ -115,6 +113,9 @@
     log = true
 
 # URL shorthands
+
+[branch]
+    autoSetupRebase = always    
 
 [push]
   default = tracking
