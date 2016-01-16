@@ -27,5 +27,7 @@ fi
 
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "/home/ferron/.gvm/scripts/gvm" ]] && source "/home/ferron/.gvm/scripts/gvm"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

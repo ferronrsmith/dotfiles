@@ -38,6 +38,7 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'markcornick/vim-vagrant'
 NeoBundle 'bash-support.vim'
 NeoBundle 'evanmiller/nginx-vim-syntax'
+NeoBundle 'ferronrsmith/vim-fbp'
 
 " ================= Files to Ignore =============
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
@@ -165,6 +166,10 @@ function! s:mkdir_as_necessary(dir, force)
   endif
 endfunction
 
+if expand("%:e") == 'fbp'
+  " detect fbp filetype
+  autocmd BufNewFile,BufRead *.fbp set filetype=fbp
+endif
 
 if has("gui_running")
 else

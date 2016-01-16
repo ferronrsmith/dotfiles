@@ -2,3 +2,4 @@
 **/*.ctx~*
 .vagrant/
 installer*.sh
+vagrant/data

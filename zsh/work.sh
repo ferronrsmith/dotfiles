@@ -11,6 +11,8 @@ export PATH="${WORKSTATION_HOME}/bin:${_BANG_SH}:$PATH"
 
 source ~/.config/work/.config
 
+source ~/personal_git/dotfiles/zsh/layout.sh
+
 if [ -n "$(which pulseaudio)" ]; then
     source ~/personal_git/dotfiles/zsh/pulseaudio.sh
 fi

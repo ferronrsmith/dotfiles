@@ -153,6 +153,8 @@ if [ $UID -ne 0  ]; then
   alias reboot='sudo reboot'
 fi
 
+source ~/personal_git/dotfiles/zsh/k.sh
+source ~/personal_git/dotfiles/zsh/fzf.sh
 
 # the following is a an alias for hub.github.com pull-request function
 function pull_req () {
@@ -174,9 +176,6 @@ function pull_req () {
   fi
 }
 
-function clone_me () {
-  hub clone ferronrsmith/$1
-}
 
 # simple python server
 function pserv {
@@ -247,8 +246,6 @@ alias .....='cd ../../../../'
 # directory
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
 
 # Command line head / tail shortcuts
 alias -g H='| head'
@@ -265,3 +262,6 @@ alias -g P="2>&1| pygmentize -l pytb"
 # vim setting :- setting the default editor
 export EDITOR=vim
 export VISUAL=vim
+
+# disable hotkey ctrl+space in ibus
+gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]
