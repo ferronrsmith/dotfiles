@@ -29,6 +29,8 @@ cmap w!! w !sudo tee > /dev/null %
 
 source ~/.vim/vimrc
 
+call neobundle#append()
+
 " NeoBundle 'ferronrsmith/Colour-Sampler-Pack'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'airblade/vim-gitgutter'
@@ -39,6 +41,8 @@ NeoBundle 'markcornick/vim-vagrant'
 NeoBundle 'bash-support.vim'
 NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'ferronrsmith/vim-fbp'
+
+call neobundle#end()
 
 " ================= Files to Ignore =============
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
