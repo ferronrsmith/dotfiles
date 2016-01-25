@@ -1,0 +1,98 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+  colors = true
+  color_good      = '#b1f463'
+  color_degraded  = '#ccdc90'
+  color_bad       = '#ff0d00'
+  interval = 5
+}
+
+# order += "ipv6"
+order += "disk /"
+order += "run_watch DHCP"
+# order += "run_watch VPN"
+order += "ethernet eth0"
+order += "wireless wlan0"
+order += "volume master"
+order += "battery 0"
+order += "cpu_temperature 0"
+order += "cpu_temperature 1"
+order += "cpu_temperature 2"
+order += "load"
+order += "tztime local"
+
+wireless wlan0 {
+        format_up = " (%quality at %essid, [ %bitrate]) %ip"
+        format_down = "W: down"
+}
+
+ethernet eth0 {
+        # if you use %speed, i3status requires root privileges
+        format_up = " %ip (%speed)"
+        format_down = "E: down"
+}
+
+#battery 0 {
+#        format = "%status %percentage %remaining"
+#}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse:1"
+        #mixer = "Master"
+        #mixer_idx = 0
+}
+
+battery 0 {
+   format = "%status %percentage %remaining %emptytime"
+   format_down = "No battery"
+   status_chr = "⚇ CHR"
+   status_bat = ""
+   status_full = ""
+   path = "/sys/class/power_supply/BAT%d/uevent"
+   low_threshold = 10
+}
+
+
+run_watch DHCP {
+        pidfile = "/var/run/dnsmasq/dnsmasq.pid"
+}
+
+run_watch VPN {
+        pidfile = "/var/run/ppp0.pid"
+}
+
+tztime local {
+        format = " %a, %b-%d-%Y  %r"
+}
+
+load {
+        format = " %1min"
+}
+
+disk "/" {
+        format = " %avail"
+}
+
+cpu_temperature 0 {
+    format = " %degrees °C"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
+}
+
+cpu_temperature 1 {
+    format = " %degrees °C"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp2_input"
+}
+
+cpu_temperature 2 {
+    format = " %degrees °C"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp3_input"
+}
