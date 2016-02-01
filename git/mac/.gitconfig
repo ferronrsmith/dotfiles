@@ -88,3 +88,17 @@
 	trustExitCode = true
 [mergetool]
 	keepBackup = true
+[pull]
+  rebase = true
+
+[pack]
+    threads=0
+
+[rebase]
+    stat = true
+
+[status]
+    submoduleSummary = 1
+
+[log]
+  date = relative
