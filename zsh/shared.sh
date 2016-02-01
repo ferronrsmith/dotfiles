@@ -12,12 +12,21 @@ export JETTY_DEBUG_FLAG="
 export JPDA_OPTS="
     -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n"
 
+unamestr=`uname`
+
+
 source "${_DOTFILES}/zsh/extensions/k.sh"
 source "${_DOTFILES}/zsh/extensions/fzf.sh"
-source "${_DOTFILES}/zsh/extensions/layout.sh"
-source "${_DOTFILES}/zsh/extensions/git.sh"
 source "${_DOTFILES}/zsh/extensions/utils.sh"
 source "${_DOTFILES}/zsh/extensions/alias.sh"
+
+if [[ "${unamestr}" == "Linux" ]]; then
+	source "${_DOTFILES}/zsh/extensions/layout.sh"
+	source "${_DOTFILES}/zsh/extensions/git.sh"
+	# disable hotkey ctrl+space in ibus
+	gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]
+fi
+
 
 if [ -n "$(which pulseaudio)" ]; then
     source "${_DOTFILES}/zsh/extensions/pulseaudio.sh"
@@ -46,6 +55,3 @@ function pull_req () {
 # vim setting :- setting the default editor
 export EDITOR=vim
 export VISUAL=vim
-
-# disable hotkey ctrl+space in ibus
-gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]

@@ -18,7 +18,7 @@ alias nowdate='date +"%d-%m-%Y"'
 alias ps-cpu="ps -e -o pcpu,pid,comm --sort -%cpu  | head -n 5"
 alias ps-mem="ps -e  -o pmem,vsz,rss,pid,comm --sort -%mem  | head -n 5"
 alias untar='tar xvf'
-
+alias bfg='java -jar ~/dev_tools/bfg/bfg.jar'
 
 # Stop after sending count ECHO_REQUEST packets #
 alias ping='ping -c 5'
