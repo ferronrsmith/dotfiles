@@ -22,10 +22,14 @@ source "${_DOTFILES}/zsh/extensions/alias.sh"
 
 if [[ "${unamestr}" == "Linux" ]]; then
 	source "${_DOTFILES}/zsh/extensions/layout.sh"
-	source "${_DOTFILES}/zsh/extensions/git.sh"
 	# disable hotkey ctrl+space in ibus
 	gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]
+else
+  function compdef () {};
 fi
+
+
+source "${_DOTFILES}/zsh/extensions/git.sh"
 
 
 if [ -n "$(which pulseaudio)" ]; then

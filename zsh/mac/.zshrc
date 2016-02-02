@@ -29,3 +29,5 @@ fi
 [[ -s "/home/ferron/.gvm/scripts/gvm" ]] && source "/home/ferron/.gvm/scripts/gvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fpath=(/usr/local/share/zsh-completions $fpath)
