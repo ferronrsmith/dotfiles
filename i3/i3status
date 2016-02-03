@@ -46,7 +46,7 @@ ethernet eth0 {
 volume master {
         format = "♪: %volume"
         format_muted = "♪: muted (%volume)"
-        device = "pulse:1"
+        device = "pulse:2"
         #mixer = "Master"
         #mixer_idx = 0
 }

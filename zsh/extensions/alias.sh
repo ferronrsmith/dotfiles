@@ -43,10 +43,10 @@ alias chgrp='chgrp --preserve-root'
 # distro specific  - Debian / Ubuntu and friends #
 # install with apt-get
 alias apt-get="sudo apt-fast"
-alias updatey="sudo apt-fast --y"
+alias updatey="sudo apt-fast -y"
 
 # update on one command
-alias update='sudo apt-fast update -y && sudo apt-fast upgrade - y && sudo apt-fast dist-upgrade - y'
+alias update='sudo apt-fast update -y && sudo apt-fast upgrade -y && sudo apt-fast dist-upgrade -y'
 
 # become root #
 alias root='sudo -i'
