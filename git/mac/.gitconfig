@@ -78,8 +78,11 @@
 [push]
 	default = matching
 [core]
-  editor = vim
-	excludesfile = /Users/ferronhanse/.gitignore_global
+    editor = vim
+    autocrlf = false
+    safecrlf = warn
+    excludesfile = ~/personal_git/dotfiles/git/gitignore.properties
+	filemode = false
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
 	path = 
