@@ -31,3 +31,5 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+export NVM_DIR="/Users/ferron/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

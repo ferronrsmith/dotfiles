@@ -44,6 +44,7 @@ alias chgrp='chgrp --preserve-root'
 # install with apt-get
 alias apt-get="sudo apt-fast"
 alias updatey="sudo apt-fast -y"
+alias port="sudo port"
 
 # update on one command
 alias update='sudo apt-fast update -y && sudo apt-fast upgrade -y && sudo apt-fast dist-upgrade -y'
