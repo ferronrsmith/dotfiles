@@ -3,6 +3,7 @@
 [user]
 	name = ferron
 	email = ferronrsmith@gmail.com
+	signingkey = 71319842
 [alias]
 	s = status
 	c = commit
@@ -105,3 +106,5 @@
 
 [log]
   date = relative
+[commit]
+	gpgsign = true
