@@ -11,21 +11,10 @@ chmod +x "${APT_CYG}"
 # install some stuff like vim and git
 "${APT_CYG}" install zsh mintty vim curl git openssh git-completion git-gui gitk
 
-
 # install OH MY ZSH
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+git clone --recursive git@github.com:ferronrsmith/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-# Create initial /etc/zshenv
-[[ ! -e /etc/zshenv ]] && echo export PATH=/usr/bin:\$PATH > /etc/zshenv
-
-install --backup ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-
-#setting up vim
-VIMRC_EXAMPLE=`find /usr/share/vim -type f -name vimrc_example.vim | head -n 1`
-if [ ! -f ~/.vimrc ] && [ -n "${VIMRC_EXAMPLE}" ]
-then
-  install "${VIMRC_EXAMPLE}" ~/.vimrc
-fi
+sh ~/personal_git/dotfiles/zsh/zsh_links.sh
 
 # install apt-cyg
 install --backup "${APT_CYG}" /bin/apt-cyg

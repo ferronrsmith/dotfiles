@@ -8,21 +8,6 @@ MACHINES =
              :provision => "bootstrap-deb.sh",
              :type => "groupby"
             },
-        "centos" =>
-            {:box => "chef/centos-6.5",
-             :provision => "bootstrap-rhel.sh",
-             :type => "groupby"
-            },
-        "groupby" =>
-            {:box => "chef/centos-6.5",
-             :provision => "bootstrap-groupby.sh",
-             :type => "groupby"
-            },
-        "mini" =>
-            {:box => "chef/centos-6.6",
-             :provision => "bootstrap-groupby.sh",
-             :type => "groupby"
-            },
         "laravel" =>
             {:box => "laravel/homestead",
              :provision => "bootstrap-laravel.sh",
