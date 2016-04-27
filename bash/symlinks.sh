@@ -28,6 +28,8 @@ if [[ "$unamestr" == 'Linux' ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/linux/.gitconfig ~/.gitconfig
 	ln -nfs ~/personal_git/dotfiles/zsh/linux/.zshrc ~/.zshrc
 	ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
+	ln -nfs ~/personal_git/dotfiles/.Xresources ~/.Xresources
+	ln -nfs ~/personal_git/dotfiles/.Xresources ~/.Xdefaults
 	sh ~/personal_git/dotfiles/zsh/linux/shell.sh
 elif [[ "$unamestr" == *CYGWIN* ]]; then
 	ln -nfs ~/personal_git/dotfiles/git/cygwin/.gitconfig ~/.gitconfig
