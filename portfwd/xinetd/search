@@ -1,12 +1,12 @@
-service gsa-admin
+service search
 {
-  type = UNLISTED 
+  type = UNLISTED
   socket_type = stream
   protocol = tcp
   wait = no
-  redirect = 192.168.1.140 8000
+  redirect = 192.168.1.140 80
   bind = 0.0.0.0
-  port = 8003
+  port = 83
   user = root
   only_from = 0.0.0.0
 }
