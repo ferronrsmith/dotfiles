@@ -3,7 +3,7 @@
 [user]
     name = ferron
     email = ferronrsmith@gmail.com
-	signingkey = 3BC2D5CC
+    signingkey = 3BC2D5CC
 [alias]
     s = status
     c = commit
@@ -74,10 +74,11 @@
     autocrlf = false
     safecrlf = warn
     excludesfile = ~/personal_git/dotfiles/git/gitignore.properties
-	filemode = false
+    filemode = false
 [diff]
     tool = vimdiff
     submodule = log
+    compactionHeuristic = true
 [merge]
     tool = meld
 
@@ -113,10 +114,13 @@
     # Include summaries of merged commits in newly created merge commit messages
     log = true
 
+[submodule]
+    fetchJobs = 10
+
 # URL shorthands
 
 [branch]
-    autoSetupRebase = always    
+    autoSetupRebase = always
 
 [push]
   default = tracking
@@ -136,4 +140,4 @@
 [log]
   date = relative
 [commit]
-	gpgsign = true
+    gpgsign = true
