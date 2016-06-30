@@ -17,7 +17,7 @@
 #      REVISION:  ---
 #===============================================================================
 
-ignore_list=("adminMongo" "data_files" "novaData" ".")
+ignore_list=("adminMongo" "data_files" "novaData" "coreos" ".")
 
 
 function ignore {
