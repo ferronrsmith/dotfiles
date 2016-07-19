@@ -1,0 +1,35 @@
+---
+
+elasticsearch:
+  image: ferronrsmith/elasticsearch:alpine
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+  volumes:
+    - '/Users/ferron/personal_git/conscia/opt/esdata:/usr/share/elasticsearch/data'    
+rabbitmq:
+  image: smebberson/alpine-rabbitmq
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+  environment:
+    - RABBITMQ_ENABLE_MANAGEMENT_PLUGIN=true
+    - RABBITMQ_LOOPBACK_USERS=[]
+  volumes:
+    - '/Users/ferron/personal_git/conscia/opt/rabbitmq/log:/data/log'
+    - '/Users/ferron/personal_git/conscia/opt/rabbitmq/data:/data/mnesia'    
+weedfs:
+  image: ferronrsmith/seaweedfs
+  ports:
+    - "9333:9333"
+    - "8080:8080"
+  volumes:
+   - /Users/ferron/personal_git/conscia/opt/weedfs/data:/data
+  command: server -dir="/data"
+redis:
+  image: redis:alpine
+  ports:
+    - "6379:6379"
+  volumes:
+    - /Users/ferron/personal_git/conscia/opt/redis:/data
+  command: redis-server --appendonly yes
