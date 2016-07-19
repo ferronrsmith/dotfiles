@@ -1,6 +1,7 @@
 #!/bin/sh
 
-export DOCKER_HOST_PORT="192.168.99.100"
+# export DOCKER_HOST_PORT="localhost"
+
 # export REDIS_HOST="${DOCKER_HOST_PORT}"
-export MQ_HOST="${DOCKER_HOST_PORT}"
-export ELASTIC_HOST="${DOCKER_HOST_PORT}"
+# export MQ_HOST="${DOCKER_HOST_PORT}"
+# export ELASTIC_HOST="${DOCKER_HOST_PORT}"
