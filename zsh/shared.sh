@@ -15,7 +15,7 @@ export JPDA_OPTS="
 unamestr=`uname`
 
 
-source "${_DOTFILES}/zsh/extensions/k.sh"
+source "${_DOTFILES}/zsh/extensions/k/k.sh"
 source "${_DOTFILES}/zsh/extensions/fzf.sh"
 source "${_DOTFILES}/zsh/extensions/utils.sh"
 source "${_DOTFILES}/zsh/extensions/alias.sh"
