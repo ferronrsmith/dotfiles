@@ -31,6 +31,3 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 [[ -s "/home/ferron/.gvm/scripts/gvm" ]] && source "/home/ferron/.gvm/scripts/gvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export NVM_DIR="/home/ferron/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -108,3 +108,4 @@
   date = relative
 [commit]
 	gpgsign = true
+    verbose = true
