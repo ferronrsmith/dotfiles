@@ -4,7 +4,7 @@ if has("gui_running")
 else
     let g:dotvim_settings.colorscheme = 'molokai'
 endif
-let g:dotvim_settings.version = 1
+let g:dotvim_settings.version = 2
 
 
 " vim book = http://learnvimscriptthehardway.stevelosh.com/
@@ -29,20 +29,18 @@ cmap w!! w !sudo tee > /dev/null %
 
 source ~/.vim/vimrc
 
-call neobundle#append()
 
 " NeoBundle 'ferronrsmith/Colour-Sampler-Pack'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'munen/find_yaml_key'
-NeoBundle 'ferronrsmith/powerline-fonts'
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'markcornick/vim-vagrant'
-NeoBundle 'bash-support.vim'
-NeoBundle 'evanmiller/nginx-vim-syntax'
-NeoBundle 'ferronrsmith/vim-fbp'
+call dein#add('jelera/vim-javascript-syntax')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('munen/find_yaml_key')
+call dein#add('ferronrsmith/powerline-fonts')
+call dein#add('ekalinin/Dockerfile.vim')
+call dein#add('markcornick/vim-vagrant')
+call dein#add('bash-support.vim')
+call dein#add('evanmiller/nginx-vim-syntax')
+call dein#add('ferronrsmith/vim-fbp')
 
-call neobundle#end()
 
 " ================= Files to Ignore =============
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
