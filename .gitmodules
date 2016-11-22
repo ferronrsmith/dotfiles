@@ -1,3 +1,6 @@
 [submodule "zsh/extensions/k"]
 	path = zsh/extensions/k
 	url = https://github.com/supercrabtree/k
+[submodule "apt-cyg"]
+	path = apt-cyg
+	url = https://github.com/transcode-open/apt-cyg
