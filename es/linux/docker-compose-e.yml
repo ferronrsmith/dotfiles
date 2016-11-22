@@ -1,7 +1,7 @@
 ---
 
 elasticsearch:
-  image: ferronrsmith/elasticsearch:alpine
+  image: elasticsearch:5
   ports:
     - "9201:9200"
     - "9301:9300"

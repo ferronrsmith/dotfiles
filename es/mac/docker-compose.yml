@@ -1,12 +1,12 @@
 ---
 
 elasticsearch:
-  image: ferronrsmith/elasticsearch:alpine
+  image: elasticsearch:5
   ports:
     - "9200:9200"
     - "9300:9300"
   volumes:
-    - '/Users/ferron/personal_git/conscia/opt/esdata:/usr/share/elasticsearch/data'    
+    - '/Users/ferron/personal_git/conscia/opt/esdata:/usr/share/elasticsearch/data'
 rabbitmq:
   image: smebberson/alpine-rabbitmq
   ports:
@@ -17,15 +17,7 @@ rabbitmq:
     - RABBITMQ_LOOPBACK_USERS=[]
   volumes:
     - '/Users/ferron/personal_git/conscia/opt/rabbitmq/log:/data/log'
-    - '/Users/ferron/personal_git/conscia/opt/rabbitmq/data:/data/mnesia'    
-weedfs:
-  image: ferronrsmith/seaweedfs
-  ports:
-    - "9333:9333"
-    - "8080:8080"
-  volumes:
-   - /Users/ferron/personal_git/conscia/opt/weedfs/data:/data
-  command: server -dir="/data"
+    - '/Users/ferron/personal_git/conscia/opt/rabbitmq/data:/data/mnesia'
 redis:
   image: redis:alpine
   ports:

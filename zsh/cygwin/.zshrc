@@ -54,9 +54,6 @@ source ~/personal_git/dotfiles/zsh/shared.sh
 # work related scripts
 source ~/personal_git/dotfiles/zsh/work.sh
 
-# work related terminal extension scripts
-source ~/personal_git/dotfiles/zsh/term_ext.sh
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -93,8 +90,8 @@ function term () {
         tmux -2
     else
         tmux -2
-    fi   
+    fi
 }
 
-# start keychain evaluating current keys 
+# start keychain evaluating current keys
 eval `keychain --eval ~/.ssh/id_rsa`

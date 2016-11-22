@@ -39,7 +39,7 @@ call dein#add('ekalinin/Dockerfile.vim')
 call dein#add('markcornick/vim-vagrant')
 call dein#add('bash-support.vim')
 call dein#add('evanmiller/nginx-vim-syntax')
-call dein#add('ferronrsmith/vim-fbp')
+call dein#add('ninegrid/vim-fbp')
 
 
 " ================= Files to Ignore =============

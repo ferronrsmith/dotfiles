@@ -13,14 +13,6 @@ rabbitmq:
   environment:
     - RABBITMQ_ENABLE_MANAGEMENT_PLUGIN=true
     - RABBITMQ_LOOPBACK_USERS=[]
-weedfs:
-  image: ferronrsmith/seaweedfs
-  ports:
-    - "9333:9333"
-    - "8080:8080"
-  volumes:
-   - /opt/weedfs/data:/data
-  command: server -dir="/data"
 redis:
   image: redis:alpine
   ports:
