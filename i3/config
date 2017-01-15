@@ -140,8 +140,8 @@ bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
 
 #Screen brightness controls
-bindsym F5 exec xbacklight -dec 20 # increase screen brightness
-bindsym F6 exec xbacklight -inc 20 # increase screen brightness
+bindsym $mod+F5 exec xbacklight -dec 20 # increase screen brightness
+bindsym $mod+F6 exec xbacklight -inc 20 # increase screen brightness
 
 
 # adjust volume
@@ -164,13 +164,10 @@ bindsym $mod+F2 [title="Thunderbird"] focus
 bindsym $mod+F1 [title="Firefox"] focus
 bindsym $mod+F3 [title="Hangouts"] focus
 
-bindsym F9 exec audacious
-bindsym F10 exec playerctl previous
-bindsym F11 exec playerctl play-pause
-bindsym F12 exec playerctl next
-
-# Get me to the next open Hangouts instance
-bindsym $mod+Shift+h [title="Hangouts"] focus
+bindsym $mod+F9 exec audacious
+bindsym $mod+F10 exec playerctl previous
+bindsym $mod+F11 exec playerctl play-pause
+bindsym $mod+F12 exec playerctl next
 
 # set wallpaper
 exec_always feh --bg-scale ~/Pictures/wallpapers/wallpaper.jpg

@@ -17,8 +17,7 @@
 #      REVISION:  ---
 #===============================================================================
 
-ignore_list=("adminMongo" "data_files" "novaData" "coreos" ".")
-
+ignore_list=($(cat  repos |tr "\n" " "))
 
 function ignore {
     for i in "${ignore_list[@]}"
