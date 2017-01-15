@@ -6,7 +6,7 @@ MACHINES =
         "ubuntu" =>
             {:box => "hashicorp/precise64",
              :provision => "bootstrap-deb.sh",
-             :type => "groupby"
+             :type => "personal"
             },
         "laravel" =>
             {:box => "laravel/homestead",
@@ -40,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define name do |c|
       c.vm.box = opts[:box]
       c.vm.provision :shell, :path => opts[:provision]
-      if opts[:type] == "groupby"
+      if opts[:type] == "personal"
         config.vm.provider "virtualbox" do |v|
           v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
           v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
