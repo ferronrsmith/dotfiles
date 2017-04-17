@@ -47,6 +47,7 @@ zstyle ':prezto:load' pmodule \
   'autosuggestions' \
   'command-not-found' \
   'macports' \
+  'docker' \
   'prompt'
 
 #
