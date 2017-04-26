@@ -22,7 +22,6 @@ source "${_DOTFILES}/zsh/extensions/alias.sh"
 source "${_DOTFILES}/zsh/extensions/server.sh"
 
 if [[ "${unamestr}" == "Linux" ]]; then
-    source "${_DOTFILES}/zsh/extensions/layout.sh"
     # disable hotkey ctrl+space in ibus
     gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]
 elif [[ "$unamestr" == 'Darwin' ]]; then
