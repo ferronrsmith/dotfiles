@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-function download_docker_tools () {
+function _download_docker_tools () {
   tool="${1}"
   if [ ! -f "$(which jq)" ]; then
     echo 'jq was not found'
@@ -24,9 +24,14 @@ function download_docker_tools () {
 }
 
 function upgrade_docker_machine () {
-  download_docker_tools "machine"
+  _download_docker_tools "machine"
 }
 
 function upgrade_docker_compose () {
-  download_docker_tools "compose"
+  _download_docker_tools "compose"
+}
+
+function upgrade_docker_tools () {
+  upgrade_docker_compose
+  upgrade_docker_machine
 }
