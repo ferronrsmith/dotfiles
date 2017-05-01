@@ -20,6 +20,8 @@ source "${_DOTFILES}/zsh/extensions/fzf.sh"
 source "${_DOTFILES}/zsh/extensions/utils.sh"
 source "${_DOTFILES}/zsh/extensions/alias.sh"
 source "${_DOTFILES}/zsh/extensions/server.sh"
+source "${_DOTFILES}/zsh/extensions/npm.sh"
+source "${_DOTFILES}/zsh/extensions/docker.sh"
 
 if [[ "${unamestr}" == "Linux" ]]; then
     # disable hotkey ctrl+space in ibus
@@ -33,7 +35,7 @@ fi
 source "${_DOTFILES}/zsh/extensions/git.sh"
 
 
-if [ -n "$(which pulseaudio)" ]; then
+if [ -f "$(which pulseaudio)" ]; then
     source "${_DOTFILES}/zsh/extensions/pulseaudio.sh"
 fi
 
