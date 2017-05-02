@@ -48,7 +48,9 @@ zstyle ':prezto:load' pmodule \
   'command-not-found' \
   'macports' \
   'docker' \
-  'prompt'
+  'prompt' \
+  'npm' \
+  'nvm' \
 
 #
 # Editor
