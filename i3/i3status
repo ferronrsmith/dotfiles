@@ -26,6 +26,7 @@ order += "cpu_temperature 0"
 order += "cpu_temperature 1"
 order += "cpu_temperature 2"
 order += "load"
+order += "cpu_usage"
 order += "tztime local"
 
 wireless wlan0 {
@@ -84,15 +85,15 @@ disk "/" {
 
 cpu_temperature 0 {
     format = " %degrees °C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
 }
 
 cpu_temperature 1 {
     format = " %degrees °C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp2_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp2_input"
 }
 
 cpu_temperature 2 {
     format = " %degrees °C"
-    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp3_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp3_input"
 }
