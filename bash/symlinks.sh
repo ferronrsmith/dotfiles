@@ -17,31 +17,33 @@ echo "
 "
 echo "Configuring vim symlinks"
 
+COMPANY_NAME=conscia
+
 ln -nfs ~/personal_git/dotfiles/vim/.vimrc ~/.vimrc
 ln -nfs ~/personal_git/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ln -nfs ~/personal_git/vimfiles/ ~/.vim
 
 unamestr=`uname`
-echo loading $unamestr config
+echo "loading $unamestr config"
 
 if [[ "$unamestr" == 'Linux' ]]; then
-	ln -nfs ~/personal_git/dotfiles/git/linux/.gitconfig ~/.gitconfig
-	ln -nfs ~/personal_git/dotfiles/zsh/linux/.zshrc ~/.zshrc
-	ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
+	SYS_ID=linux
 	ln -nfs ~/personal_git/dotfiles/.Xresources ~/.Xresources
 	ln -nfs ~/personal_git/dotfiles/.Xresources ~/.Xdefaults
-	sh ~/personal_git/dotfiles/zsh/linux/shell.sh
 elif [[ "$unamestr" == *CYGWIN* ]]; then
-	ln -nfs ~/personal_git/dotfiles/git/cygwin/.gitconfig ~/.gitconfig
-	ln -nfs ~/personal_git/dotfiles/zsh/cygwin/.zshrc ~/.zshrc
+	SYS_ID=cygwin
 	ln -nfs ~/personal_git/dotfiles/vagrant/Vagrantfile ~/Vagrantfile
-	ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
-	sh ~/personal_git/dotfiles/zsh/cygwin/shell.sh
 elif [[ "$unamestr" == 'Darwin' ]]; then
-	ln -nfs ~/personal_git/dotfiles/git/mac/.gitconfig ~/.gitconfig
-	ln -nfs ~/personal_git/dotfiles/zsh/mac/.zshrc ~/.zshrc
-	ln -nfs ~/personal_git/dotfiles/ack/.ackrc ~/.ackrc
-	sh ~/personal_git/dotfiles/zsh/linux/shell.sh
+	SYS_ID=mac
 fi
+
+ln -nfs "~/personal_git/dotfiles/git/${SYS_ID}/.gitconfig" ~/.gitconfig
+ln -nfs "~/personal_git/dotfiles/zsh/${SYS_ID}/.zshrc" ~/.zshrc
+ln -nfs "~/personal_git/dotfiles/ack/.ackrc" ~/.ackrc
+sh "~/personal_git/dotfiles/zsh/${SYS_ID}/shell.sh"
+
+# work related symlinks
+mkdir -p "~/personal_git/${COMPANY_NAME}"
+ln -nfs ~/personal_git/dotfiles/bash/git_update.sh "~/personal_git/${COMPANY_NAME}/update.sh"
 
 echo "Finish Configuring vim symlinks"
