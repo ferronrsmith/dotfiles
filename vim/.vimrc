@@ -37,7 +37,7 @@ call dein#add('munen/find_yaml_key')
 call dein#add('ferronrsmith/powerline-fonts')
 call dein#add('ekalinin/Dockerfile.vim')
 call dein#add('markcornick/vim-vagrant')
-call dein#add('bash-support.vim')
+call dein#add('vim-scripts/bash-support.vim')
 call dein#add('evanmiller/nginx-vim-syntax')
 call dein#add('ninegrid/vim-fbp')
 
