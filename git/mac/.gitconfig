@@ -3,7 +3,7 @@
 [user]
 	name = ferron
 	email = ferronrsmith@gmail.com
-	signingkey = 71319842
+	signingkey = 1809B5C3
 [alias]
 	s = status
 	c = commit
