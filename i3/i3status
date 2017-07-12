@@ -53,13 +53,14 @@ volume master {
 }
 
 battery 0 {
-   format = "%status %percentage %remaining %emptytime"
-   format_down = "No battery"
-   status_chr = "⚇ CHR"
-   status_bat = ""
-   status_full = ""
-   path = "/sys/class/power_supply/BAT%d/uevent"
-   low_threshold = 10
+        format = "%status %percentage %remaining"
+        status_bat = ""
+        status_chr = ""
+        status_full = ""
+        low_threshold = 30
+        threshold_type = percentage
+        integer_battery_capacity = true
+        color_good = "#0000FF"
 }
 
 
@@ -76,7 +77,7 @@ tztime local {
 }
 
 load {
-        format = " %1min"
+        format = " %1min"
 }
 
 disk "/" {

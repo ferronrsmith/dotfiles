@@ -24,6 +24,7 @@ source "${_DOTFILES}/zsh/extensions/npm.sh"
 source "${_DOTFILES}/zsh/extensions/docker.sh"
 
 if [[ "${unamestr}" == "Linux" ]]; then
+    source "${_DOTFILES}/zsh/extensions/layout.sh"
     source "${_DOTFILES}/zsh/extensions/imwheel.sh"
     # disable hotkey ctrl+space in ibus
     gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]
