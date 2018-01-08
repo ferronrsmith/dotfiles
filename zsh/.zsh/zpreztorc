@@ -34,6 +34,8 @@ zstyle ':prezto:load' pmodule \
   'last-dir' \
   'terminal' \
   'directory' \
+  'dirhistory' \
+  'dotenv' \
   'spectrum' \
   'completion' \
   'git' \

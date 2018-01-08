@@ -5,9 +5,10 @@ screenOffLockFile=/tmp/screen-off-lock
 
 if [ -f $screenOffLockFile ];
 then
-    rm $screenOffLockFile
+    rm -rf $screenOffLockFile
     notify-send "Screen on." -i /usr/share/icons/gnome/48x48/devices/display.png
 else
+    notify-send "Screen off." -i /usr/share/icons/gnome/48x48/devices/display.png
     touch $screenOffLockFile
     sleep .5
     while [ -f  $screenOffLockFile ]
