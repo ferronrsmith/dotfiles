@@ -21,9 +21,9 @@ URxvt.copyCommand:  xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 
 ! Keybindings
-URxvt.keysym.Mod4-c: perl:clipboard:copy
-URxvt.keysym.Mod4-v: perl:clipboard:paste
-URxvt.keysym.Mod4-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
@@ -33,40 +33,8 @@ URxvt.keysym.M-u: perl:url-select:select_next
 
 ! Fonts
 
-!Courier
-!URxvt.font: xft:Courier-10
-
-!Inconsolata
-URxvt.font: xft:Inconsolata-12
-URxvt.boldFont: xft:Inconsolata-12
-URxvt.letterSpace: -1
-
-!Inconsolata-g
-!URxvt.font: xft:InconsolataG-10
-!URxvt.letterSpace: -1
-
-!Anonymous Pro
-!URxvt.font: xft:Anonymous\ Pro-12
-!URxvt.letterSpace: -1
-
-!Monaco
-!URxvt.font: xft:Monaco-10
-!URxvt.letterSpace: -1
-
-!Droid Sans Mono
-!URxvt.font: xft:Droid Sans Mono-10
-!URxvt.letterSpace: -1
-
-!DejaVu Sans
-!URxvt.font: xft:DejaVu Sans Mono-10
-!URxvt.letterSpace: -1
-
-!Manospace
-!URxvt.font: xft:Monospace-10
-!URxvt.letterSpace: -1
-
-!Terminus
-!URxvt.font: xft:Terminus-10
+urxvt*font: xft:Ubuntu\ Mono\ derivative\ Powerline:size=13
+URxvt.iso14755: False
 
 ! Tango theme
 
@@ -126,8 +94,8 @@ XTerm*metaSendsEscape: true
 
 ! Copy and paste with clipboard
 XTerm*translations: #override \
-	Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
-	Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
+    Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
 
 ! Allow selecting email/url by double-click
 XTerm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
