@@ -154,10 +154,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
 bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
 
 # sleep screen
-bindsym $mod+F7 exec ~/personal_git/dotfiles/bash/screen-off.sh
+bindsym F1 exec ~/personal_git/dotfiles/bash/screen-off.sh
 
 # lock pc
-bindsym $mod+F8 exec ~/personal_git/dotfiles/bash/lock.sh
+bindsym F8 exec ~/personal_git/dotfiles/bash/lock.sh
 
 # Get me to the next open VIM instance
 bindsym $mod+Shift+v [title="VIM"] focus
@@ -167,10 +167,10 @@ bindsym $mod+F2 [title="Thunderbird"] focus
 bindsym $mod+F1 [title="Firefox"] focus
 bindsym $mod+F3 [title="Hangouts"] focus
 
-bindsym $mod+F9 exec audacious
-bindsym $mod+F10 exec playerctl previous
-bindsym $mod+F11 exec playerctl play-pause
-bindsym $mod+F12 exec playerctl next
+bindsym F9 exec audacious
+bindsym F10 exec playerctl previous
+bindsym F11 exec playerctl play-pause
+bindsym F12 exec playerctl next
 
 # set wallpaper
 exec_always feh --bg-scale ~/Pictures/wallpapers/wallpaper.jpg
