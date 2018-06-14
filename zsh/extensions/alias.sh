@@ -43,6 +43,8 @@ alias chgrp='chgrp --preserve-root'
 # distro specific  - Debian / Ubuntu and friends #
 # install with apt-get
 alias apt-get="sudo apt-fast"
+alias dpkg="sudo dpkg"
+alias synaptic="sudo synaptic"
 alias updatey="sudo apt-fast -y"
 alias port="sudo port"
 
