@@ -14,6 +14,8 @@ export JPDA_OPTS="
 
 unamestr=`uname`
 
+# setting nvm current director
+NVM_SYMLINK_CURRENT=true
 
 source "${_DOTFILES}/zsh/extensions/k/k.sh"
 source "${_DOTFILES}/zsh/extensions/fzf.sh"
