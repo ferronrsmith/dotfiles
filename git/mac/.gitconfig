@@ -93,13 +93,14 @@
 [mergetool]
 	keepBackup = true
 [pull]
-  rebase = true
+	rebase = true
 
 [pack]
     threads=0
 
 [rebase]
     stat = true
+	autoStash = true
 
 [status]
     submoduleSummary = 1
