@@ -14,4 +14,4 @@ sh ./symlinks.sh # exact path for the script file
 
 sh ./copyfonts.sh # copy fonts to .fonts directory
 
-sh ../hub/./hub.sh # install http://hub.github.com/
+#sh ../hub/./hub.sh # install http://hub.github.com/
