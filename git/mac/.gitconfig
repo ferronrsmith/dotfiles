@@ -2,7 +2,7 @@
 	ui = auto
 [user]
 	name = ferron
-	email = ferronrsmith@gmail.com
+	email = ferron@conscia.co
 	signingkey = 40EDB062
 [alias]
 	s = status
