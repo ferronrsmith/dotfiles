@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DOCKER_IDE=intellij
-export WORK_DIR="${_MY_GIT}/conscia"
+export WORK_DIR="${_MY_GIT}/splunk"
 export _BANG_SH="${_MY_GIT}/bangsh"
 export PATH="${WORKSTATION_HOME}/bin:${_BANG_SH}:$PATH"
 
