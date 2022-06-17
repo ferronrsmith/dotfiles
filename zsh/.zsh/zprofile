@@ -36,7 +36,10 @@ export M2_HOME=~/dev_tools/apache-maven
 export RVM_HOME=$HOME/.rvm/bin
 export COMPOSER_HOME=~/.composer/vendor/bin
 export ACTIVATOR_HOME=~/Documents/dev_tools/activator
+export WORK_APPS_HOME=~/dev_tools/work
 export BDUTIL_HOME=~/Documents/dev_tools/bdutil
+export GOPLS_HOME=~/.gvm/pkgsets/go1.17.6/global/bin
+export GO_HOME=~/.gvm/gos/go1.17.6/bin
 
 #
 # Paths
@@ -57,8 +60,10 @@ path=(
   ${COMPOSER_HOME}
   ${RVM_HOME}
   ${ACTIVATOR_HOME}
+  ${WORK_APPS_HOME}
   ${path}
   ${BDUTIL_HOME}
+  ${GO_HOME}
 )
 
 #

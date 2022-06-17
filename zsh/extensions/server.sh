@@ -6,7 +6,7 @@ function pserv {
   if [ -z "$1" ]; then
     PORT=5000
   fi
-  python -m SimpleHTTPServer $PORT
+  python3 -m http.server $PORT
 }
 
 # simple ruby server
