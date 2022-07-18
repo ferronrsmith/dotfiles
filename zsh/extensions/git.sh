@@ -82,3 +82,9 @@ alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 alias gclean='git reset --hard && git clean -dfx'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+
+# git worktree aliases
+alias gw='git worktree'
+alias gwl='git worktree list'
+alias gwr='git worktree remove'
+alias gwa='git worktree add'

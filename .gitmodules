@@ -4,3 +4,6 @@
 [submodule "apt-cyg"]
 	path = apt-cyg
 	url = https://github.com/transcode-open/apt-cyg
+[submodule "zsh/extensions/wt"]
+	path = zsh/extensions/wt
+	url = https://github.com/ferronrsmith/git-worktree-switcher
