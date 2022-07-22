@@ -38,3 +38,21 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+eval "$(zoxide init zsh)"
+
+# added patch from :
+# https://github.com/yankeexe/git-worktree-switcher/issues/11
+wt_fld=~/personal_git/dotfiles/zsh/extensions/wt/wt
+type -f "${wt_fld}" &> /dev/null &&
+wt()
+{
+    local dirfile="$HOME/.wt.dir"
+    rm -f "$dirfile"
+    command "$wt_fld" "$@"
+    if [ -f "$dirfile" ]; then
+        if [ "$(< "$dirfile")" != "$(pwd)" ]; then
+            cd -- "$(< "$dirfile")"
+        fi
+    fi
+}
