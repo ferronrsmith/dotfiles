@@ -1,3 +1,0 @@
-USER="$(whoami)"
-ENGINE=192.168.1.140
-sudo ssh $USER@localhost -N -L 19903:$ENGINE:19900 -L 8003:$ENGINE:8000 -L 83:$ENGINE:80
