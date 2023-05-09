@@ -130,4 +130,9 @@ XTerm*color14 : #34E2E2
 XTerm*color7  : #D3D7CF
 XTerm*color15 : #EEEEEC
 
-Xcursor.theme: DMZ-Black
+
+Xcursor.size: 30
+
+Xcursor.theme: oxy-black
+
+Xcursor.size: 30
