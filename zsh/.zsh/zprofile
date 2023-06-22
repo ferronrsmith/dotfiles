@@ -38,8 +38,11 @@ export COMPOSER_HOME=~/.composer/vendor/bin
 export ACTIVATOR_HOME=~/Documents/dev_tools/activator
 export WORK_APPS_HOME=~/dev_tools/work
 export BDUTIL_HOME=~/Documents/dev_tools/bdutil
-export GOPLS_HOME=~/.gvm/pkgsets/go1.17.6/global/bin
-export GO_HOME=~/.gvm/gos/go1.17.6/bin
+export GOPLS_HOME=~/.gvm/pkgsets/go1.20.4/global/bin
+export GO_HOME=~/.gvm/gos/go1.20.4/bin
+export PYENV_ROOT=~/.pyenv
+export PHPENV_HOME=~/.phpenv/bin
+export PHPROOT_HOME=~/.phpenv/versions/7.4/bin
 
 #
 # Paths
@@ -64,6 +67,9 @@ path=(
   ${path}
   ${BDUTIL_HOME}
   ${GO_HOME}
+  ${PYENV_ROOT}
+  ${PHPENV_HOME}
+  ${PHPROOT_HOME}
 )
 
 #
