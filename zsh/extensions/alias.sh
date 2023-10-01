@@ -43,13 +43,26 @@ alias chgrp='chgrp --preserve-root'
 # distro specific  - Debian / Ubuntu and friends #
 # install with apt-get
 alias apt-get="sudo apt-fast"
+alias pacman="sudo pacman"
 alias dpkg="sudo dpkg"
 alias synaptic="sudo synaptic"
 alias updatey="sudo apt-fast -y"
 alias port="sudo port"
 
-# update on one command
-alias update='sudo apt-fast update -y && sudo apt-fast upgrade -y && sudo apt-fast dist-upgrade -y'
+
+unamestr=`uname`
+if [[ "${unamestr}" == "Linux" ]]; then
+    # distro=`cat /etc/*-release | grep "NAME" | sed 's/NAME=//g'`
+    # echo ">>>>> ${distro}"
+    if [[ "${distro}" == "Ubuntu" ]]; then
+      # update on one command
+      alias update='sudo apt-fast update -y && sudo apt-fast upgrade -y && sudo apt-fast dist-upgrade -y'
+    else
+      alias update='sudo pacman -Syu'
+    fi
+fi
+
+
 
 # become root #
 alias root='sudo -i'

@@ -26,10 +26,15 @@ source "${_DOTFILES}/zsh/extensions/npm.sh"
 source "${_DOTFILES}/zsh/extensions/docker.sh"
 
 if [[ "${unamestr}" == "Linux" ]]; then
-    source "${_DOTFILES}/zsh/extensions/layout.sh"
-    source "${_DOTFILES}/zsh/extensions/imwheel.sh"
-    # disable hotkey ctrl+space in ibus
-    gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]
+    distro=`cat /etc/*-release | grep "NAME" | sed 's/NAME=//g'`
+    # echo ">>>>> ${distro}"
+    if [[ "${distro}" == "Ubuntu" ]]; then
+      source "${_DOTFILES}/zsh/extensions/layout.sh"
+      # disable hotkey ctrl+space in ibus
+      gsettings set org.freedesktop.ibus.general.hotkey triggers \[\]
+    else
+      source "${_DOTFILES}/zsh/extensions/imwheel.sh"
+    fi
 elif [[ "$unamestr" == 'Darwin' ]]; then
   source "${_DOTFILES}/zsh/extensions/node.sh"
   function compdef () { true; };
