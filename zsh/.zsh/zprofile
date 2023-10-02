@@ -7,7 +7,8 @@
 
 #
 # Browser
-#
+
+unamestr=`uname`
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
@@ -32,17 +33,42 @@ fi
 
 # my exports
 
+PHPENV_VERSION=7.4
+GO_LANG_VERSION=1.20.4
+
 export M2_HOME=~/dev_tools/apache-maven
 export RVM_HOME=$HOME/.rvm/bin
 export COMPOSER_HOME=~/.composer/vendor/bin
 export ACTIVATOR_HOME=~/Documents/dev_tools/activator
 export WORK_APPS_HOME=~/dev_tools/work
 export BDUTIL_HOME=~/Documents/dev_tools/bdutil
-export GOPLS_HOME=~/.gvm/pkgsets/go1.20.4/global/bin
-export GO_HOME=~/.gvm/gos/go1.20.4/bin
+export GVM_ROOT=~/.gvm
+export GVM_BIN=~/.gvm/bin
 export PYENV_ROOT=~/.pyenv
 export PHPENV_HOME=~/.phpenv/bin
-export PHPROOT_HOME=~/.phpenv/versions/7.4/bin
+export PHPROOT_HOME=~/.phpenv/versions/${PHPENV_VERSION}/bin
+
+
+if [[ "$unamestr" == 'Darwin' ]]; then
+  # override golang version
+  GO_LANG_VERSION=1.20
+  export GOPLS_HOME=~/.gvm/pkgsets/go${GO_LANG_VERSION}/global/bin
+  export GO_HOME=~/.gvm/gos/go${GO_LANG_VERSION}/bin
+  BREW_HOME=$(brew --prefix)
+
+  # gnu-sed
+  export GNU_SED_HOME="${BREW_HOME}/opt/gnu-sed/libexec/gnubin"
+  # gnu-tar
+  export GNU_TAR_HOME="${BREW_HOME}/opt/gnu-tar/libexec/gnubin"
+  # gnu-which
+  export GNU_WHICH_HOME="${BREW_HOME}/opt/gnu-which/libexec/gnubin"
+  # grep
+  export GNU_GREP_HOME="${BREW_HOME}/opt/grep/libexec/gnubin"
+else
+  export GOPLS_HOME=~/.gvm/pkgsets/go${GO_LANG_VERSION}/global/bin
+  export GO_HOME=~/.gvm/gos/go${GO_LANG_VERSION}/bin
+fi
+
 
 #
 # Paths
@@ -70,7 +96,18 @@ path=(
   ${PYENV_ROOT}
   ${PHPENV_HOME}
   ${PHPROOT_HOME}
+  ${GVM_ROOT}
+  ${GVM_BIN}
 )
+
+if [[ "$unamestr" == 'Darwin' ]]; then
+  path+=(
+    ${GNU_SED_HOME}
+    ${GNU_TAR_HOME}
+    ${GNU_WHICH_HOME}
+    ${GNU_GREP_HOME}
+  )
+fi
 
 #
 # Less
