@@ -1,17 +1,8 @@
 export HISTSIZE=10000
 export HISTFILESIZE=20000
 
-if [ -d "$HOME/.pyenv/bin" ] ;
-  then PATH="$HOME/.pyenv/bin:$PATH"
-fi
 
 if [ -d "$HOME/.pgvm/bin" ] ; then 
-	# pgvm_home="$HOME/.pgvm"
-	# pgvm_src=${pgvm_src}
-	# pgvm_logs=${pgvm_logs}
-	# pgvm_clusters=${pgvm_clusters}
-	# pgvm_environments=${pgvm_environments}
-
 	export pgvm_home="$HOME/.pgvm"
 	export pgvm_src="${pgvm_home}/src"
 	export pgvm_logs="${pgvm_home}/logs"
@@ -34,7 +25,3 @@ source ~/personal_git/dotfiles/zsh/work.sh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# fpath=(/usr/local/share/zsh-completions $fpath)
-export NVM_DIR="${HOME}/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
