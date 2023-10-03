@@ -2,8 +2,8 @@
 	ui = auto
 [user]
 	name = ferron
-  email = fhanse@splunk.com
-	signingkey = CD5CB023
+  	email = ferronrsmith@gmail.com
+	signingkey = 6047638D
 [alias]
 	s = status
 	c = commit

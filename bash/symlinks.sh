@@ -27,7 +27,8 @@ unamestr=`uname`
 echo "loading $unamestr config"
 
 if [[ "$unamestr" == 'Linux' ]]; then
-	SYS_ID=linux
+     SYS_ID=linux
+     SYS_TYPE=`cat /etc/*-release | grep "NAME" | sed 's/NAME=//g' | awk '{print tolower($0)}'`
 	ln -nfs ~/personal_git/dotfiles/.Xresources ~/.Xresources
 	ln -nfs ~/personal_git/dotfiles/.Xresources ~/.Xdefaults
 elif [[ "$unamestr" == *CYGWIN* ]]; then
@@ -35,10 +36,11 @@ elif [[ "$unamestr" == *CYGWIN* ]]; then
 	ln -nfs ~/personal_git/dotfiles/vagrant/Vagrantfile ~/Vagrantfile
 elif [[ "$unamestr" == 'Darwin' ]]; then
 	SYS_ID=mac
+     SYS_TYPE=${SYS_TYPE:-personal}
 fi
 
-ln -nfs "~/personal_git/dotfiles/git/${SYS_ID}/.gitconfig" ~/.gitconfig
-ln -nfs "~/personal_git/dotfiles/zsh/${SYS_ID}/.zshrc" ~/.zshrc
+ln -nfs "~/personal_git/dotfiles/git/${SYS_ID}/${SYS_TYPE}/.gitconfig" ~/.gitconfig
+ln -nfs "~/personal_git/dotfiles/zsh/${SYS_ID}/${SYS_TYPE}.zshrc" ~/.zshrc
 ln -nfs "~/personal_git/dotfiles/ack/.ackrc" ~/.ackrc
 sh "~/personal_git/dotfiles/zsh/${SYS_ID}/shell.sh"
 
