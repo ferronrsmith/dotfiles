@@ -1,8 +1,3 @@
-source ~/personal_git/dotfiles/zsh/shared.sh
-
-# work related scripts
-source ~/personal_git/dotfiles/zsh/work.sh
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -21,6 +16,8 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+[[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
+
 if [ "$TERM" = "xterm" ]; then
     export TERM="xterm-256color"
 fi
@@ -30,4 +27,8 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "/home/ferron/.gvm/scripts/gvm" ]] && source "/home/ferron/.gvm/scripts/gvm"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -d "$HOME/.pyenv" ] ; then 
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi

@@ -190,4 +190,4 @@ zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 zstyle ':prezto:module:autosuggestions' color 'yes'
 
 # To set the query found color, add the following line to zpreztorc:
-zstyle ':prezto:module:autosuggestions:color' found ''
+# zstyle ':prezto:module:autosuggestions:color' found ''
