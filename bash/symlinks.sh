@@ -40,7 +40,8 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 ln -nfs "~/personal_git/dotfiles/git/${SYS_ID}/${SYS_TYPE}/.gitconfig" ~/.gitconfig
-ln -nfs "~/personal_git/dotfiles/zsh/${SYS_ID}/${SYS_TYPE}.zshrc" ~/.zshrc
+ln -nfs "~/personal_git/dotfiles/zsh/${SYS_ID}/.zshrc" ~/.zshrc
+ln -nfs "~/personal_git/dotfiles/zsh/${SYS_ID}/.zshrc-personal" ~/.zshrc
 ln -nfs "~/personal_git/dotfiles/ack/.ackrc" ~/.ackrc
 sh "~/personal_git/dotfiles/zsh/${SYS_ID}/shell.sh"
 
