@@ -1,11 +1,22 @@
 #!/bin/bash
 
 export DOCKER_IDE=intellij
-export WORK_DIR="${_MY_GIT}/scg"
-export _BANG_SH="${_MY_GIT}/bangsh"
+# deprecated. 
+# this should now be configured in ~/.config/work/.config
+#export WORK_DIR="${_MY_GIT}/scg"
+#export _BANG_SH="${_MY_GIT}/bangsh"
 export PATH="${WORKSTATION_HOME}/bin:${_BANG_SH}:$PATH"
 
 source ~/.config/work/.config
+
+if [ -z "${_MY_GIT}" ]; then
+  echo 'warning: _MY_GIT not configured'
+fi
+
+if [ -z "${WORK_DIR}" ]; then
+  echo 'warning: WORK_DIR not configured'
+fi
+
 
 #. "$WORKSTATION_HOME/scripts/workstation_bash_autocomplete.bash"
 
