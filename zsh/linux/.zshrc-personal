@@ -1,5 +1,5 @@
-export HISTSIZE=10000
-export HISTFILESIZE=20000
+export HISTSIZE=100000
+export HISTFILESIZE=200000
 
 
 if [ -d "$HOME/.pgvm/bin" ] ; then 
@@ -10,12 +10,6 @@ if [ -d "$HOME/.pgvm/bin" ] ; then
 	export pgvm_environments="${pgvm_home}/environments"
 
 	PATH="$HOME/.pgvm/bin:$PATH"
-fi
-
-if [ -d "$HOME/.zsh/pure" ] ; then
-  fpath+=($HOME/.zsh/pure)
-  autoload -U promptinit; promptinit
-  prompt pure
 fi
 
 source ~/personal_git/dotfiles/zsh/shared.sh
