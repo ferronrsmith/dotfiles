@@ -54,7 +54,10 @@ if [[ "$unamestr" == 'Darwin' ]]; then
   GO_LANG_VERSION=1.20
   export GOPLS_HOME=~/.gvm/pkgsets/go${GO_LANG_VERSION}/global/bin
   export GO_HOME=~/.gvm/gos/go${GO_LANG_VERSION}/bin
-  BREW_HOME=$(brew --prefix)
+
+  if [ -x brew ]; then
+    BREW_HOME=$(brew --prefix)
+  fi
 
   # gnu-sed
   export GNU_SED_HOME="${BREW_HOME}/opt/gnu-sed/libexec/gnubin"
