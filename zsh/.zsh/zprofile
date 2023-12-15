@@ -51,12 +51,16 @@ export PHPROOT_HOME=~/.phpenv/versions/${PHPENV_VERSION}/bin
 
 if [[ "$unamestr" == 'Darwin' ]]; then
   # override golang version
-  GO_LANG_VERSION=1.20
+  GO_LANG_VERSION=1.21.5
   export GOPLS_HOME=~/.gvm/pkgsets/go${GO_LANG_VERSION}/global/bin
   export GO_HOME=~/.gvm/gos/go${GO_LANG_VERSION}/bin
 
-  if [ -x brew ]; then
+  if command -v brew &> /dev/null; then
     BREW_HOME=$(brew --prefix)
+  else
+    # Command doesn't exist
+    echo "Error: brew is not installed or not in the PATH."
+	exit 1
   fi
 
   # gnu-sed
@@ -67,6 +71,8 @@ if [[ "$unamestr" == 'Darwin' ]]; then
   export GNU_WHICH_HOME="${BREW_HOME}/opt/gnu-which/libexec/gnubin"
   # grep
   export GNU_GREP_HOME="${BREW_HOME}/opt/grep/libexec/gnubin"
+  # brew bash
+  export GNU_BASH_HOME="${BREW_HOME}/opt/bash/bin"
 else
   export GOPLS_HOME=~/.gvm/pkgsets/go${GO_LANG_VERSION}/global/bin
   export GO_HOME=~/.gvm/gos/go${GO_LANG_VERSION}/bin
@@ -109,6 +115,7 @@ if [[ "$unamestr" == 'Darwin' ]]; then
     ${GNU_TAR_HOME}
     ${GNU_WHICH_HOME}
     ${GNU_GREP_HOME}
+	${GNU_BASH_HOME}
   )
 fi
 
