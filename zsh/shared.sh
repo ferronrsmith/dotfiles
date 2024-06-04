@@ -71,6 +71,10 @@ function pull_req () {
   fi
 }
 
+function pipm { 
+    pip install $1 && pip freeze | grep $1 >> requirements.txt
+}
+
 # vim setting :- setting the default editor
 export EDITOR=vim
 export VISUAL=vim

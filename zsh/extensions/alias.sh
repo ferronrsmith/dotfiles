@@ -141,3 +141,6 @@ alias kc='kubectl'
 alias kn='kubens'
 alias kx='kubectx'
 
+# git branch review
+alias gbo="git for-each-ref --sort=-committerdate refs/heads/ --format='%(color:blue)%(refname:short)%(color:reset) - %(color:green)%(committerdate:relative)%(color:reset) - %(color:yellow)%(objectname:short)%(color:reset) - %(contents:subject)%(color:reset)'"
+alias gbor="git for-each-ref --sort=-committerdate --format='%(color:blue)%(refname:short)%(color:reset) %(color:green)%(committerdate:relative)%(color:reset) %(color:yellow)%(objectname:short)%(color:reset) %(contents:subject)%(color:reset)' refs/heads/ refs/remotes/"
