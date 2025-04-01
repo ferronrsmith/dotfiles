@@ -2,8 +2,8 @@
 	ui = auto
 [user]
 	name = ferron
-	email = fhanse@splunk.com
-	signingkey = CD5CB023
+	email = ferronrsmith@gmail.com
+	signingkey = 7AED7601
 [alias]
 	s = status
 	c = commit
@@ -117,3 +117,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[gpg]
+	program = /usr/local/bin/gpg

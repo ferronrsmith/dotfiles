@@ -133,7 +133,7 @@
 
 [rebase]
     stat = true
-
+    autoStash = true
 [status]
     submoduleSummary = 1
 
